@@ -16,7 +16,7 @@ export default function AlumniPage() {
 
       <section className="py-5 bg-light">
         <div className="container">
-          <div className="row align-items-center">
+          <div className="row align-items-start">
             {/* Image on left */}
             <div className="col-lg-6 mb-4 mb-lg-0 ">
               <Image
@@ -32,10 +32,31 @@ export default function AlumniPage() {
             </div>
 
             {/* Text on right */}
-            <div className="col-lg-6">
-              <h2 className="fw-bold mb-3">
-                Welcome to the LFES Alumni Network
-              </h2>
+            <div className="col-lg-6 ">
+
+              <div className="tp-program-4-section mb-30 mt-2 ">
+                <h3 className="tp-section-4-title">
+                  LFES Alumni{" "}
+                  <span>
+                    Network
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="170"
+                      height="12"
+                      viewBox="0 0 170 12"
+                      fill="none"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M163.543 11.6881C91.7847 -3.61174 28.9468 5.36254 6.918 11.5745C5.00947 12.1127 2.30014 11.9681 0.866555 11.2516C-0.567032 10.5352 -0.182011 9.51803 1.72652 8.97984C26.0126 2.13138 92.5575 -7.17892 167.812 8.86629C169.887 9.30883 170.614 10.2993 169.435 11.0785C168.257 11.8577 165.618 12.1306 163.543 11.6881Z"
+                        fill="#161613"
+                      />
+                    </svg>
+                  </span>
+                </h3>
+              </div>
+
               <p className="text-muted lh-lg mb-3">
                 LFES alumni are our pride! From graduating students in Eastern
                 Nepal to leaders and professionals across the globe, our alumni
@@ -49,7 +70,7 @@ export default function AlumniPage() {
                 alumni network fosters lifelong connections and keeps the spirit
                 of learning alive.
               </p>
-               <p className="text-muted lh-lg">
+              <p className="text-muted lh-lg">
                 Whether it’s sharing career milestones, contributing to
                 community development, or attending alumni events, our LFES
                 alumni network fosters lifelong connections and keeps the spirit

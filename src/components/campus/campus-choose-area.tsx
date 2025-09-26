@@ -3,7 +3,7 @@ import { DownArrowThree } from "../svg";
 
 export default function CampusChooseArea() {
   return (
-    <section className="tp-campus-choose-area pt-120 pb-30 grey-bg">
+    <section className="tp-campus-choose-area pt-120 pb-30 ">
       <div className="container">
         <div className="row">
           <div className="col-lg-12">

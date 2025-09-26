@@ -70,7 +70,7 @@ export default function InstagramArea() {
     <>
     
 
-      <div className="instagram-area tp-instagram-wrapper grey-bg pb-120 pt-100">
+      <div className="instagram-area tp-instagram-wrapper  pb-120 pt-100">
         
   <div className="col-xl-10 col-md-10 container" >
         <div className="tp-program-4-section mb-60">

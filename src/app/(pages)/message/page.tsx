@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "LFES- MESSAGE",
 };
 
+
+
+
 export default function UniversityAdmissionOverviewPage() {
   return (
     <main>

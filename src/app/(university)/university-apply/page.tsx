@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import Image from "next/image";
+// import Image from "next/image";
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 import CampusChooseArea from "@/components/campus/campus-choose-area";
-import apply_thumb from "@/assets/img/course/details/apply-thumb.jpg";
+// import apply_thumb from "@/assets/img/course/details/apply-thumb.jpg";
 import ProcessTwo from "@/components/process/process-two";
 import ApplyRequirement from "@/components/requirement/apply-requirement-area";
 
@@ -26,7 +26,7 @@ export default function UniversityApplyPage() {
       {/* campus choose area end */}
 
       {/* apply area start */}
-      <div className="tp-apply-thumb-area grey-bg pb-120">
+      {/* <div className="tp-apply-thumb-area grey-bg pb-120">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -40,7 +40,7 @@ export default function UniversityApplyPage() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* apply area end */}
        {/* apply requirement area start */}
       <ApplyRequirement/>

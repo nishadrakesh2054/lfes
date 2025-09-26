@@ -31,7 +31,7 @@ const applicationProcess = [
 
 export default function ProcessTwo() {
   return (
-    <section className="tp-apply-process-area grey-bg pb-60 pt-30">
+    <section className="tp-apply-process-area  pb-60 pt-30">
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-lg-8">

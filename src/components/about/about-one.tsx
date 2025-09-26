@@ -37,7 +37,7 @@ export default function AboutOne() {
     <section className="about-area tp-about-bg grey-bg pt-105">
       <div className="container">
         <div className="row">
-          <div className="col-lg-6">
+          <div className="col-lg-6 border">
             <div
               className="tp-about-wrap mb-60 wow fadeInLeft"
               data-wow-delay=".3s"
