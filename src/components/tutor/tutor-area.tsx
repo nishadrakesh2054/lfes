@@ -86,7 +86,7 @@ export default function TutorArea() {
               data-wow-delay={item.delay}
             >
               <div className="tp-tutor-item about text-center mb-30">
-                <div className="tp-tutor-icon">
+                <div className="tp-tutor-icon ">
                   <span>{item.icon}</span>
                 </div>
                 <div className="tp-tutor-content">
