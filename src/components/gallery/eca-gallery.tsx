@@ -7,8 +7,8 @@ import img1 from "@/assets/img/eca/a.jpg";
 import img2 from "@/assets/img/eca/b.jpeg";
 import img3 from "@/assets/img/eca/c.jpg";
 import img4 from "@/assets/img/eca/d.jpg";
-import img5 from "@/assets/img/eca/e.jpg";
-import img6 from "@/assets/img/eca/f.jpg";
+import img5 from "@/assets/img/eca/a.jpg";
+import img6 from "@/assets/img/eca/c.jpg";
 
 
 const images = [
