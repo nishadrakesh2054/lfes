@@ -1,29 +1,10 @@
 import { ITeamDT, AluminiDT } from "@/types/team-d-t";
 
-export const online_instructors_data: ITeamDT[] = [
-  {
-    id: 1,
-    name: "Leslie Alexander",
-    title: "Teaches Interior Design",
-    image: "/assets/img/team/team-2-thumb-1.png",
-    socials: [
-      {
-        id: 1,
-        iconCls: "fa-brands fa-facebook-f",
-        link: "https://www.facebook.com/",
-      },
-      { id: 2, iconCls: "fa-brands fa-twitter", link: "https://twitter.com/" },
-      {
-        id: 3,
-        iconCls: "fa-brands fa-linkedin-in",
-        link: "https://www.linkedin.com/",
-      },
-    ],
-  },
+export const administrative_instructors_data: ITeamDT[] = [
   {
     id: 2,
-    name: "Annette Black",
-    title: "Teaches Interior Design",
+    name: "Mr. Ramesh K. Sharma",
+    title: "Principal",
     image: "/assets/img/team/team-2-thumb-2.png",
     socials: [
       {
@@ -31,7 +12,11 @@ export const online_instructors_data: ITeamDT[] = [
         iconCls: "fa-brands fa-facebook-f",
         link: "https://www.facebook.com/",
       },
-      { id: 2, iconCls: "fa-brands fa-twitter", link: "https://twitter.com/" },
+      {
+        id: 2,
+        iconCls: "fa-brands fa-instagram",
+        link: "https://instagram.com/",
+      },
       {
         id: 3,
         iconCls: "fa-brands fa-linkedin-in",
@@ -41,9 +26,33 @@ export const online_instructors_data: ITeamDT[] = [
     bgClr: "leaf",
   },
   {
+    id: 1,
+    name: "Mrs. Sunita R. Dahal",
+    title: "Vice Principal",
+    image: "/assets/img/team/team-2-thumb-1.png",
+    socials: [
+      {
+        id: 1,
+        iconCls: "fa-brands fa-facebook-f",
+        link: "https://www.facebook.com/",
+      },
+      {
+        id: 2,
+        iconCls: "fa-brands fa-instagram",
+        link: "https://instagram.com/",
+      },
+      {
+        id: 3,
+        iconCls: "fa-brands fa-linkedin-in",
+        link: "https://www.linkedin.com/",
+      },
+    ],
+  },
+
+  {
     id: 3,
-    name: "Kathryn Murphy",
-    title: "Teaches Interior Design",
+    name: "Mr. Binod K. Thapa",
+    title: "Administrative Officer",
     image: "/assets/img/team/team-2-thumb-3.png",
     socials: [
       {
@@ -51,7 +60,11 @@ export const online_instructors_data: ITeamDT[] = [
         iconCls: "fa-brands fa-facebook-f",
         link: "https://www.facebook.com/",
       },
-      { id: 2, iconCls: "fa-brands fa-twitter", link: "https://twitter.com/" },
+      {
+        id: 2,
+        iconCls: "fa-brands fa-instagram",
+        link: "https://instagram.com/",
+      },
       {
         id: 3,
         iconCls: "fa-brands fa-linkedin-in",
@@ -62,8 +75,8 @@ export const online_instructors_data: ITeamDT[] = [
   },
   {
     id: 4,
-    name: "Mina Hollace",
-    title: "Teaches Interior Design",
+    name: "Mrs. Pooja Shrestha",
+    title: "Academic Coordinator",
     image: "/assets/img/team/team-2-thumb-4.png",
     socials: [
       {
@@ -71,19 +84,22 @@ export const online_instructors_data: ITeamDT[] = [
         iconCls: "fa-brands fa-facebook-f",
         link: "https://www.facebook.com/",
       },
-      { id: 2, iconCls: "fa-brands fa-twitter", link: "https://twitter.com/" },
+      {
+        id: 2,
+        iconCls: "fa-brands fa-instagram",
+        link: "https://instagram.com/",
+      },
       {
         id: 3,
         iconCls: "fa-brands fa-linkedin-in",
         link: "https://www.linkedin.com/",
       },
     ],
-    bgClr: "geyser",
   },
   {
     id: 5,
-    name: "Annette Black",
-    title: "Teaches Interior Design",
+    name: "Mr. Deepak Raj Khadka",
+    title: "Finance & Accounts Officer",
     image: "/assets/img/team/team-2-thumb-2.png",
     socials: [
       {
@@ -91,14 +107,17 @@ export const online_instructors_data: ITeamDT[] = [
         iconCls: "fa-brands fa-facebook-f",
         link: "https://www.facebook.com/",
       },
-      { id: 2, iconCls: "fa-brands fa-twitter", link: "https://twitter.com/" },
+      {
+        id: 2,
+        iconCls: "fa-brands fa-instagram",
+        link: "https://instagram.com/",
+      },
       {
         id: 3,
         iconCls: "fa-brands fa-linkedin-in",
         link: "https://www.linkedin.com/",
       },
     ],
-    bgClr: "leaf",
   },
 ];
 
@@ -512,7 +531,6 @@ export const alumini: AluminiDT[] = [
     title: "Doctor, Bir Hospital",
     image: "/assets/img/team/team-2-thumb-1.png",
     desc: "Graduated in 2007",
- 
   },
   {
     id: 2,
@@ -520,7 +538,6 @@ export const alumini: AluminiDT[] = [
     title: "Entrepreneur, Kathmandu",
     image: "/assets/img/team/team-2-thumb-2.png",
     desc: "Graduated in 20011",
-
   },
   {
     id: 3,
@@ -528,7 +545,6 @@ export const alumini: AluminiDT[] = [
     title: "Engineer, Nepal Electricity Authority",
     image: "/assets/img/team/team-2-thumb-3.png",
     desc: "Graduated in 2018",
- 
   },
   {
     id: 4,
@@ -536,7 +552,6 @@ export const alumini: AluminiDT[] = [
     title: "Teacher, Pokhara",
     image: "/assets/img/team/team-2-thumb-4.png",
     desc: "Graduated in 2022",
-
   },
   {
     id: 5,
@@ -544,6 +559,5 @@ export const alumini: AluminiDT[] = [
     title: "Social Worker, Sunsari",
     image: "/assets/img/team/team-2-thumb-2.png",
     desc: "Graduated in 2009",
-
   },
 ];

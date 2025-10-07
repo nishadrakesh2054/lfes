@@ -1,5 +1,5 @@
 import Image from "next/image";
-import overview_img_1 from "@/assets/img/course/details/admisson-overview-1.jpg";
+import overview_img_1 from "@/assets/img/principal.jpg";
 
 import { CSSProperties } from "react";
 
@@ -8,7 +8,7 @@ const facilities = [
     id: 1,
     title: "Board of Directors",
     description:
-      "LITTLE FLOWERS ENGLISH SCHOOL has always been at the forefront of education not only in Eastern Nepal but throughout the country. Our students have excelled in various fields nationally and internationally. This has been made possible with the blessings of our elders, visionary members of the school managing committee, supportive parents, and dedicated staff. Since its inception, LFES has always remained committed to providing a kind of education that emphasizes not only gaining knowledge but also focuses on the holistic development of students. The achievement of the prestigious awards mentioned in the pages of our history bear testimony to our commitment to high-quality education.From the academic year 2076, we have implemented the Early Child Education and Care (ECEC) curriculum From Nursery to Grade 2 which will be upgraded till grade 5, remaining within the framework of the National Government Curriculum to ensure the best education befitting",
+      "LITTLE FLOWERS ENGLISH SCHOOL has always been at the forefront of education not only in Eastern Nepal but throughout the country. Our students have excelled in various fi elds nationally and internationally. This has been made possible with the blessings of our elders, visionary members of the school managing committee, supportive parents, and dedicated staff. Since its inception, LFES has always remained committed to providing a kind of education that emphasizes not only gaining knowledge but also focuses on the holistic development of students. The achievement of the prestigious awards mentioned in the pages of our history bear testimony to our commitment to high-quality education. <br/> <br/>  From the academic year 2076, we have implemented the Early Child Education and Care (ECEC) curriculum From Nursery to Grade 2 which will be upgraded till grade 5, remaining within the framework of the National Government Curriculum to ensure the best education befitting the needs. As the traditional system of education is insufficient in this era of change, the focus will be given to Progressive Education till grade 7. <br/> <br/>  Our infrastructure is of an international standard supported by unmatched facilities and a team of professionals to support the creative minds of students. We reiterate our commitment to providing an inspiring environment and every possible facility to ensure the quality education that every student deserves in today’s globalized world. ",
     image: overview_img_1,
     name: "Rajesh Khadka",
     signature: "",
@@ -17,7 +17,7 @@ const facilities = [
     id: 2,
     title: "Principle Message",
     description:
-      "LITTLE FLOWERS ENGLISH SCHOOL has always been at the forefront of education not only in Eastern Nepal but throughout the country. Our students have excelled in various fields nationally and internationally. This has been made possible with the blessings of our elders, visionary members of the school managing committee, supportive parents, and dedicated staff. Since its inception, LFES has always remained committed to providing a kind of education that emphasizes not only gaining knowledge but also focuses on the holistic development of students. The achievement of the prestigious awards mentioned in the pages of our history bear testimony to our commitment to high-quality education.From the academic year 2076, we have implemented the Early Child Education and Care (ECEC) curriculum From Nursery to Grade 2 which will be upgraded till grade 5, remaining within the framework of the National Government Curriculum to ensure the best education befitting",
+      "LITTLE FLOWERS ENGLISH SCHOOL has always been at the forefront of education not only in Eastern Nepal but throughout the country. Our students have excelled in various fi elds nationally and internationally. This has been made possible with the blessings of our elders, visionary members of the school managing committee, supportive parents, and dedicated staff. Since its inception, LFES has always remained committed to providing a kind of education that emphasizes not only gaining knowledge but also focuses on the holistic development of students. The achievement of the prestigious awards mentioned in the pages of our history bear testimony to our commitment to high-quality education. <br/> <br/>  From the academic year 2076, we have implemented the Early Child Education and Care (ECEC) curriculum From Nursery to Grade 2 which will be upgraded till grade 5, remaining within the framework of the National Government Curriculum to ensure the best education befitting the needs. As the traditional system of education is insufficient in this era of change, the focus will be given to Progressive Education till grade 7. <br/> <br/>  Our infrastructure is of an international standard supported by unmatched facilities and a team of professionals to support the creative minds of students. We reiterate our commitment to providing an inspiring environment and every possible facility to ensure the quality education that every student deserves in today’s globalized world. ",
     image: overview_img_1,
     name: "Barun Khadka",
     signature: "",
@@ -35,7 +35,7 @@ export function Message() {
             <div className="row align-items-start mb-100" key={facility.id}>
               {/* Image Column */}
               <div
-                className={`col-lg-6 mb-4 mb-lg-0 ${
+                className={`col-lg-5 mb-4 mb-lg-0 ${
                   index % 2 === 0 ? "order-1 order-lg-1" : "order-1 order-lg-2"
                 }`}
               >
@@ -57,7 +57,7 @@ export function Message() {
 
               {/* Text Column */}
               <div
-                className={`col-lg-6 ${
+                className={`col-lg-7 ${
                   index % 2 === 0 ? "order-2 order-lg-2" : "order-2 order-lg-1"
                 }`}
               >
@@ -69,7 +69,11 @@ export function Message() {
                     <h5 className="tp-section-subtitle fs-1">
                       {facility.title}
                     </h5>
-                    <p className="">{facility.description}</p>
+                    <p
+                      className="text-muted lh-lg"
+                      style={{ textAlign: "justify" }}
+                      dangerouslySetInnerHTML={{ __html: facility.description }}
+                    ></p>{" "}
                     <h5 className="tp-section-subtitle">{facility.name}</h5>
                   </div>
                 </div>

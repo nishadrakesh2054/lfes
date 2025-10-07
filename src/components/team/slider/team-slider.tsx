@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import {online_instructors_data} from "@/data/team-data";
+import { administrative_instructors_data } from "@/data/team-data";
 import { PlusSvg } from "../../svg";
 
 const slider_options = {
@@ -38,46 +38,48 @@ const slider_options = {
 
 export default function TeamSlider() {
   return (
-    <Swiper
-      {...slider_options}
-      modules={[Navigation]}
-      className="swiper tp-team-2-active wow fadeInUp"
-      data-wow-delay=".5s"
-    >
-      {online_instructors_data.map((item) => (
-        <SwiperSlide key={item.id}>
-          <div className="tp-team-2-item">
-            <div className={`tp-team-2-bg ${item.bgClr?item.bgClr:''}`}></div>
-            <div className="tp-team-2-social">
-              <span className="tp-team-2-social-wrap">
-                <PlusSvg />
-              </span>
-              <div className="tp-team-2-social-icon">
-                {item.socials.map((social) => (
-                  <a href={social.link} key={social.id} target="_blank">
-                    <i className={social.iconCls}></i>
-                  </a>
-                ))}
+    <>
+      <Swiper
+        {...slider_options}
+        modules={[Navigation]}
+        className="swiper tp-team-2-active wow fadeInUp"
+        data-wow-delay=".5s"
+      >
+        {administrative_instructors_data.map((item) => (
+          <SwiperSlide key={item.id}>
+            <div className="tp-team-2-item border bg-danger">
+              <div className={`tp-team-2-b  `}></div>
+              <div className="tp-team-2-social">
+                <span className="tp-team-2-social-wrap">
+                  <PlusSvg />
+                </span>
+                <div className="tp-team-2-social-icon">
+                  {item.socials.map((social) => (
+                    <a href={social.link} key={social.id} target="_blank">
+                      <i className={social.iconCls}></i>
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div className="tp-team-2-thumb">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={250}
+                  height={372}
+                  
+                />
+              </div>
+              <div className="tp-team-2-content">
+                <h4 className="tp-team-2-title">
+                  <Link href="/my-profile">{item.name}</Link>
+                </h4>
+                <span>{item.title}</span>
               </div>
             </div>
-            <div className="tp-team-2-thumb">
-              <Image
-                src={item.image}
-                alt={item.name}
-                width={250}
-                height={372}
-                style={{ height: "auto" }}
-              />
-            </div>
-            <div className="tp-team-2-content">
-              <h4 className="tp-team-2-title">
-                <Link href="/my-profile">{item.name}</Link>
-              </h4>
-              <span>{item.title}</span>
-            </div>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </>
   );
 }

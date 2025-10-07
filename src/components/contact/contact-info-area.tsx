@@ -1,28 +1,29 @@
 import { EmailThree, LocationFour, TelSvgTwo } from "../svg";
 
 const contactInfoData = [
-    {
-        icon: <EmailThree />,
-        title: 'Feedbacks',
-        description: 'Speak to our Friendly team.',
-        linkText: 'Support@gmail.com',
-        href: 'mailto:Support@gmail.com'
-    },
-    {
-        icon: <TelSvgTwo />,
-        title: 'Call Us',
-        description: 'Mon-Fri from 8am to 5pm',
-        linkText: '+1(555) 000-0000',
-        href: 'tel:+15550000000'
-    },
-    {
-        icon: <LocationFour />,
-        title: 'Visit Us',
-        description: 'Visit our office HQ.',
-        linkText: '77 Robinson Road #33-01',
-        href: '#'
-    }
+  {
+    icon: <EmailThree />,
+    title: 'Email Us',
+    description: 'Contact our support team anytime.',
+    linkText: 'info@lfes.edu.np',
+    href: 'mailto:info@lfes.edu.np'
+  },
+  {
+    icon: <TelSvgTwo />,
+    title: 'Call Us',
+    description: 'Available 24/7 for assistance.',
+    linkText: '+977 023-530172',
+    href: 'tel:+977 023-530172'
+  },
+  {
+    icon: <LocationFour />,
+    title: 'Visit Us',
+    description: 'Located in Birtamod, Jhapa, Nepal.',
+    linkText: 'Birtamod, Jhapa.',
+    href: '#'
+  }
 ];
+
 
 export default function ContactInfoArea() {
     return (

@@ -31,9 +31,9 @@ export default function BrandArea() {
           <div className="col-lg-4">
             <div className="tp-brand-2-content mb-40">
               <h4 className="tp-brand-2-title">
-                Who will <br /> You Learn {' '}
+                Our Academic <br />{" "}
                 <span>
-                  With?
+                  Partners
                   <Image
                     className="tp-underline-shape-10 wow bounceIn"
                     data-wow-duration="1.5s"
@@ -44,14 +44,10 @@ export default function BrandArea() {
                 </span>
               </h4>
               <p>
-                You can list your partners or instructors <br /> brands here to
-                show off your sites
+                We collaborate with leading academic institutions and
+                organizations to provide our students with enhanced learning
+                opportunities and global exposure.
               </p>
-              <div className="tp-brand-2-btn">
-                <a className="tp-btn-round" href="#">
-                  View All Partners
-                </a>
-              </div>
             </div>
           </div>
           <div className="col-lg-8">

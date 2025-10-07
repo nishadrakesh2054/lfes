@@ -95,7 +95,7 @@ export function DownArrowThree() {
   return (
     <svg
       width="20"
-      height="123"
+      height="120"
       viewBox="0 0 20 123"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +110,7 @@ export function DownArrowThree() {
         stroke="#B1040E"
         strokeMiterlimit="10"
       />
-      <rect x="9.5" width="1" height="120" fill="#B1040E" />
+      <rect x="9.5" width="2" height="120" fill="#B1040E" />
     </svg>
   );
 }

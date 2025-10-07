@@ -7,13 +7,10 @@ const menu_data: IMenu[] = [
     link: "#",
     dropdown_menus: [
       { id: 1, title: "ABOUT LFES", link: "/about" },
-      { id: 3, title: "VISIT SCHOOL", link: "/school-tour" },
+      { id: 2, title: "VISIT SCHOOL", link: "/school-tour" },
       { id: 3, title: "SCHOOL FACILITIES", link: "/facilities" },
-
-      { id: 4, title: "MISSION & VALUES", link: "/university-mission" },
-      { id: 7, title: "TEAM", link: "/" },
-      { id: 8, title: "CURRICULUM", link: "/" },
-      { id: 2, title: "FOUNDER's MESSAGE", link: "/message" },
+      { id: 4, title: "TEAM", link: "/teacher" },
+      { id: 5, title: "FOUNDER's MESSAGE", link: "/message" },
     ],
   },
   {
@@ -21,10 +18,11 @@ const menu_data: IMenu[] = [
     title: "ACADEMICS",
     link: "#",
     dropdown_menus: [
-      { id: 3, title: "KINDERGARTEN SCHOOL", link: "/kindergarten" },
-      { id: 4, title: "ELEMENTARY SCHOOL", link: "/elementary-school" },
-      { id: 5, title: "MIDDLE SCHOOL", link: "/middle-school" },
-      { id: 2, title: "SENIOR SCHOOL", link: "/senior-school" },
+      { id: 1, title: "KINDERGARTEN SCHOOL", link: "/kindergarten" },
+      { id: 2, title: "PRIMARY SCHOOL", link: "/elementary-school" },
+      { id: 3, title: "MIDDLE SCHOOL", link: "/middle-school" },
+      { id: 4, title: "SECONDARY SCHOOL", link: "/secondary-school" },
+      { id: 5, title: "SENIOR HIGH SCHOOL", link: "/senior-school" },
     ],
   },
   {
@@ -51,7 +49,7 @@ const menu_data: IMenu[] = [
     title: "ECA & NEWS",
     link: "#",
     dropdown_menus: [
-      { id: 1, title: "ECA", link: "/" },
+      { id: 1, title: "ECA", link: "/eca" },
       { id: 2, title: "ALUMINI", link: "/alumini" },
       { id: 3, title: "NEWS", link: "/blog-list" },
       { id: 4, title: "EVENTS", link: "/event" },

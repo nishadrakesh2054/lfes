@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       {/* main content */}
       {children}
-      {/* main content */}c
+      {/* main content */}
 
       {/* footer area start */}
       <FooterOne />
