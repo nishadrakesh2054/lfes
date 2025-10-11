@@ -62,7 +62,7 @@ import { IProgramDT } from "@/types/program-d-t";
 //       "Your child is advancing from infancy toward <br/> and into the preschool years.",
 //     age: "7-12 Years",
 //     time: "10-12 am",
-//     size: "40 Seats",
+//     size: " Seats",
 //     category: "Education",
 //   },
 // ];
@@ -71,14 +71,14 @@ export const high_school_program_data: IProgramDT[] = [
   {
     id: 1,
     img: "/assets/img/program/4/program-thumb-1.jpg",
-    title: "Kinderdarten School",
+    title: "Progressive Wings ",
     description: "LFES Early Years Programme",
     link: "kindergarten",
   },
   {
     id: 2,
     img: "/assets/img/program/4/program-thumb-2.jpg",
-    title: "Elementary School",
+    title: "Primary School",
     description: " LFES Primary Programme",
     link: "/elementary-school",
   },
@@ -89,12 +89,18 @@ export const high_school_program_data: IProgramDT[] = [
     description: " LFES Lower Secondary Programme",
     link: "/middle-school",
   },
-  {
+    {
     id: 4,
+    img: "/assets/img/program/4/program-thumb-1.jpg",
+    title: "Secondary School",
+    description: " LFES Lower Secondary Programme",
+    link: "/secondary-school",
+  },
+  {
+    id: 5,
     img: "/assets/img/program/4/program-thumb-4.jpg",
     title: "High School",
     description: " LFES Upper Secondary Programme",
     link: "/senior-school",
   },
- 
 ];

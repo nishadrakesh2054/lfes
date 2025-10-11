@@ -137,17 +137,7 @@ export const blog_lists_data:IBlogDT[] = [
     author_img: "/assets/img/blog/blog-stories/blog-stories-user-1.jpg",
     author: "Arlene McCoy",
   },
-  {
-    id: 14,
-    img: "/assets/img/blog/blog-list/blog-list-2.jpg",
-    tag: "Education",
-    date: "October 24, 2024",
-    title: "The art of teaching strategies for engaging motivating",
-    desc:'We are committed to changing the way of mobile UX. We believe that mobile UX has the make a real power.',
-    author: "Ralph Edwards",
-    author_location: "New York",
-    postboxQuote1: true,
-  },
+  
   {
     id: 15,
     img: "/assets/img/blog/blog-list/blog-list-3.jpg",
@@ -157,35 +147,9 @@ export const blog_lists_data:IBlogDT[] = [
     desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
     author: "Ralph Edwards",
   },
-  {
-    id: 16,
-    img: "/assets/img/blog/blog-list/blog-list-4.jpg",
-    tag: "Education",
-    date: "December 15, 2024",
-    title: "Make you love and hate Education.",
-    desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
-    author_img: "/assets/img/blog/blog-stories/blog-stories-user-1.jpg",
-    author: "Arlene McCoy",
-  },
-  {
-    id: 17,
-    img: "/assets/img/blog/blog-list/blog-list-3.jpg",
-    tag: "Education",
-    date: "January 24, 2024",
-    title: "The art of teaching strategies for engaging motivating",
-    desc:'Dicunt aperiam percipitur mel ut, nec placerat cotidieque ut.',
-    author: "Ralph Edwards",
-    postboxQuote2: true,
-  },
-  {
-    id: 18,
-    img: "/assets/img/blog/blog-list/blog-list-4.jpg",
-    tag: "Education",
-    date: "February 24, 2024",
-    title: "The Modern Rules Of Education.",
-    desc:'Aliquam eget turpis vehicula, auctor elit ac, rutrum turpis. Donec enim elit, interdum eu tellus quis, fermentum vehicula dolor.Phasellus scelerisque, massa ut venenatis tristique',
-    author: "Ralph Edwards",
-  }
+
+
+ 
 ]
 
 

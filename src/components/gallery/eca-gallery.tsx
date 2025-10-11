@@ -10,7 +10,6 @@ import img4 from "@/assets/img/eca/d.jpg";
 import img5 from "@/assets/img/eca/a.jpg";
 import img6 from "@/assets/img/eca/c.jpg";
 
-
 const images = [
   { src: img1, height: "250px" },
   { src: img2, height: "320px" },

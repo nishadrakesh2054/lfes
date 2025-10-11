@@ -18,7 +18,7 @@ const menu_data: IMenu[] = [
     title: "ACADEMICS",
     link: "#",
     dropdown_menus: [
-      { id: 1, title: "KINDERGARTEN SCHOOL", link: "/kindergarten" },
+      { id: 1, title: "PROGRESSIVE WING", link: "/kindergarten" },
       { id: 2, title: "PRIMARY SCHOOL", link: "/elementary-school" },
       { id: 3, title: "MIDDLE SCHOOL", link: "/middle-school" },
       { id: 4, title: "SECONDARY SCHOOL", link: "/secondary-school" },

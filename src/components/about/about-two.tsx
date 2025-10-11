@@ -38,7 +38,6 @@ export default function AboutTwo({ spacing = "pt-115 pb-90" }: IProps) {
             </div>
           </div>
         </div>
-
         <div className="row align-items-center">
           {thumbs.map((thumb) => (
             <div key={thumb.id} className={`col-lg-${thumb.col_lg} col-sm-6`}>
@@ -59,7 +58,10 @@ export default function AboutTwo({ spacing = "pt-115 pb-90" }: IProps) {
         {/* Added Extra Informational Sections */}
         <div className="row pt-30">
           <div className="col-12 wow fadeInUp" data-wow-delay=".4s">
-            <h4>Class Timings</h4>
+            <h4 className="d-flex align-items-center">
+       
+              Class Timings
+            </h4>
             <p>
               Our regular school hours run from 6:45 AM to 1:00 PM, in line with
               NEB requirements. This structured yet balanced schedule promotes

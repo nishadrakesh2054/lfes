@@ -2,7 +2,7 @@ import React from "react";
 import CounterItem from "./counter-item";
 
 const counterData = [
-    { id: 3, count: 40, suffix: "+", duration: 1, title: "Years of Excellence" },
+    { id: 3, count: 45, suffix: "+", duration: 1, title: "Years of Excellence" },
 
   { id: 1, count: 10, suffix: "k", duration: 1, title: "Happy Students" },
   { id: 2, count: 300, suffix: "+", duration: 1, title: "Teachers & Staff" },

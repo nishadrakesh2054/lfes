@@ -33,6 +33,7 @@ export const university_classic_event_data: IEventDT[] = [
     location: "LFES Seminar Hall, Nepal",
     image: "/assets/img/event/event-thumb-4.jpg",
   },
+  
 ];
 
 export const kids_event_data: IEventDT[] = [

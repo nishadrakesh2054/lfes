@@ -1,7 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-import { ProcessLineSvg, RightArrowFour } from '../svg';
+import { ProcessLineSvg } from '../svg';
 import process_icon_1 from '@/assets/img/icon/process/process-icon-1.svg';
 import process_icon_2 from '@/assets/img/icon/process/process-icon-2.svg';
 import process_icon_3 from '@/assets/img/icon/process/process-icon-3.svg';
@@ -64,13 +63,7 @@ export default function ProcessOne() {
                         <h2 className="tp-section-2-title">Our Unique <br /> learning environment</h2>
                         <p>Speedily say has suitable disposal add boy. On forth doubt miles of child. <br /> Exercise joy man children rejoiced.</p>
                      </div>
-                     <div className="tp-process-3-btn">
-                        <Link href="/contact">Contact Us
-                           <span>
-                              <RightArrowFour />
-                           </span>
-                        </Link>
-                     </div>
+                 
                   </div>
                </div>
             </div>

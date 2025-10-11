@@ -32,10 +32,10 @@ export default function HeaderTopArea() {
           </div>
           <div className="col-lg-6 col-md-6 d-none d-lg-block">
             <div className="tp-header-right-list d-flex justify-content-md-end">
-              <a href="#">Campus</a>
-              <a href="#">Students</a>
-              <a href="#">career </a>
-              <a href="#">Help Desk</a>
+              <a href="/school-tour">School</a>
+              <a href="/alumini">Students</a>
+              <a href="/career">career </a>
+              <a href="/contact">Help Desk</a>
             </div>
           </div>
         </div>

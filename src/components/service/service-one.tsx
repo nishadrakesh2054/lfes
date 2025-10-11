@@ -15,7 +15,7 @@ const service_data = [
     id: 1,
     icon: ser_icon_1,
     title: "Why Choose <br/> LFES?",
-    text: "Over 40 years of excellence with a caring environment, progressive teaching, and student-centric learning.",
+    text: "Over 45 years of excellence with a caring environment, progressive teaching, and student-centric learning.",
   },
   {
     id: 2,
