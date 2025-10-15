@@ -1,15 +1,16 @@
 import Image from "next/image";
 import shape_underline from "@/assets/img/unlerline/brand-2-svg-1.svg";
 // brands
-import brand_1 from "@/assets/img/brand/brand-2-logo-1.png";
-import brand_2 from "@/assets/img/brand/brand-2-logo-2.png";
-import brand_3 from "@/assets/img/brand/brand-2-logo-3.png";
-import brand_4 from "@/assets/img/brand/brand-2-logo-4.png";
-import brand_5 from "@/assets/img/brand/brand-2-logo-5.png";
-import brand_6 from "@/assets/img/brand/brand-2-logo-6.png";
-import brand_7 from "@/assets/img/brand/brand-2-logo-7.png";
-import brand_8 from "@/assets/img/brand/brand-2-logo-8.png";
-import brand_9 from "@/assets/img/brand/brand-2-logo-9.png";
+import brand_1 from "@/assets/img/partners/kjc.png";
+import brand_2 from "@/assets/img/partners/p1.png";
+import brand_3 from "@/assets/img/partners/p2.png";
+import brand_4 from "@/assets/img/partners/p3.png";
+import brand_5 from "@/assets/img/partners/s-1.jpg.png";
+import brand_6 from "@/assets/img/partners/s-2.jpg.png";
+import brand_7 from "@/assets/img/partners/s-3.jpg.png";
+import brand_8 from "@/assets/img/partners/s-4.jpg.png";
+import brand_9 from "@/assets/img/partners/s-5.jpg.png";
+import brand_10 from "@/assets/img/partners/s-6.jpg.png";
 
 const brands = [
   brand_1,
@@ -21,6 +22,7 @@ const brands = [
   brand_7,
   brand_8,
   brand_9,
+  brand_10 
 ];
 
 export default function BrandArea() {

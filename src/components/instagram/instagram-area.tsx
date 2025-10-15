@@ -8,32 +8,32 @@ const instagramData = [
   {
     id: 1,
     link: "https://www.instagram.com",
-    src: "/assets/img/instagram/instagram-thumb-1.jpg",
+    src: "/assets/img/lfesimages/journey1.png",
   },
   {
     id: 2,
     link: "https://www.instagram.com",
-    src: "/assets/img/instagram/instagram-thumb-2.jpg",
+    src: "/assets/img/lfesimages/journey2.png",
   },
   {
     id: 3,
     link: "https://www.instagram.com",
-    src: "/assets/img/instagram/instagram-thumb-3.jpg",
+    src: "/assets/img/lfesimages/journey3.png",
   },
   {
     id: 4,
     link: "https://www.instagram.com",
-    src: "/assets/img/instagram/instagram-thumb-4.jpg",
+    src: "/assets/img/lfesimages/journey4.png",
   },
   {
     id: 5,
     link: "https://www.instagram.com",
-    src: "/assets/img/instagram/instagram-thumb-5.jpg",
+    src: "/assets/img/lfesimages/journey5.png",
   },
   {
     id: 6,
     link: "https://www.instagram.com",
-    src: "/assets/img/instagram/instagram-thumb-2.jpg",
+    src: "/assets/img/lfesimages/journey1.png",
   },
 ];
 

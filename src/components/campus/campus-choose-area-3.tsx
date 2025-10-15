@@ -1,7 +1,7 @@
 import Image from "next/image";
-import mission_thumb_1 from "@/assets/img/our-mission/mission/mission-thumb-1.jpg";
-import mission_thumb_2 from "@/assets/img/our-mission/mission/mission-thumb-2.jpg";
-import mission_thumb_3 from "@/assets/img/our-mission/mission/mission-thumb-3.jpg";
+import mission_thumb_1 from "@/assets/img/lfesimages/Vision.png";
+import mission_thumb_2 from "@/assets/img/lfesimages/Mission.png";
+import mission_thumb_3 from "@/assets/img/lfesimages/Values.png";
 import { DownArrowThree } from "../svg";
 
 export default function CampusChooseAreaThree() {

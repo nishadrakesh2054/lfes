@@ -29,7 +29,7 @@ export default function AboutPage() {
 
       <CampusChooseAreaThree />
 
-    
+    <br />
 
       {/* brand area start */}
       <BrandArea />

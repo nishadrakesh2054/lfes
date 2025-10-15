@@ -10,7 +10,6 @@ type IPropType = {
   videoId: string;
   vimeoPlayer?: boolean;
 };
-
 const VideoPopup = ({
   isVideoOpen,
   onHide,

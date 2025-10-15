@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const navData = [
-   {
+  {
     id: "profile",
     title: "Student Clubs",
     ariaControls: "profile",
@@ -13,7 +13,7 @@ const navData = [
     ariaControls: "home",
     isActive: false,
   },
- 
+
   {
     id: "contact",
     title: "Arts & Culture",
@@ -32,35 +32,35 @@ const tabContentData = [
   {
     id: "home",
     active: true,
-    imgSrc: "/assets/img/campus/campus/campus-student-2.jpg",
+    imgSrc: "/assets/img/lfesimages/HousingDining.png",
     title: "Housing & Dining",
     description:
       "Student Housing provides a home for eligible undergraduate and graduate students, including couples and families.",
-    thumbImgSrc: "/assets/img/campus/campus/campus-student.jpg",
+    thumbImgSrc: "/assets/img/lfesimages/HousingDining.png",
   },
   {
     id: "profile",
-    imgSrc: "/assets/img/campus/campus/campus-student-3.jpg",
+    imgSrc: "/assets/img/lfesimages/Students-Clubs.png",
     title: "Student Clubs",
     description:
       "Student Housing provides a home for eligible undergraduate and graduate students, including couples and families.",
-    thumbImgSrc: "/assets/img/campus/campus/campus-student.jpg",
+    thumbImgSrc: "/assets/img/lfesimages/Students-Clubs.png",
   },
   {
     id: "contact",
     imgSrc: "/assets/img/campus/campus/campus-student-4.jpg",
-    title: "Arts & Culture",
+    title: "Arts  Sports & Culture",
     description:
       "Student Housing provides a home for eligible undergraduate and graduate students, including couples and families.",
     thumbImgSrc: "/assets/img/campus/campus/campus-student.jpg",
   },
   {
     id: "Moscow",
-    imgSrc: "/assets/img/campus/campus/campus-student-5.jpg",
-    title: "LFES SChool",
+    imgSrc: "/assets/img/lfesimages/LFES-SChool.png",
+    title: "LFES School",
     description:
       "Student Housing provides a home for eligible undergraduate and graduate students, including couples and families.",
-    thumbImgSrc: "/assets/img/campus/campus/campus-student.jpg",
+    thumbImgSrc: "/assets/img/lfesimages/LFES-SChool.png",
   },
 ];
 
@@ -76,10 +76,11 @@ export default function CampusStudentArea() {
               data-wow-delay=".3s"
             >
               <div className="tp-campus-student-heading text-center">
-<h3 className="tp-campus-student-title">Student&apos;s Life at LFES</h3>
+                <h3 className="tp-campus-student-title">
+                  Student&apos;s Life at LFES
+                </h3>
                 <p>
-                  Life at LFES SCHOOL is enriching, exciting, and
-                  energizing
+                  Life at LFES SCHOOL is enriching, exciting, and energizing
                 </p>
               </div>
 

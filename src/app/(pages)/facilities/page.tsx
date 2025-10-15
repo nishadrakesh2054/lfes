@@ -3,7 +3,17 @@ import React from "react";
 
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 import Image from "next/image";
-import img1 from "@/assets/img/transportation.webp";
+import img1 from "@/assets/img/lfesimages/Science-Laboratories.png";
+import img2 from "@/assets/img/lfesimages/Transportation.png";
+import img3 from "@/assets/img/lfesimages/Cafeteria.png";
+import img4 from "@/assets/img/lfesimages/Library-&-Resource-Center.png";
+import img5 from "@/assets/img/lfesimages/Sports-Complex.png";
+import img6 from "@/assets/img/lfesimages/Auditorium.png";
+import img7 from "@/assets/img/lfesimages/Computer-Labs.png";
+import img8 from "@/assets/img/lfesimages/Computer-Labs.png";
+import img9 from "@/assets/img/lfesimages/Art-&-Music-Rooms.png";
+import img10 from "@/assets/img/lfesimages/Playground.png"
+
 
 import { CSSProperties } from "react";
 
@@ -13,7 +23,7 @@ const Facilities = () => {
       id: 1,
       title: "Science Laboratories",
       description:
-        "The junior block, or Kadjou Building, operates classes I to VIII, accommodating 480 students. It has a cafeteria, library, science labs, and performing arts rooms. It has a rooftop playground with soft rubber flooring for students in grades I to III. It is also used by grades VI through VIII for soft football. The building has over 40,000 square feet of operational space.",
+        "The Laboratory facilities at LFES have been set up with an objective to provide amenities of the highest standard and are fully -equipped with all the requisite devices, apparatus and chemicals. These are regularly upgraded to maintain their standard and in accordance with the change(s) as demanded in the syllabus. There is provision for separate Physics, Chemistry, and Biology labs, where practical classes are conducted.",
       image: img1,
       features: [
         "Modern Equipment",
@@ -25,9 +35,9 @@ const Facilities = () => {
     {
       id: 2,
       title: "Transportation",
-      description:
-        "We have three libraries, one each in the junior, senior and IBDP building. In total, the libraries hold 20,000 books, periodicals and resource materials. Each library is staffed by qualified librarians, and all provide access to online publications and books. The elementary and secondary grades have classroom libraries, but students visit the school library for special classes and general reading.Parents are always welcome at the school’s libraries. We strongly encourage parents to read with their children, especially in the elementary grades. Reading from a young age helps children develop a lifelong appreciation for learning.",
-      image: img1,
+description: "LFES School provides safe and reliable transportation with GPS tracking, experienced staff, and flexible routes to ensure students travel securely.",
+
+      image: img2,
       features: [
         "GPS Tracking",
         "Safe Vehicles",
@@ -39,8 +49,8 @@ const Facilities = () => {
       id: 3,
       title: "Cafeteria",
       description:
-        "Healthy and nutritious meals prepared in hygienic conditions with diverse menu options to cater to different tastes and dietary requirements. The biology, chemistry and physics laboratories allow hands-on study and help students gain experience in scientific methods. All of our laboratories of the junior and senior buildings are well equipped and IBO certified.",
-      image: img1,
+        "High school can be a stressful time, especially if you are far away from home. Keeping the students’ best interests in mind, the School has coordinated with local hostel owners for providing students with affordable and accessible accommodation. and accessible accommodation.",
+      image: img3,
       features: [
         "Healthy Menu",
         "Hygienic Kitchen",
@@ -52,8 +62,8 @@ const Facilities = () => {
       id: 4,
       title: "Library & Resource Center",
       description:
-        "LFES School is equipped to meet the educational needs of children in today’s technologically driven world. The school’s computer laboratories in the junior and senior buildings are each equipped with 35 computer systems and connected to high-speed Internet. Students have unlimited access to the laboratory and are encouraged to spend their free time doing coursework and personal research. However, we maintain a strict code of conduct related to the use of the Internet and expect all students and parents to be aware of the standards.",
-      image: img1,
+        "The well-stocked library, with a large collection of books and reference materials, is open on all weekdays during office hours, and students can also access reading materials worldwide via its internet facilities..",
+      image: img4,
       features: [
         "10,000+ Books",
         "Digital Resources",
@@ -64,9 +74,9 @@ const Facilities = () => {
     {
       id: 5,
       title: "Sports Complex",
-      description:
-        "Comprehensive sports facilities including indoor stadium, swimming pool, basketball courts, and athletic tracks to promote physical fitness. Ullens School is equipped to meet the educational needs of children in today’s technologically driven world. The school’s computer laboratories in the junior and senior buildings are each equipped with 35 computer systems and connected to high-speed Internet. Students have unlimited access to the laboratory and are encouraged to spend their free time doing coursework and personal research. However, we maintain a strict code of conduct related to the use of the Internet and expect all students and parents to be aware of the standards.",
-      image: img1,
+description: "LFES School offers comprehensive sports facilities, including an indoor stadium, Olympic pool, multiple courts, and a fitness center to promote physical fitness.",
+
+      image: img5,
       features: [
         "Olympic Pool",
         "Indoor Stadium",
@@ -77,9 +87,9 @@ const Facilities = () => {
     {
       id: 6,
       title: "Auditorium",
-      description:
-        "Spacious auditorium with modern audio-visual equipment for cultural events, seminars, presentations, and school gatherings.Ullens School is equipped to meet the educational needs of children in today’s technologically driven world. The school’s computer laboratories in the junior and senior buildings are each equipped with 35 computer systems and connected to high-speed Internet. Students have unlimited access to the laboratory and are encouraged to spend their free time doing coursework and personal research. However, we maintain a strict code of conduct related to the use of the Internet and expect all students and parents to be aware of the standards.",
-      image: img1,
+   description: "LFES School has a spacious auditorium with modern audio-visual equipment, ideal for cultural events, seminars, presentations, and school gatherings."
+,
+      image: img6,
       features: [
         "500+ Capacity",
         "HD Projection",
@@ -91,8 +101,8 @@ const Facilities = () => {
       id: 7,
       title: "Computer Labs",
       description:
-        "Advanced computer laboratories with high-speed internet, latest software, and dedicated IT support for technology education. Ullens School is equipped to meet the educational needs of children in today’s technologically driven world. The school’s computer laboratories in the junior and senior buildings are each equipped with 35 computer systems and connected to high-speed Internet. Students have unlimited access to the laboratory and are encouraged to spend their free time doing coursework and personal research. However, we maintain a strict code of conduct related to the use of the Internet and expect all students and parents to be aware of the standards.",
-      image: img1,
+        "Equipped with state-of-the-art technology under the supervision of highly trained staff, our computer laboratories provide networking and internet facilities to the standard required internationally.",
+      image: img7,
       features: [
         "Latest Hardware",
         "High-Speed Internet",
@@ -103,9 +113,9 @@ const Facilities = () => {
     {
       id: 8,
       title: "Medical Room",
-      description:
-        "Fully equipped medical facility with qualified nursing staff and emergency care provisions for student health and wellness. Ullens School is equipped to meet the educational needs of children in today’s technologically driven world. The school’s computer laboratories in the junior and senior buildings are each equipped with 35 computer systems and connected to high-speed Internet. Students have unlimited access to the laboratory and are encouraged to spend their free time doing coursework and personal research. However, we maintain a strict code of conduct related to the use of the Internet and expect all students and parents to be aware of the standards.",
-      image: img1,
+    description: "LFES School has a fully equipped medical room with qualified staff and emergency care facilities to ensure student health and wellness."
+,
+      image: img8,
       features: [
         "Qualified Staff",
         "Emergency Care",
@@ -116,9 +126,8 @@ const Facilities = () => {
     {
       id: 9,
       title: "Art & Music Rooms",
-      description:
-        "Creative spaces dedicated to artistic expression with instruments, art supplies, and exhibition areas for budding artists.Ullens School is equipped to meet the educational needs of children in today’s technologically driven world. The school’s computer laboratories in the junior and senior buildings are each equipped with 35 computer systems and connected to high-speed Internet. Students have unlimited access to the laboratory and are encouraged to spend their free time doing coursework and personal research. However, we maintain a strict code of conduct related to the use of the Internet and expect all students and parents to be aware of the standards.",
-      image: img1,
+    description: "LFES School provides creative art and music rooms equipped with instruments, art supplies, practice areas, and exhibition spaces for students to explore their talents.",
+      image: img9,
       features: [
         "Musical Instruments",
         "Art Supplies",
@@ -129,9 +138,9 @@ const Facilities = () => {
     {
       id: 10,
       title: "Playground",
-      description:
-        "Safe and expansive playground areas with age-appropriate equipment for recreational activities and outdoor play.Ullens School is equipped to meet the educational needs of children in today’s technologically driven world. The school’s computer laboratories in the junior and senior buildings are each equipped with 35 computer systems and connected to high-speed Internet. Students have unlimited access to the laboratory and are encouraged to spend their free time doing coursework and personal research. However, we maintain a strict code of conduct related to the use of the Internet and expect all students and parents to be aware of the standards.",
-      image: img1,
+     description: "LFES School offers safe and spacious playgrounds with age-appropriate equipment for recreational and outdoor activities."
+,
+      image: img10,
       features: [
         "Safe Equipment",
         "Age-Appropriate",

@@ -53,8 +53,17 @@ const menu_data: IMenu[] = [
       { id: 2, title: "ALUMINI", link: "/alumini" },
       { id: 3, title: "NEWS", link: "/blog-list" },
       { id: 4, title: "EVENTS", link: "/event" },
+    ],
+  },
 
-      //   { id: 5, title: "Blog Details", link: "/blog-details/1" },
+  {
+    id: 6,
+    title: "RESOURCES",
+    link: "#",
+    dropdown_menus: [
+      { id: 1, title: "GALLERY", link: "/gallery" },
+      { id: 2, title: "CAREER", link: "/career" },
+      { id: 3, title: "CONTACT", link: "/contact" },
     ],
   },
 ];

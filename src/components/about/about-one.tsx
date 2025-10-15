@@ -2,8 +2,9 @@ import Image from "next/image";
 import { RightArrow, ShapeLine } from "../svg";
 
 // images
-import thumb_1 from "@/assets/img/about/about-thumb-1.jpg";
-import thumb_2 from "@/assets/img/about/about-thumb-2.jpg";
+import thumb_1 from "@/assets/img/lfesimages/about-our-school02.png";
+import thumb_2 from "@/assets/img/lfesimages/about-our-school01.png";
+
 import shape_1 from "@/assets/img/about/about-shape-1.jpg";
 import shape_2 from "@/assets/img/about/about-shape-2.jpg";
 import icon_1 from "@/assets/img/icon/about/about-icon-1.svg";
@@ -61,7 +62,7 @@ export default function AboutOne() {
               <div className="tp-about-exprience">
                 <div className="tp-about-exprience-text d-flex">
                   <h3 className="tp-about-exprience-count">
-                    <CounterItem min={0} max={40} />
+                    <CounterItem min={0} max={45} />
                   </h3>
                   <p>
                     Years of <br /> Experience
@@ -78,7 +79,7 @@ export default function AboutOne() {
               <div className="tp-section mb-40">
                 <h5 className="tp-section-subtitle">About Our School</h5>
                 <h3 className="tp-section-title mb-30">
-                  A few words <br /> about the
+                  Discover the Story <br /> Behind
                   <span>
                     {" "}
                     &nbsp; LFES <ShapeLine />{" "}
@@ -114,7 +115,7 @@ export default function AboutOne() {
                 ))}
                 <div className="tp-about-btn pt-10">
                   <Link className="tp-btn tp-btn-sm" href="/about">
-                   Read More
+                    Read More
                     <span>
                       <RightArrow />
                     </span>

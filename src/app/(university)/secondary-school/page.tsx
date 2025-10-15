@@ -66,7 +66,7 @@ const SecondarySchool = () => {
               <h3 className="tp-section-3-title">
                 Why Choose <br />
                 <span>
-                  Our Primary School?
+                  Our Secondary School?
                   <Image
                     className="tp-underline-shape-9 wow bounceIn"
                     data-wow-duration="1.5s"

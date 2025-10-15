@@ -27,14 +27,41 @@ export default function HeaderTopArea() {
                   </a>
                 </span>
               </div>
-           
             </div>
           </div>
           <div className="col-lg-6 col-md-6 d-none d-lg-block">
             <div className="tp-header-right-list d-flex justify-content-md-end">
-              <a href="/school-tour">School</a>
-              <a href="/alumini">Students</a>
-              <a href="/career">career </a>
+        
+              {/* Social Icons */}
+              <a
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-tiktok"></i>
+              </a>
+
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-linkedin-in"></i>
+              </a>
               <a href="/contact">Help Desk</a>
             </div>
           </div>

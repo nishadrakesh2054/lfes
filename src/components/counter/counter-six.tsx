@@ -2,7 +2,7 @@ import CounterItem from "./counter-item";
 
 const counterData = [
   {
-    endValue: 40,
+    endValue: 45,
     label: "Years of Excellence",
     suffix: "",
   },

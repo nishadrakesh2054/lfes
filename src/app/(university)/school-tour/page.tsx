@@ -17,7 +17,7 @@ export default function UniversityCampusPage() {
       {/* breadcrumb area start */}
       <BreadcrumbTwo title="Visit LFES School" subtitle="Explore LFES school" />
       {/* breadcrumb area end */}
-
+<br />
 
       {/* campus video area start */}
       <CampusVideoArea/>

@@ -33,8 +33,6 @@ export default function HomePage() {
       <CounterOne />
       {/* counter area end */}
 
-
-
       {/* program area start */}
       <ProgramAreaThree />
       {/* program area end */}
