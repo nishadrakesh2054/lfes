@@ -5,7 +5,7 @@ export default function CampusVideoArea() {
   return (
     <div
       className="tp-video-5-area tp-video-hover tp-video-inner-bg"
-      style={{ backgroundImage: `url(/assets/img/lfesimages/visit-LFES.png)` }}
+      style={{ backgroundImage: `url(/assets/img/lfesimages/visitlfes.png)` }}
     >
       <div className="container">
         <div className="row justify-content-center">
