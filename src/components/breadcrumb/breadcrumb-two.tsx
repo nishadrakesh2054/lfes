@@ -2,17 +2,17 @@ import Link from "next/link";
 import { HomeSvg } from "../svg";
 
 type IProps = {
-    title: string;
-    subtitle: string;
-    admission?: boolean;
-}
+  title: string;
+  subtitle: string;
+  admission?: boolean;
+};
 
-export default function BreadcrumbTwo({ title, subtitle,admission }: IProps) {
+export default function BreadcrumbTwo({ title, subtitle, admission }: IProps) {
   return (
     <section className="tp-breadcrumb__area pt-160 pb-150 p-relative z-index-1 fix">
       <div
         className="tp-breadcrumb__bg overlay"
-        style={{backgroundImage:"url(/assets/img/lfesimages/Bread.png)" }}
+        style={{ backgroundImage: "url(/assets/img/lfesimages/Bread.png)" }}
       ></div>
       <div className="container">
         <div className="row align-items-center">
@@ -20,14 +20,25 @@ export default function BreadcrumbTwo({ title, subtitle,admission }: IProps) {
             <div className="tp-breadcrumb__content">
               <div className="tp-breadcrumb__list inner-after">
                 <span className="white">
-                  <Link href="/">
-                    <HomeSvg/>
+                  <Link href="/" style={{ textDecoration: "none" }}>
+                    <HomeSvg />
                   </Link>
                 </span>
-                {admission && <span className="white">Admission</span>}
-                <span className="white">{subtitle}</span>
+                {admission && <span className="white"> / Admission</span>}
+                {subtitle && <span className="white"> / {subtitle}</span>}
               </div>
-              <h3 className="tp-breadcrumb__title color">
+              <h3
+                className="tp-breadcrumb__title color"
+                style={{
+                  fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)",
+                  fontWeight: "600",
+                  lineHeight: "1.3",
+                  marginTop: "1rem",
+                  wordBreak: "break-word",
+                  maxWidth: "100%",
+                  color: "white",
+                }}
+              >
                 {title}
               </h3>
             </div>

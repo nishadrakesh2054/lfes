@@ -12,7 +12,7 @@ export default function EventAreaFour() {
     6
   );
   return (
-    <section className="tp-event-inner-area tp-event-inner-p pt-100 pb-100">
+    <section className="tp-event-inner-area tp-event-inner-p pt-120 pb-120">
       <div className="container">
         <div className="row">
           {currentItems.map((item) => (
@@ -33,9 +33,9 @@ export default function EventAreaFour() {
                   <span className="tp-event-inner-date">
                     {item.date.day} {item.date.month}, {item.date.year}
                   </span>
-                  <h4 className="tp-event-inner-title">
+                  <h5 >
                     <Link href={`/event-details/${item.id}`}>{item.title}</Link>
-                  </h4>
+                  </h5>
 
                   <div className="tp-event-inner-btn-box d-flex align-items-center justify-content-between">
                     <div className="tp-event-inner-btn">

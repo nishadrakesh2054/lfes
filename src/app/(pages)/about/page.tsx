@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import TutorArea from "@/components/tutor/tutor-area";
 import CounterSix from "@/components/counter/counter-six";
 
-import BrandArea from "@/components/brand/brand-area";
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 import CampusChooseAreaThree from "@/components/campus/campus-choose-area-3";
 
@@ -15,8 +14,6 @@ export default function AboutPage() {
     <main>
       <BreadcrumbTwo title="About" subtitle="LFES DETAILS" />
 
- 
-
       {/* tutor area start */}
       <TutorArea />
       {/* tutor area end */}
@@ -25,14 +22,8 @@ export default function AboutPage() {
       <CounterSix />
       {/* counter area end */}
 
-   
-
       <CampusChooseAreaThree />
 
-    <br />
-
-      {/* brand area start */}
-      <BrandArea />
       {/* brand area end */}
     </main>
   );

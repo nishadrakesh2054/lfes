@@ -30,21 +30,13 @@ const tutorData = [
 
 export default function TutorArea() {
   return (
-    <section className="tp-about-tutor-area pt-50 pb-90">
+    <section className="tp-about-tutor-area pt-120 pb-120">
       <div className="container">
         <div className="row align-items-end">
           <div className="col-lg-12">
             <div className="tp-about-tutor-heading mb-130">
-              {/* <div className="tp-about-tutor-subtitle d-flex align-items-center">
-                <span>
-                  <WorldSvg />
-                </span>
-                <p>Know about classes</p>
-              </div> */}
-               {/* <h3 className="tp-about-tutor-title">We create unique <br />
-                digital media experiences.</h3> */}
-              <div className="tp-about-tutor-content">
-                <p>
+              <div>
+                <p style={{ textAlign: "justify" }}>
                   Little Flowers English School (LFES), a household name in the
                   field of education in the Eastern region of Nepal, known for
                   providing and delivering quality education, was established in
@@ -63,20 +55,9 @@ export default function TutorArea() {
                   capabilities of accomplishing future endeavors.
                 </p>
               </div>
-             
             </div>
           </div>
-         {/* <div className="col-lg-6" >
-  <Image
-       src="/assets/img/bg.jpeg"
-    alt="Placeholder illustration"
-    fill
-    style={{ objectFit: 'cover' }}
-    priority
-  />
-</div> */}
         </div>
-
 
         <div className="row">
           {tutorData.map((item, index) => (
@@ -85,15 +66,18 @@ export default function TutorArea() {
               className="col-lg-4 col-md-6 wow fadeInUp"
               data-wow-delay={item.delay}
             >
-              <div className="tp-tutor-item about text-center mb-30">
+              <div
+                className="tp-tutor-ite about text-center mb-30"
+                style={{ backgroundColor: "#0079C0" }}
+              >
                 <div className="tp-tutor-icon ">
                   <span>{item.icon}</span>
                 </div>
-                <div className="tp-tutor-content">
-                  <h4 className="tp-tutor-title">
+                <div className="tp-tutor-content" style={{ color: "#fff" }}>
+                  <h4 className="tp-tutor-title" style={{ color: "#fff" }}>
                     <a href="#">{item.title}</a>
                   </h4>
-                  <p>{item.description}</p>
+                  <p style={{ color: "#fff" }}>{item.description}</p>
                 </div>
               </div>
             </div>

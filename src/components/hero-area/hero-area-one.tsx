@@ -57,28 +57,17 @@ export default function HeroAreaOne() {
               <div className="container">
                 <div className="row">
                   <div className="col-xxl-9 col-lg-12">
-                    <div className="tp-hero-wrapper">
-                      <span className="tp-hero-subtitle">{item.subtitle}</span>
+                    <div className="tp-hero-wrapper hero-content">
+                      <span className="hero-kicker">
+                        <span className="hero-kicker__dot" />
+                        {item.subtitle}
+                      </span>
 
-                      <h2
-                        className="tp-hero-title"
-                        style={{
-                          fontSize: "clamp(42px, 5.5vw, 72px)",
-                          fontWeight: "700",
-                          lineHeight: "1.15",
-                          color: "#fff",
-                          textShadow:
-                            "2px 2px 8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 121, 192, 0.3)",
-                          marginBottom: "45px",
-                          letterSpacing: "-1px",
-                        }}
-                      >
-                        {item.title}
-                      </h2>
+                      <h1 className="hero-headline">{item.title}</h1>
 
-                      <div className="tp-hero-btn">
-                        <Link className="tp-btn" href="/university-program">
-                          Get Admission
+                      <div className="hero-btn">
+                        <Link className="" href="/admission">
+                          Get Admission &nbsp;
                           <span>
                             <RightArrow />
                           </span>
@@ -98,6 +87,76 @@ export default function HeroAreaOne() {
           </SwiperSlide>
         ))}
       </Swiper>
+      <style jsx>{`
+        .hero-content {
+          max-width: 720px;
+          padding: 3rem 0;
+        }
+        .hero-kicker {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.6rem;
+          padding: 0.2rem 0.9rem;
+          border-radius: 999px;
+          font-size: clamp(0.68rem, 1.4vw, 0.88rem);
+          text-transform: uppercase;
+          letter-spacing: 0.25em;
+          color: #fefefe;
+          background-color: rgba(0, 0, 0, 0.35);
+          backdrop-filter: blur(6px);
+          margin-bottom: 1.5rem;
+        }
+        .hero-kicker__dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #f8b500, #ff6b6b);
+        }
+        .hero-headline {
+          font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+          font-weight: 600;
+          line-height: 1.1;
+          color: #ffffff;
+          text-shadow: 0 8px 30px rgba(0, 0, 0, 0.65);
+          letter-spacing: -0.03em;
+          margin-bottom: 2.5rem;
+        }
+        .hero-actions {
+          display: flex;
+          align-items: center;
+          gap: 1.25rem;
+        }
+        .hero-btn {
+          background-color: #0079c0;
+          color: #fff;
+          border-radius: 20px;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-size: 14px;
+          font-weight: 500;
+          display: inline-block;
+          padding: 8px 18px;
+          border-radius: 20px;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .hero-btn:hover {
+          background-color: #005f94;
+        }
+
+        @media (max-width: 576px) {
+          .hero-actions {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .hero-btn {
+            width: auto;
+            justify-content: center;
+          }
+        }
+      `}</style>
     </section>
   );
 }

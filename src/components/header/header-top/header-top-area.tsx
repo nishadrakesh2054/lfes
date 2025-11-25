@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import calling from "@/assets/img/icon/calling.svg";
 
 export default function HeaderTopArea() {
   return (
@@ -9,21 +7,19 @@ export default function HeaderTopArea() {
         <div className="row">
           <div className="col-lg-6">
             <div className="tp-heder-info d-flex justify-content-center justify-content-lg-start align-items-center">
-              <div className="tp-header-info-item ">
+              <div className="tp-header-info-item">
                 <span>
-                  <a href="#">
-                    <i className="fa-solid fa-envelope"></i>
+                  <i className="bi bi-envelope-fill me-2"></i>
+                  <a href="mailto:info@lfes.edu.np" className="text-white text-decoration-none">
+                    info@lfes.edu.np
                   </a>
-                  info@lfes.edu.np
                 </span>
               </div>
               <div className="tp-header-info-item">
                 <span>
-                  <a href="tel:0123456789">
-                    <i>
-                      <Image src={calling} alt="phone-img" />
-                    </i>{" "}
-                    +(977) 023-530172
+                  <a href="tel:+977023530172" className="text-white text-decoration-none">
+                    <i className="bi bi-telephone-fill me-2"></i>
+                    +977 023-530172
                   </a>
                 </span>
               </div>
@@ -31,38 +27,18 @@ export default function HeaderTopArea() {
           </div>
           <div className="col-lg-6 col-md-6 d-none d-lg-block">
             <div className="tp-header-right-list d-flex justify-content-md-end">
-        
               {/* Social Icons */}
-              <a
-                href="https://www.facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-facebook-f"></i>
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <i className="bi bi-facebook"></i>
               </a>
-              <a
-                href="https://www.instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-instagram"></i>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i className="bi bi-instagram"></i>
               </a>
-              <a
-                href="https://www.tiktok.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-tiktok"></i>
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i className="bi bi-linkedin"></i>
               </a>
-
-              <a
-                href="https://www.linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-              <a href="/contact">Help Desk</a>
+              <a href="/admission">Admission</a>
+              <a href="/career">Careers</a>
             </div>
           </div>
         </div>

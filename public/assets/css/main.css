@@ -267,7 +267,10 @@ li,
   --tp-common-white: #ffffff;
   --tp-common-black: #000;
   --tp-common-black-1: #010f1c;
-  /* --tp-grey-1: #f6f4ee; */
+  /* --tp-grey-1: 
+  
+  
+  ; */
   --tp-grey-1: #ffffff;
   --tp-grey-2: #84807b;
   --tp-grey-3: #55585b;
@@ -1057,11 +1060,11 @@ div.demo img {
 /*----------------------------------------*/
 .tp-btn {
   color: var(--tp-common-white);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   display: inline-block;
-  padding: 13px 34px;
-  border-radius: 6px;
+  padding: 10px 20px;
+  border-radius: 20px;
   border: 2px solid var(--tp-theme-primary);
   background-color: var(--tp-theme-primary);
   -webkit-transition: all 0.3s 0s ease-out;
@@ -3891,7 +3894,7 @@ div.demo img {
   display: inline-block;
 }
 .tp-section-2-title {
-  font-size: 42px;
+  font-size: 36px !important;
   line-height: 1.1;
   letter-spacing: -1.2px;
   font-weight: 500;
@@ -3901,7 +3904,7 @@ div.demo img {
   only screen and (min-width: 768px) and (max-width: 991px),
   only screen and (min-width: 576px) and (max-width: 767px) {
   .tp-section-2-title {
-    font-size: 42px;
+    font-size: 36px;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -10901,7 +10904,7 @@ a.ui-button:active {
   height: calc(100% + 22px);
   background-color: transparent;
   border-radius: 50%;
-  border: 16px solid #f6f4ee;
+  border: 16px solid;
   -webkit-transition: all 0.3s 0s ease-out;
   -moz-transition: all 0.3s 0s ease-out;
   -ms-transition: all 0.3s 0s ease-out;
@@ -15377,7 +15380,7 @@ a.social-yout {
 }
 .tp-counter-count {
   margin-bottom: 3px;
-  font-size: 100px;
+  font-size: 70px;
   font-style: italic;
   font-weight: 400;
   letter-spacing: -3px;
@@ -24140,7 +24143,7 @@ span.dark-border {
   border-radius: 16px;
   margin-top: -120px;
   padding: 115px 0 0 0;
-  background: #f6f4ee;
+  background: #ffffff;
   margin-bottom: 100px;
 }
 .tp-campus-life-thumb img {
@@ -24654,7 +24657,7 @@ span.dark-border {
   width: 10px;
   content: "";
   z-index: 2;
-  background-color: #f6f4ee;
+  background-color: #ffffff;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px),
   only screen and (min-width: 576px) and (max-width: 767px),
@@ -24671,7 +24674,7 @@ span.dark-border {
   width: 10px;
   content: "";
   z-index: 2;
-  background-color: #f6f4ee;
+  background-color: #ffffff;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px),
   only screen and (min-width: 576px) and (max-width: 767px),
@@ -24728,7 +24731,7 @@ span.dark-border {
   margin-bottom: 0;
   color: var(--tp-theme-primary);
   font-family: var(--tp-ff-secondary);
-  background-color: #f6f4ee;
+  background-color: #ffffff;
   z-index: 1;
   padding: 22px 0;
 }

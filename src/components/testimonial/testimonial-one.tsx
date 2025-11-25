@@ -9,7 +9,7 @@ import shape_3 from "@/assets/img/testimonial/testimonial-shape-3.svg";
 export default function TestimonialOne() {
   return (
     <section
-      className="testimonial-area tp-testimonial-bg fix p-relative"
+      className="testimonial-area tp-testimonial-bg fix p-relative mt-80"
       style={{ backgroundImage: `url(/assets/img/bg/testimonial-bg-2.jpg)` }}
     >
       <div className="tp-testimonial-themebg">
@@ -41,7 +41,7 @@ export default function TestimonialOne() {
                   </span>
                 </VideoOne>
                 {/* Video area */}
-                <p>LFES School Tour</p>
+                <p> Visit LFES </p>
               </div>
             </div>
           </div>
@@ -51,8 +51,8 @@ export default function TestimonialOne() {
               data-wow-delay=".3s"
             >
               <div className="tp-section mb-40">
-                <h5 className="tp-section-subtitle">Testimonial</h5>
-                <h3 className="tp-section-title">What Students Says</h3>
+                <h5 className="tp-section-subtitle">Testimonials</h5>
+                <h3 className="">Voices of Parents</h3>
               </div>
               <div className="tp-testimonial-shape">
                 <div className="tp-testimonial-shape-1">

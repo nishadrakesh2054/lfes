@@ -1,43 +1,98 @@
 import ContactForm from "../form/contact-form";
-
+import { ContactInfoCards } from "./contact-info-area";
 
 export default function ContactArea() {
+  const brandColor = "#0079C0";
+
   return (
-    <section className="tp-contact-area tp-contact-p fix p-relative pt-150 pb-125">
-      <div className="tp-contact-bg" style={{ backgroundImage: "url(/assets/img/live/contact-bg.png)" }}></div>
-      <div className="tp-contact-shape">
-        <span>
-          <svg width="1920" height="559" viewBox="0 0 1920 559" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1958.7 6.55286C1332.03 310.106 2369.35 119.238 2232.58 220.873C2018.48 379.976 692.5 607.75 254.5 538.145C-27.1058 493.393 1387 130.595 -280 395.595" stroke="url(#paint0_linear_2756_1168)" strokeWidth="14" />
-            <defs>
-              <linearGradient id="paint0_linear_2756_1168" x1="92.1912" y1="171.542" x2="1827.4" y2="294.717" gradientUnits="userSpaceOnUse">
-              </linearGradient>
-            </defs>
-          </svg>
-        </span>
-      </div>
-      <div className="tp-contact-shape-2">
-        {/* <img src="/assets/img/live/contact-shape-2.svg" alt="shape" /> */}
-      </div>
+    <section
+      className=" pt-120 pb-120"
+    >
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-lg-10">
-            <div className="tp-contact-wrap p-relative">
-              <div className="tp-contact-heading text-center">
-                <h3 className="tp-contact-title">Get in Touch</h3>
-                <p>We are here to answer any question you may have.</p>
-              </div>
-              <div className="tp-contact-from-box">
-                <h3 className="tp-contact-from-title">Send a Message 👍🏻</h3>
+          <div className="col-xl-12">
+            {/* Header Section */}
+            <div className="text-start mb-50">
+              <h3 className="tp-section-2-title">
+                {" "}
+                Get in <span>Touch</span>
+              </h3>
+              <p className="text-muted" style={{ fontSize: "1.05rem" }}>
+                We are here to answer any question you may have.
+              </p>
+            </div>
 
-                {/* form start */}
-                <ContactForm />
-                {/* form end */}
+            <div className="row g-4 align-items-stretch">
+              {/* Contact Form Card - Left Side */}
+              <div className="col-lg-6">
+                <div
+                  className="card rounded-4 shadow border-0 h-100"
+                  style={{
+                    border: `1px solid ${brandColor}`,
+                    boxShadow: `0 0.25rem 0.75rem rgba(0, 121, 192, 0.2), 0 0.75rem 1.5rem rgba(0, 121, 192, 0.15)`,
+                  }}
+                >
+                  <div
+                    className="card-header text-white py-3"
+                    style={{ backgroundColor: brandColor }}
+                  >
+                    <div className="d-flex align-items-center">
+                      <i className="bi bi-envelope-paper me-3 fs-5"></i>
+                      <div>
+                        <h5 className="mb-0 fw-bold text-light text-uppercase">
+                          Send a Message
+                        </h5>
+                        <small className="opacity-75">
+                          Fill out the form and we&apos;ll reach out shortly.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="card-body p-4 p-lg-5 d-flex flex-column">
+                    <ContactForm />
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Info Side Panel - Right Side */}
+              <div className="col-lg-6">
+                <div
+                  className="card rounded-4 shadow border-0 h-100"
+                  style={{
+                    border: `1px solid ${brandColor}`,
+                    boxShadow: `0 0.25rem 0.75rem rgba(0, 121, 192, 0.2), 0 0.75rem 1.5rem rgba(0, 121, 192, 0.15)`,
+                  }}
+                >
+                  <div
+                    className="card-header text-white py-3"
+                    style={{ backgroundColor: brandColor }}
+                  >
+                    <div className="d-flex align-items-center">
+                      <i className="bi bi-info-circle me-3 fs-5"></i>
+                      <div>
+                        <h5 className="mb-0 fw-bold text-light text-uppercase">
+                          Contact Information
+                        </h5>
+                        <small className="opacity-75">
+                          Prefer a direct line? Use any option below.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="card-body p-4 p-lg-5 d-flex flex-column">
+                    <div className="flex-grow-1 d-flex flex-column justify-content-center">
+                      <ContactInfoCards
+                        brandColor={brandColor}
+                        columns="single"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

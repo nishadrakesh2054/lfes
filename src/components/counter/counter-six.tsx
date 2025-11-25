@@ -28,9 +28,9 @@ export default function CounterSix() {
   return (
     <section
       className="tp-instructor-counter-area p-relative tp-instructor-bg fix"
-      data-background="assets/img/bg/c.jpeg"
+ 
       style={{
-        backgroundImage: "url(/assets/img/bg/c.jpeg)",
+        backgroundColor: "#0079C0",
       }}
     >
       <div className="container">
@@ -38,11 +38,11 @@ export default function CounterSix() {
           {counterData.map((item, index) => (
             <div key={index} className="col-lg-3 col-sm-6">
               <div className="tp-instructor-counter-item text-center">
-                <h3 className="tp-counter-count mb-10">
+                <h4 className=" mb-10" style={{ fontSize: "50px", fontWeight: "400", letterSpacing: "3px" ,color: "#fff", fontStyle: "italic"}}>
                   <CounterItem min={0} max={item.endValue} />
                   {item.suffix}
-                </h3>
-                <p>{item.label}</p>
+                </h4>
+                <p >{item.label}</p>
               </div>
             </div>
           ))}

@@ -1,7 +1,7 @@
+"use client";
 import Image from "next/image";
 import overview_img_1 from "@/assets/img/lfesimages/Rajesh-Khadka.png";
 import overview_img_2 from "@/assets/img/lfesimages/Barun-Khadka.png";
-
 
 import { CSSProperties } from "react";
 
@@ -31,59 +31,73 @@ const imgStyle: CSSProperties = {
 export function Message() {
   return (
     <>
-      <section className="about-area tp-about-bg pt-20">
+      <section className="about-area tp-about-bg pt-120 pb-120">
         <div className="container">
-          {facilities.map((facility, index) => (
-            <div className="row align-items-start mb-100" key={facility.id}>
-              {/* Image Column */}
-              <div
-                className={`col-lg-5 mb-4 mb-lg-0 ${
-                  index % 2 === 0 ? "order-1 order-lg-1" : "order-1 order-lg-2"
-                }`}
-              >
+          <div className="row g-4 align-items-stretch">
+            {facilities.map((facility) => (
+              <div key={facility.id} className="col-lg-6">
                 <div
-                  className="tp-about-wrap mb-30 wow fadeInLeft h-100"
-                  data-wow-delay=".3s"
+                  className="message-card rounded-4 p-4 h-100 bg-white d-flex flex-column"
+                  style={{ border: "1px solid rgba(0,121,192,0.12)" }}
                 >
-                  <div className="tp-about-thumb-wrapper">
-                    <div className="tp-about-thumb-1">
-                      <Image
-                        src={facility.image}
-                        alt={`${facility.title}-thumb`}
-                        style={imgStyle}
-                      />
-                    </div>
+                  <div className="message-image position-relative rounded-4 overflow-hidden mb-4">
+                    <Image
+                      src={facility.image}
+                      alt={`${facility.title}-thumb`}
+                      style={{ ...imgStyle, width: "100%" }}
+                      className="w-100 h-100 object-fit-cover"
+                    />
                   </div>
-                </div>
-              </div>
-
-              {/* Text Column */}
-              <div
-                className={`col-lg-7 ${
-                  index % 2 === 0 ? "order-2 order-lg-2" : "order-2 order-lg-1"
-                }`}
-              >
-                <div
-                  className="tp-about-wrapper mb-30 wow fadeInRight h-100"
-                  data-wow-delay=".3s"
-                >
-                  <div className="tp-sectio mb-40">
-                    <h5 className="tp-section-subtitle fs-1">
-                      {facility.title}
-                    </h5>
+                  <div className="message-content flex-grow-1 d-flex flex-column">
                     <p
-                      className="text-muted lh-lg"
-                      style={{ textAlign: "justify" }}
-                      dangerouslySetInnerHTML={{ __html: facility.description }}
-                    ></p>{" "}
-                    <h5 className="tp-section-subtitle">{facility.name}</h5>
+                      className="text-uppercase fw-semibold mb-2"
+                      style={{ color: "#0079C0", letterSpacing: "0.08em" }}
+                    >
+                      {facility.title}
+                    </p>
+                    <h3
+                      className="fw-bold mb-3"
+                      style={{ color: "#0b1f3a", fontSize: "1.6rem" }}
+                    >
+                      {facility.name}
+                    </h3>
+                    <p
+                      className="text-muted lh-lg mb-0"
+                      style={{ textAlign: "justify", flexGrow: 1 }}
+                      dangerouslySetInnerHTML={{
+                        __html: facility.description,
+                      }}
+                    ></p>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
+      <style jsx>{`
+        .message-image::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(0, 121, 192, 0.25),
+            rgba(0, 121, 192, 0)
+          );
+        }
+        .message-badge {
+          position: absolute;
+          top: 1rem;
+          left: 1rem;
+          background: rgba(255, 255, 255, 0.9);
+          color: #0079c0;
+          padding: 0.35rem 0.9rem;
+          border-radius: 999px;
+          font-size: 0.85rem;
+          font-weight: 600;
+        }
+      `}</style>
     </>
   );
 }

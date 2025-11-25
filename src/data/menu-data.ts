@@ -7,9 +7,7 @@ const menu_data: IMenu[] = [
     link: "#",
     dropdown_menus: [
       { id: 1, title: "ABOUT LFES", link: "/about" },
-      { id: 2, title: "VISIT SCHOOL", link: "/school-tour" },
       { id: 3, title: "SCHOOL FACILITIES", link: "/facilities" },
-      { id: 4, title: "TEAM", link: "/teacher" },
       { id: 5, title: "FOUNDER's MESSAGE", link: "/message" },
     ],
   },
@@ -18,30 +16,17 @@ const menu_data: IMenu[] = [
     title: "ACADEMICS",
     link: "#",
     dropdown_menus: [
-      { id: 1, title: "PROGRESSIVE WING", link: "/kindergarten" },
-      { id: 2, title: "PRIMARY SCHOOL", link: "/elementary-school" },
+      { id: 1, title: "PROGRESSIVE WING", link: "/progressive" },
+      { id: 2, title: "PRIMARY SCHOOL", link: "/primary-school" },
       { id: 3, title: "MIDDLE SCHOOL", link: "/middle-school" },
-      { id: 4, title: "SECONDARY SCHOOL", link: "/secondary-school" },
-      { id: 5, title: "SENIOR HIGH SCHOOL", link: "/senior-school" },
+      { id: 4, title: "HIGH SCHOOL", link: "/high-school" },
+      { id: 5, title: "SENIOR HIGH SCHOOL", link: "/senior-high-school" },
     ],
   },
   {
     id: 3,
     title: "ADMISSIONS",
-    link: "#",
-    dropdown_menus: [
-      {
-        id: 1,
-        title: "ADMISSION PROCEDURE ",
-        link: "/admission-procedure",
-      },
-
-      {
-        id: 3,
-        title: "APPLICATION FORM",
-        link: "/application-form",
-      },
-    ],
+    link: "/admission",
   },
 
   {

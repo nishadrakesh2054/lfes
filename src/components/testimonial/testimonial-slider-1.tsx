@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -34,15 +33,8 @@ export default function TestimonialSliderOne() {
             key={item.id}
             className="tp-testimonial-item"
           >
-            <div className="tp-testimonial-avatar">
-              <Image
-                src={item.img}
-                alt="testimonial-avatar"
-                width={60}
-                height={60}
-              />
-            </div>
-            <div className="tp-testimonial-content">
+     
+            <div className="">
               <p>{item.content}</p>
             </div>
             <div className="tp-testimonial-avatar-info">

@@ -30,8 +30,7 @@ export default function EventBreadcrumb({event}:IProps) {
                 Lectures
               </span>
               <h4 className="tp-event-details-breadcrumb-title">
-                Global Education <br />
-                Fall Meeting for Everyone.
+                Global Education 
               </h4>
             
             </div>

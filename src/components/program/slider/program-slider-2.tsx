@@ -60,7 +60,6 @@ export default function ProgramSliderTwo() {
               <h3 className="tp-program-4-title">
                 <Link href={item.link}>{item.title}</Link>
               </h3>
-              <span>{item.description}</span>
               <div className="tp-program-4-btn">
                 <Link href={item.link}>
                   <span>

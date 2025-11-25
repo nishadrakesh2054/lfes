@@ -1,230 +1,577 @@
-'use client';
-import React, { useState } from 'react'
-import { CalenderSvg, RightArrowSeven } from '../svg'
-import DatePicker from '../ui/date-picker';
-import NiceSelect from '../ui/nice-select';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import ErrMsg from '../err-msg';
-
+"use client";
+import React from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { RightArrowSeven } from "../svg";
+import ErrMsg from "../err-msg";
 
 type Inputs = {
-    fname: string;
-    lname: string;
-    email: string;
-    zipcode: string;
-    phone: string;
-    school: string;
-    yearCompletion: string;
-    qualification: string;
-}
+  studentName: string;
+  dateOfBirth: string;
+  gender: string;
+  currentSchool: string;
+  gradeApplied: string;
+  fatherName: string;
+  fatherOccupation: string;
+  fatherContact: string;
+  motherName: string;
+  motherOccupation: string;
+  motherContact: string;
+  correspondenceEmail: string;
+  localAddress: string;
+  heardFrom?: string[];
+};
+
+const heardOptions = [
+  "Friends / Relatives / Siblings",
+  "Social Media",
+  "Online News Portals",
+  "TV",
+  "Newspaper",
+  "Others",
+];
+
+const gradeOptions = [
+  "Progressive Wings ",
+  "Primary School",
+  "Middle School",
+  "High School",
+  "Senior High School",
+];
 
 export default function ApplicationForm() {
-    const [date, setDate] = useState(new Date());
-    const {register,handleSubmit,formState: { errors },reset} = useForm<Inputs>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<Inputs>();
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        console.log(data)
-        reset();
-    }
-    function handleStatus(item: { value: string; label: string }) {
-        console.log(item);
-    }
-    function handleDegree(item: { value: string; label: string }) {
-        console.log(item);
-    }
-    return (
-        <form id="contact-form" onSubmit={handleSubmit(onSubmit)}>
-            <div className="tp-contact-input-form application">
-                <h4 className="tp-application-from-title">Applicant Details</h4>
-                <div className="row">
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>First name</label>
-                            <input type="text" {...register("fname", { required: "First name is required" })} id='fname' />
-                            {errors.fname?.message && <ErrMsg msg={errors.fname.message} />}
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Last name</label>
-                            <input type="text" {...register("lname", { required: "Last name is required" })} />
-                            {errors.lname?.message && <ErrMsg msg={errors.lname.message} />}
-                        </div>
-                    </div>
-                    <div className="col-xl-12 col-lg-12">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Email address</label>
-                            <input type="email" {...register("email", { required: "Email is required" })} />
-                            {errors.email?.message && <ErrMsg msg={errors.email.message} />}
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Zip code</label>
-                            <input type="text" {...register("zipcode", { required: "Zip code is required" })} />
-                            {errors.zipcode?.message && <ErrMsg msg={errors.zipcode.message} />}
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Phone number</label>
-                            <input type="text" {...register("phone", { required: "Phone number is required" })} />
-                            {errors.phone?.message && <ErrMsg msg={errors.phone.message} />}
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Date of birth</label>
-                            <DatePicker date={date} setDate={setDate} />
-                            <span className="icon"><CalenderSvg /></span>
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Student type</label>
-                            <div className="tp-application-select">
-                                <NiceSelect
-                                    cls="wide"
-                                    options={[
-                                        { value: "csc", label: "Csc" },
-                                        { value: "architecture", label: "Architecture" },
-                                        { value: "eee", label: "Eee" },
-                                    ]}
-                                    defaultCurrent={0}
-                                    onChange={(item) => handleDegree(item)}
-                                    name="Degree"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+    reset();
+  };
+
+  const brandColor = "#0079C0";
+
+  return (
+    <>
+      <style>{`
+        #contact-form .btn-check:checked + .btn {
+          background-color: ${brandColor} !important;
+          border-color: ${brandColor} !important;
+          color: white !important;
+        }
+        #contact-form .btn:hover {
+          background-color: ${brandColor} !important;
+          border-color: ${brandColor} !important;
+          color: white !important;
+        }
+        #contact-form .form-control:focus,
+        #contact-form .form-select:focus,
+        #contact-form textarea:focus {
+          border-color: ${brandColor} !important;
+          box-shadow: none !important;
+          outline: none !important;
+        }
+        #contact-form .form-control:focus-visible,
+        #contact-form .form-select:focus-visible,
+        #contact-form textarea:focus-visible {
+          border-color: ${brandColor} !important;
+          box-shadow: none !important;
+          outline: 1px solid ${brandColor} !important;
+          outline-offset: -1px !important;
+        }
+      `}</style>
+      <form
+        id="contact-form"
+        onSubmit={handleSubmit(onSubmit)}
+        className="container-fluid px-0"
+      >
+        {/* Single Card with All Form Fields */}
+        <div
+          className="card rounded-3 mb-4"
+          style={{
+            border: `1px solid ${brandColor}`,
+            boxShadow: `0 0.125rem 0.25rem rgba(0, 121, 192, 0.15), 0 0.5rem 1rem rgba(0, 121, 192, 0.15)`,
+          }}
+        >
+          <div
+            className="card-header text-white py-3"
+            style={{ backgroundColor: brandColor }}
+          >
+            <div className="d-flex align-items-center">
+              <i className="fas fa-file-alt me-2 fs-5"></i>
+              <div>
+                <h5 className="mb-0 fw-bold text-light text-uppercase">
+                  Application Form
+                </h5>
+                <small className="opacity-75">
+                  Please fill in all the required information
+                </small>
+              </div>
             </div>
-            <div className="tp-contact-input-form application">
-                <h4 className="tp-application-from-title">Education Records</h4>
-                <div className="row">
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>School</label>
-                            <input type="text" {...register("school", { required: "School is required" })} />
-                            {errors.school?.message && <ErrMsg msg={errors.school.message} />}
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Year of completion</label>
-                            <input type="text" {...register("yearCompletion", { required: "Year of completion is required" })} />
-                            {errors.yearCompletion?.message && <ErrMsg msg={errors.yearCompletion.message} />}
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Highest qualification</label>
-                            <input type="text" {...register("qualification", { required: "Highest qualification is required" })} />
-                            {errors.qualification?.message && <ErrMsg msg={errors.qualification.message} />}
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Current status</label>
-                            <div className="tp-application-select">
-                                <NiceSelect
-                                    cls="wide"
-                                    options={[
-                                        { value: "new", label: "New" },
-                                        { value: "old", label: "Old" },
-                                        { value: "new", label: "Newst" },
-                                    ]}
-                                    defaultCurrent={0}
-                                    onChange={(item) => handleStatus(item)}
-                                    name="Status"
-                                />
-                            </div>
-                        </div>
-                    </div>
+          </div>
+          <div className="card-body p-4">
+            {/* Student Information */}
+            <div className="mb-5">
+              <h6
+                className="fw-bold mb-3 d-flex align-items-center"
+                style={{ color: brandColor }}
+              >
+                <i className="fas fa-user-graduate me-2"></i>
+                Student Information
+              </h6>
+              <div className="row g-3">
+                <div className="col-md-8">
+                  <label className="form-label fw-semibold">
+                    Full Name of the Student{" "}
+                    <span className="text-danger">*</span>
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light">
+                      <i
+                        className="fas fa-user"
+                        style={{ color: brandColor }}
+                      ></i>
+                    </span>
+                    <input
+                      type="text"
+                      className={`form-control form-control-lg ${errors.studentName ? "is-invalid" : ""}`}
+                      placeholder="Student's full name"
+                      {...register("studentName", {
+                        required: "Student name is required",
+                      })}
+                    />
+                  </div>
+                  {errors.studentName?.message && (
+                    <ErrMsg msg={errors.studentName.message} />
+                  )}
                 </div>
-            </div>
-            <div className="tp-contact-input-form application">
-                <h4 className="tp-application-from-title">Education Details</h4>
-                <div className="row">
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Select area of study</label>
-                            <div className="tp-application-select">
-                                  <NiceSelect
-                                        cls="wide"
-                                        options={[
-                                            { value: "new", label: "New" },
-                                            { value: "old", label: "Old" },
-                                            { value: "new", label: "Newst" },
-                                        ]}
-                                        defaultCurrent={0}
-                                        onChange={(item) => handleStatus(item)}
-                                        name="Status"
-                                    />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Degree level</label>
-                            <input type="text" />
-                        </div>
-                    </div>
+
+                <div className="col-md-4">
+                  <label className="form-label fw-semibold">
+                    Date of Birth <span className="text-danger">*</span>
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light">
+                      <i
+                        className="fas fa-calendar-alt"
+                        style={{ color: brandColor }}
+                      ></i>
+                    </span>
+                    <input
+                      type="date"
+                      className={`form-control ${errors.dateOfBirth ? "is-invalid" : ""}`}
+                      style={{ fontSize: "1.1rem" }}
+                      {...register("dateOfBirth", {
+                        required: "Date of birth is required",
+                      })}
+                    />
+                  </div>
+                  {errors.dateOfBirth?.message && (
+                    <ErrMsg msg={errors.dateOfBirth.message} />
+                  )}
                 </div>
-            </div>
-            <div className="tp-contact-input-form application">
-                <h4 className="tp-application-from-title">Documentation</h4>
-                <div className="row">
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Upload passport or birth documentation</label>
-                            <input type="text" />
-                            <input id="cv" type="file" hidden />
-                            <label className="hide" htmlFor="cv">
-                                <span>Choose File</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Upload Curriculum Vitae (CV) or Resume</label>
-                            <input type="text" />
-                            <input id="cvi" type="file" hidden />
-                            <label className="hide" htmlFor="cvi">
-                                <span>Choose File</span>
-                            </label>
-                        </div>
-                    </div>
+
+                <div className="col-md-4">
+                  <label className="form-label fw-semibold d-block">
+                    Gender <span className="text-danger">*</span>
+                  </label>
+                  <div className="btn-group w-100" role="group">
+                    {["male", "female", "other"].map((value) => (
+                      <React.Fragment key={value}>
+                        <input
+                          type="radio"
+                          className="btn-check"
+                          id={`gender-${value}`}
+                          value={value}
+                          {...register("gender", {
+                            required: "Gender is required",
+                          })}
+                        />
+                        <label
+                          className="btn"
+                          htmlFor={`gender-${value}`}
+                          style={{
+                            borderColor: brandColor,
+                            color: brandColor,
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = brandColor;
+                            e.currentTarget.style.color = "white";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor =
+                              "transparent";
+                            e.currentTarget.style.color = brandColor;
+                          }}
+                        >
+                          <i
+                            className={`fas fa-${value === "male" ? "mars" : value === "female" ? "venus" : "genderless"} me-1`}
+                          ></i>
+                          {value.charAt(0).toUpperCase() + value.slice(1)}
+                        </label>
+                      </React.Fragment>
+                    ))}
+                  </div>
+                  {errors.gender?.message && (
+                    <ErrMsg msg={errors.gender.message} />
+                  )}
                 </div>
-            </div>
-            <div className="tp-contact-input-form">
-                <h4 className="tp-application-from-title">Additional Details</h4>
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Application full name</label>
-                            <input type="text" />
-                        </div>
-                    </div>
-                    <div className="col-lg-12">
-                        <div className="tp-contact-input schedule p-relative">
-                            <label>Additional information</label>
-                            <textarea ></textarea>
-                        </div>
-                    </div>
-                    <div className="col-xl-12">
-                        <div className="tp-contact-input-remeber schedule">
-                            <input id="remeber" type="checkbox" />
-                            <label htmlFor="remeber">By submitting this form, you agree to the Acadia University privacy notice.</label>
-                        </div>
-                    </div>
-                    <div className="tp-schedule-btn">
-                        <button type='submit' className="tp-btn">Submit Aplication
-                            <span><RightArrowSeven /></span>
-                        </button>
-                    </div>
+
+                <div className="col-md-4">
+                  <label className="form-label fw-semibold">
+                    Grade / Level applied for LFES{" "}
+                    <span className="text-danger">*</span>
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light">
+                      <i
+                        className="fas fa-graduation-cap"
+                        style={{ color: brandColor }}
+                      ></i>
+                    </span>
+                    <select
+                      className={`form-select ${errors.gradeApplied ? "is-invalid" : ""}`}
+                      style={{ fontSize: "1.1rem" }}
+                      {...register("gradeApplied", {
+                        required: "Grade / Level is required",
+                      })}
+                    >
+                      <option value="">Select grade / level</option>
+                      {gradeOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  {errors.gradeApplied?.message && (
+                    <ErrMsg msg={errors.gradeApplied.message} />
+                  )}
                 </div>
+
+                <div className="col-md-12">
+                  <label className="form-label fw-semibold">
+                    Current School where the Student is enrolled in{" "}
+                    <span className="text-danger">*</span>
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light">
+                      <i
+                        className="fas fa-school"
+                        style={{ color: brandColor }}
+                      ></i>
+                    </span>
+                    <input
+                      type="text"
+                      className={`form-control form-control-lg ${errors.currentSchool ? "is-invalid" : ""}`}
+                      placeholder="School name, address, district, country"
+                      {...register("currentSchool", {
+                        required: "Current school is required",
+                      })}
+                    />
+                  </div>
+                  {errors.currentSchool?.message && (
+                    <ErrMsg msg={errors.currentSchool.message} />
+                  )}
+                </div>
+              </div>
             </div>
-        </form>
-    )
+
+            {/* Divider */}
+            <hr className="my-4" />
+
+            {/* Parents Details */}
+            <div className="mb-5">
+              <h6
+                className="fw-bold mb-3 d-flex align-items-center"
+                style={{ color: brandColor }}
+              >
+                <i className="fas fa-users me-2"></i>
+                Parents Details
+              </h6>
+              <div className="row g-3">
+                <div className="col-md-4">
+                  <label className="form-label fw-semibold">
+                    Full name of Father <span className="text-danger">*</span>
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light">
+                      <i
+                        className="fas fa-user"
+                        style={{ color: brandColor }}
+                      ></i>
+                    </span>
+                    <input
+                      type="text"
+                      className={`form-control form-control-lg ${errors.fatherName ? "is-invalid" : ""}`}
+                      placeholder="Father's full name"
+                      {...register("fatherName", {
+                        required: "Father's name is required",
+                      })}
+                    />
+                  </div>
+                  {errors.fatherName?.message && (
+                    <ErrMsg msg={errors.fatherName.message} />
+                  )}
+                </div>
+
+                <div className="col-md-4">
+                  <label className="form-label fw-semibold">
+                    Occupation of Father <span className="text-danger">*</span>
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light">
+                      <i
+                        className="fas fa-briefcase"
+                        style={{ color: brandColor }}
+                      ></i>
+                    </span>
+                    <input
+                      type="text"
+                      className={`form-control form-control-lg ${errors.fatherOccupation ? "is-invalid" : ""}`}
+                      placeholder="Occupation"
+                      {...register("fatherOccupation", {
+                        required: "Occupation is required",
+                      })}
+                    />
+                  </div>
+                  {errors.fatherOccupation?.message && (
+                    <ErrMsg msg={errors.fatherOccupation.message} />
+                  )}
+                </div>
+
+                <div className="col-md-4">
+                  <label className="form-label fw-semibold">
+                    Contact number of Father{" "}
+                    <span className="text-danger">*</span>
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light">
+                      <i
+                        className="fas fa-phone"
+                        style={{ color: brandColor }}
+                      ></i>
+                    </span>
+                    <input
+                      type="text"
+                      className={`form-control form-control-lg ${errors.fatherContact ? "is-invalid" : ""}`}
+                      placeholder="Phone number"
+                      {...register("fatherContact", {
+                        required: "Contact is required",
+                      })}
+                    />
+                  </div>
+                  {errors.fatherContact?.message && (
+                    <ErrMsg msg={errors.fatherContact.message} />
+                  )}
+                </div>
+
+                <div className="col-md-4">
+                  <label className="form-label fw-semibold">
+                    Full name of Mother <span className="text-danger">*</span>
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light">
+                      <i
+                        className="fas fa-user"
+                        style={{ color: brandColor }}
+                      ></i>
+                    </span>
+                    <input
+                      type="text"
+                      className={`form-control form-control-lg ${errors.motherName ? "is-invalid" : ""}`}
+                      placeholder="Mother's full name"
+                      {...register("motherName", {
+                        required: "Mother's name is required",
+                      })}
+                    />
+                  </div>
+                  {errors.motherName?.message && (
+                    <ErrMsg msg={errors.motherName.message} />
+                  )}
+                </div>
+
+                <div className="col-md-4">
+                  <label className="form-label fw-semibold">
+                    Occupation of Mother <span className="text-danger">*</span>
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light">
+                      <i
+                        className="fas fa-briefcase"
+                        style={{ color: brandColor }}
+                      ></i>
+                    </span>
+                    <input
+                      type="text"
+                      className={`form-control form-control-lg ${errors.motherOccupation ? "is-invalid" : ""}`}
+                      placeholder="Occupation"
+                      {...register("motherOccupation", {
+                        required: "Occupation is required",
+                      })}
+                    />
+                  </div>
+                  {errors.motherOccupation?.message && (
+                    <ErrMsg msg={errors.motherOccupation.message} />
+                  )}
+                </div>
+
+                <div className="col-md-4">
+                  <label className="form-label fw-semibold">
+                    Contact number of Mother{" "}
+                    <span className="text-danger">*</span>
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light">
+                      <i
+                        className="fas fa-phone"
+                        style={{ color: brandColor }}
+                      ></i>
+                    </span>
+                    <input
+                      type="text"
+                      className={`form-control form-control-lg ${errors.motherContact ? "is-invalid" : ""}`}
+                      placeholder="Phone number"
+                      {...register("motherContact", {
+                        required: "Contact is required",
+                      })}
+                    />
+                  </div>
+                  {errors.motherContact?.message && (
+                    <ErrMsg msg={errors.motherContact.message} />
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <hr className="my-4" />
+
+            {/* Contact & Address */}
+            <div className="mb-5">
+              <h6
+                className="fw-bold mb-3 d-flex align-items-center"
+                style={{ color: brandColor }}
+              >
+                <i className="fas fa-address-card me-2"></i>
+                Contact & Address
+              </h6>
+              <div className="row g-3">
+                <div className="col-md-6">
+                  <label className="form-label fw-semibold">
+                    Email for correspondence{" "}
+                    <span className="text-danger">*</span>
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light">
+                      <i
+                        className="fas fa-envelope"
+                        style={{ color: brandColor }}
+                      ></i>
+                    </span>
+                    <input
+                      type="email"
+                      className={`form-control form-control-lg ${errors.correspondenceEmail ? "is-invalid" : ""}`}
+                      placeholder="Email address"
+                      {...register("correspondenceEmail", {
+                        required: "Email for correspondence is required",
+                      })}
+                    />
+                  </div>
+                  {errors.correspondenceEmail?.message && (
+                    <ErrMsg msg={errors.correspondenceEmail.message} />
+                  )}
+                </div>
+
+                <div className="col-md-6">
+                  <label className="form-label fw-semibold">
+                    Local Address
+                  </label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light align-items-start pt-3">
+                      <i
+                        className="fas fa-map-marker-alt"
+                        style={{ color: brandColor }}
+                      ></i>
+                    </span>
+                    <textarea
+                      className="form-control form-control-lg"
+                      rows={3}
+                      placeholder="Street, Area, District, Country"
+                      {...register("localAddress")}
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <hr className="my-4" />
+
+            {/* Reference */}
+            <div>
+              <h6
+                className="fw-bold mb-3 d-flex align-items-center"
+                style={{ color: brandColor }}
+              >
+                <i className="fas fa-info-circle me-2"></i>
+                How did you come to know about LFES?
+              </h6>
+              <div className="row g-3">
+                {heardOptions.map((label, index) => (
+                  <div key={label} className="col-md-6 col-lg-4">
+                    <div className="form-check form-check-lg p-3 border rounded">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        id={`heardFrom-${index}`}
+                        value={label}
+                        {...register("heardFrom")}
+                        style={{ accentColor: brandColor }}
+                      />
+                      <label
+                        className="form-check-label fw-semibold"
+                        htmlFor={`heardFrom-${index}`}
+                      >
+                        {label}
+                      </label>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Submit Button */}
+        <div className="d-flex justify-content-center mb-4">
+          <button
+            type="submit"
+            className="btn btn-md px-5 py-2 text-uppercase shadow text-white"
+            style={{
+              minWidth: "150px",
+              backgroundColor: brandColor,
+              borderColor: brandColor,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#005a8f";
+              e.currentTarget.style.borderColor = "#005a8f";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = brandColor;
+              e.currentTarget.style.borderColor = brandColor;
+            }}
+          >
+            <i className="fas fa-paper-plane me-2"></i>
+            Submit Application
+            <span className="ms-2">
+              <RightArrowSeven />
+            </span>
+          </button>
+        </div>
+      </form>
+    </>
+  );
 }

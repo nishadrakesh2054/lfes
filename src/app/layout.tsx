@@ -1,37 +1,17 @@
 import type { Metadata } from "next";
 import "./globals.scss";
-import { Outfit, Jost, Crimson_Pro } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-const outfit_bold = Outfit({
+const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--tp-ff-body",
-});
-const outfit_heading = Outfit({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--tp-ff-heading",
-});
-const outfit_p = Outfit({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--tp-ff-p",
-});
-const jost_primary = Jost({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--tp-ff-primary",
-});
-const crismon_secondary = Crimson_Pro({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--tp-ff-secondary",
+  variable: "--tp-ff-poppins",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "LFES - SCHOOL",
-  description:
-    "LFES  ",
+  description: "LFES  ",
 };
 
 export default function RootLayout({
@@ -41,8 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+        />
+      </head>
       <body
-        className={`${outfit_bold.variable} ${outfit_heading.variable} ${outfit_p.variable} ${jost_primary.variable} ${crismon_secondary.variable}`}
+        className={poppins.variable}
+        style={{ fontFamily: "var(--tp-ff-poppins), sans-serif" }}
       >
         {children}
       </body>

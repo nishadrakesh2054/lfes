@@ -12,7 +12,7 @@ export default function BlogListArea() {
     5
   );
   return (
-    <section className="tp-blog-standard-area p-relative pt-100 pb-120">
+    <section className="tp-blog-standard-area p-relative pt-120 pb-120">
       <div className="container">
         <div className="row">
           <div className="col-lg-8">

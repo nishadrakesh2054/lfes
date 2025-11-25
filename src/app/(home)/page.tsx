@@ -1,14 +1,13 @@
 import React from "react";
 import { Metadata } from "next";
-import HeroAreaOne from "@/components/hero-area/hero-area-one";
+// import HeroAreaOne from "@/components/hero-area/hero-area-one";
 import ServiceOne from "@/components/service/service-one";
 import AboutOne from "@/components/about/about-one";
-import CounterOne from "@/components/counter/counter-one";
 import EventArea from "@/components/event/event-area";
 import TestimonialOne from "@/components/testimonial/testimonial-one";
-import InstagramArea from "@/components/instagram/instagram-area";
-import CtaOne from "@/components/cta/cta-one";
 import ProgramAreaThree from "@/components/program/program-area-three";
+import HeroAreaOne from "@/components/hero-area/hero-area-one";
+import CounterSix from "@/components/counter/counter-six";
 
 export const metadata: Metadata = {
   title: "LFES",
@@ -30,7 +29,7 @@ export default function HomePage() {
       {/* about area end */}
 
       {/* counter area start */}
-      <CounterOne />
+      <CounterSix />
       {/* counter area end */}
 
       {/* program area start */}
@@ -44,18 +43,6 @@ export default function HomePage() {
       {/* testimonial area start */}
       <TestimonialOne />
       {/* testimonial area end */}
-
-      {/* blog area start */}
-      {/* <BlogOne /> */}
-      {/* blog area end */}
-
-      {/* instagram area start */}
-      <InstagramArea />
-      {/* instagram area end */}
-
-      {/* cta area start */}
-      <CtaOne />
-      {/* cta area end */}
     </main>
   );
 }

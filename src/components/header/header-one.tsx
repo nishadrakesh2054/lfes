@@ -2,12 +2,10 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import NavMenus from "./navbar/nav-menus";
-// import logo from "@/assets/img/logo/logo.png";
-import logo from "@/assets/img/bglogo2.png";
+import logo from "@/assets/img/lfeslogo1.png";
 
 import HeaderTopArea from "./header-top/header-top-area";
-// import logo_black from "@/assets/img/logo/logo-black-1.png";
-import logo_black from "@/assets/img/bglogo2.png";
+import logo_black from "@/assets/img/lfeslogo1.png";
 
 import HeaderStickyWrapper from "./header-sticky-provider/header-sticky-wrapper";
 import OffcanvasButton from "./button/offcanvas-btn";

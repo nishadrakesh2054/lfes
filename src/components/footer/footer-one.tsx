@@ -1,9 +1,11 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 
 import { Email } from "../svg";
 import FooterSocial from "./footer-social";
-import logo from "@/assets/img/bglogo2.png";
+import logo from "@/assets/img/lfeslogo1.png";
+
 import logo_black from "@/assets/img/bglogo2.png";
 import { footerLinks } from "@/data/footer-links";
 
@@ -14,7 +16,11 @@ type IProps = {
 
 export default function FooterOne({ style_2 = false }: IProps) {
   return (
-    <footer>
+    <>
+  
+
+
+    <footer >
       <div className={`tp-footer-main ${style_2 ? "" : "grey-bg"} pt-80 pb-55`}>
         <div className="container">
           <div className="row">
@@ -25,17 +31,15 @@ export default function FooterOne({ style_2 = false }: IProps) {
                 } mb-30`}
               >
                 {/* <div className="tp-footer-widget-logo w-0 mb-20 tp-header-logo"> */}
-                  <Link href="/">
-                    <Image
-                      src={style_2 ? logo_black : logo}
-                      alt="logo"
-                      priority
-                    //   style={{ height: "auto" }}
-                    width={100}
-                    height={100}
-                 
-                    />
-                  </Link>
+                <Link href="/">
+                  <Image
+                    src={style_2 ? logo_black : logo}
+                    alt="logo"
+                    priority
+                    width={80}
+                      height={80}
+                  />
+                </Link>
                 {/* </div> */}
                 <div className="tp-footer-widget-content">
                   <p>
@@ -122,8 +126,21 @@ export default function FooterOne({ style_2 = false }: IProps) {
                             : "tp-footer-newsletter-submit"
                         }`}
                       >
+                        <style>{`
+                          .footer-subscribe-btn {
+                            background-color: #0079C0 !important;
+                            border-color: #0079C0 !important;
+                            color: white !important;
+                            transition: all 0.3s ease !important;
+                          }
+                          .footer-subscribe-btn:hover {
+                            background-color: #005a8f !important;
+                            border-color: #005a8f !important;
+                          }
+                        `}</style>
                         <button
-                          className={`${style_2 ? "tp-btn-4" : "tp-btn"}`}
+                          type="submit"
+                          className={`${style_2 ? "tp-btn-4" : "tp-btn"} footer-subscribe-btn`}
                         >
                           Subscribe
                         </button>
@@ -166,5 +183,6 @@ export default function FooterOne({ style_2 = false }: IProps) {
         </div>
       </div>
     </footer>
+    </>
   );
 }

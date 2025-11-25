@@ -12,8 +12,7 @@ import img6 from "@/assets/img/lfesimages/Auditorium.png";
 import img7 from "@/assets/img/lfesimages/Computer-Labs.png";
 import img8 from "@/assets/img/lfesimages/Computer-Labs.png";
 import img9 from "@/assets/img/lfesimages/Art-&-Music-Rooms.png";
-import img10 from "@/assets/img/lfesimages/Playground.png"
-
+import img10 from "@/assets/img/lfesimages/Playground.png";
 
 import { CSSProperties } from "react";
 
@@ -35,7 +34,8 @@ const Facilities = () => {
     {
       id: 2,
       title: "Transportation",
-description: "LFES School provides safe and reliable transportation with GPS tracking, experienced staff, and flexible routes to ensure students travel securely.",
+      description:
+        "LFES School provides safe and reliable transportation with GPS tracking, experienced staff, and flexible routes to ensure students travel securely.",
 
       image: img2,
       features: [
@@ -74,21 +74,21 @@ description: "LFES School provides safe and reliable transportation with GPS tra
     {
       id: 5,
       title: "Sports Complex",
-description: "LFES School offers comprehensive sports facilities, including an indoor stadium, Olympic pool, multiple courts, and a fitness center to promote physical fitness.",
+      description:
+        "LFES School offers comprehensive sports facilities, including an indoor stadium, Olympic pool, multiple courts, and a fitness center to promote physical fitness.",
 
       image: img5,
       features: [
-        "Olympic Pool",
+        "Mini Olympic Swimming Pool",
         "Indoor Stadium",
         "Multiple Courts",
-        "Fitness Center",
       ],
     },
     {
       id: 6,
       title: "Auditorium",
-   description: "LFES School has a spacious auditorium with modern audio-visual equipment, ideal for cultural events, seminars, presentations, and school gatherings."
-,
+      description:
+        "LFES School has a spacious auditorium with modern audio-visual equipment, ideal for cultural events, seminars, presentations, and school gatherings.",
       image: img6,
       features: [
         "500+ Capacity",
@@ -113,8 +113,8 @@ description: "LFES School offers comprehensive sports facilities, including an i
     {
       id: 8,
       title: "Medical Room",
-    description: "LFES School has a fully equipped medical room with qualified staff and emergency care facilities to ensure student health and wellness."
-,
+      description:
+        "LFES School has a fully equipped medical room with qualified staff and emergency care facilities to ensure student health and wellness.",
       image: img8,
       features: [
         "Qualified Staff",
@@ -126,7 +126,8 @@ description: "LFES School offers comprehensive sports facilities, including an i
     {
       id: 9,
       title: "Art & Music Rooms",
-    description: "LFES School provides creative art and music rooms equipped with instruments, art supplies, practice areas, and exhibition spaces for students to explore their talents.",
+      description:
+        "LFES School provides creative art and music rooms equipped with instruments, art supplies, practice areas, and exhibition spaces for students to explore their talents.",
       image: img9,
       features: [
         "Musical Instruments",
@@ -138,8 +139,8 @@ description: "LFES School offers comprehensive sports facilities, including an i
     {
       id: 10,
       title: "Playground",
-     description: "LFES School offers safe and spacious playgrounds with age-appropriate equipment for recreational and outdoor activities."
-,
+      description:
+        "LFES School offers safe and spacious playgrounds with age-appropriate equipment for recreational and outdoor activities.",
       image: img10,
       features: [
         "Safe Equipment",
@@ -158,66 +159,100 @@ description: "LFES School offers comprehensive sports facilities, including an i
     <>
       <BreadcrumbTwo title="Campus Facilities" subtitle="Explore LFES Campus" />
 
-   <section className="about-area tp-about-bg pt-100">
-  <div className="container">
-    {facilities.map((facility, index) => (
-      <div
-        className="row align-items-center  mb-60"
-        key={facility.id}
-      >
-        {/* Image Column */}
-        <div
-          className={`col-lg-6 mb-4 mb-lg-0 ${
-            index % 2 === 0 ? "order-1 order-lg-1" : "order-1 order-lg-2"
-          }`}
-        >
-          <div
-            className="tp-about-wrap  wow fadeInLeft h-100"
-            data-wow-delay=".3s"
-          >
-            <div className="tp-about-thumb-wrapper">
-              <div className="tp-about-thumb-1">
-                <Image
-                  src={facility.image}
-                  alt={`${facility.title}-thumb`}
-                  style={imgStyle}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Text Column */}
-        <div
-          className={`col-lg-6 ${
-            index % 2 === 0 ? "order-2 order-lg-2" : "order-2 order-lg-1"
-          }`}
-        >
-          <div
-            className="tp-about-wrapper  wow fadeInRight h-100"
-            data-wow-delay=".3s"
-          >
-            <div className="tp-section mb-40">
-              <h5 className="tp-section-subtitle fs-1">{facility.title}</h5>
-              <p>{facility.description}</p>
-              <h5 className="tp-section-subtitle">Features</h5>
-
-              <div className="row ms-2">
-                {facility.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="col-12">
-                    <i className="bi bi-check-circle-fill me-2 text-danger"></i>
-                    {feature}
+      <section className="about-area tp-about-bg pt-120 pb-120">
+        <div className="container">
+          {facilities.map((facility, index) => {
+            const isEven = index % 2 === 0;
+            return (
+              <div
+                key={facility.id}
+                className="facility-card  rounded-4 p-md-4 mb-80 bg-white"
+                style={{
+                  border: "1px solid rgba(0,121,192,0.12)",
+                }}
+              >
+                <div className="row align-items-stretch g-4">
+                  <div className={`col-lg-6 ${isEven ? "" : "order-lg-2"}`}>
+                    <div className="facility-image position-relative rounded overflow-hidden h-100">
+                      <Image
+                        src={facility.image}
+                        alt={`${facility.title}-thumb`}
+                        style={{ ...imgStyle, width: "100%" }}
+                        className="w-100 h-100 object-fit-cover"
+                      />
+                    </div>
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-</section>
 
+                  <div className={`col-lg-6 ${isEven ? "" : "order-lg-1"}`}>
+                    <div className="facility-content h-100 d-flex flex-column justify-content-center">
+                      <h3
+                        className="fw-bold mb-3"
+                        style={{ color: "#0b1f3a", fontSize: "1.8rem" }}
+                      >
+                        {facility.title}
+                      </h3>
+                      <p
+                        className="text-muted mb-4"
+                        style={{ lineHeight: 1.7 }}
+                      >
+                        {facility.description}
+                      </p>
+
+                      <h6
+                        className="fw-semibold mb-3"
+                        style={{ color: "#0079C0" }}
+                      >
+                        Key Highlights
+                      </h6>
+                      <div className="row g-2">
+                        {facility.features.map((feature, featureIndex) => (
+                          <div key={featureIndex} className="col-sm-6">
+                            <div className="feature-pill d-flex align-items-center rounded-3 px-3 py-2">
+                              <i className="bi bi-check-circle-fill me-2"></i>
+                              <span>{feature}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+      <style jsx>{`
+        .facility-image::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(0, 121, 192, 0.35),
+            rgba(0, 121, 192, 0)
+          );
+        }
+        .facility-badge {
+          position: absolute;
+          top: 1rem;
+          left: 1rem;
+          background: rgba(255, 255, 255, 0.9);
+          color: #0079c0;
+          padding: 0.35rem 0.9rem;
+          border-radius: 999px;
+          font-size: 0.85rem;
+          font-weight: 600;
+        }
+        .feature-pill {
+          background-color: #ffffff;
+          border: 1px solid rgba(0, 121, 192, 0.15);
+          font-size: 0.95rem;
+        }
+        .feature-pill i {
+          color: #0079c0;
+        }
+      `}</style>
 
       <link
         rel="stylesheet"

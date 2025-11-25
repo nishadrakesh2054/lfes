@@ -1,130 +1,202 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { HandCheck } from "../svg";
-import Link from "next/link";
 
 const requirements = [
-  "You can be admitted at any time during the academic year.",
-  "If English is not your first language, you will need to demonstrate English language proficiency equivalent to a minimum of 5.5 in each band and 6.0 in speaking.",
-  "Provide contact information for one teacher (or two, maximum) who will complete the Teacher Evaluation form.",
-  "Open to students 18 years and over at course commencement.",
-  "Spiritual Formation Program Requirements:",
-  "Completion of a personal statement outlining your spiritual journey and goals.",
+  "Procure Application form from the office",
+  "Return duly completed application form to the office the same day or the next day.",
+  "Appear for an entrance exam",
+  "Interview along with parents",
+  "Admission is offered only after students qualify through the entrance and interview.",
+  "Deposit first installment.",
   "Participation in an interview with the Spiritual Formation team.",
-  "Commitment to attending weekly spiritual development sessions."
+  "Admission confirmed.",
 ];
 
-const eligibility=[
-  'Minimum GPA of 2.8 in the S.E.E. examination or its equivalent.(MANAGEMENT STREAM)',
-  'Minimum GPA of 3.2 in the S.E.E. examination or its equivalent.(SCIENCE STREAM)',
-  'Must secure at least C+ in Science and Mathematics. (SCIENCE STREAM)',
-  'Must secure at least D+ in English, Nepali, and Social Studies. (SCIENCE STREAM)',
-]
-
-
-const deadlinesData = [
- {
-    category: "Kindergarten School",
-    deadline: "October 15",
-    decision: "Early Decision |",
-  },
-  {
-    category: "Elementary School",
-    deadline: "November 1",
-    decision: "Early Decision II |",
-  },
-  {
-    category: "Middle School",
-    deadline: "January 15",
-    decision: "Regular Decision",
-  },
-  {
-    category: "Senior School",
-    deadline: "March 1",
-    decision: "All Continuing",
-  },
+const schoolDocuments = [
+  "Report card/ Mark sheet of the current class.",
+  "Transfer certificate (TC)/ Character Certificate.",
+  "Birth certificate issued by the Ward.",
+  "Two copies of recent passport-size photos.",
 ];
 
-export default function ApplyRequirement  () {
+const seniorHighSchoolContent = [
+  "Minimum GPA of 2.8 in the S.E.E. examination or its equivalent.(MANAGEMENT STREAM)",
+  "Minimum GPA of 3.2 in the S.E.E. examination or its equivalent.(SCIENCE STREAM)",
+  "Must secure at least C+ in Science and Mathematics. (SCIENCE STREAM)",
+  "Must secure at least D+ in English, Nepali, and Social Studies. (SCIENCE STREAM)",
+];
+
+export default function ApplyRequirement() {
+  const [activeTab, setActiveTab] = useState("admission");
+
+  const brandColor = "#0079C0";
+
   return (
-    <section className="tp-apply-requirement-area tp-apply-requirement-bg pt-110 pb-120">
+    <section className="tp-apply-requirement-area pt-110 pb-120">
       <div className="container">
-        <div className="row">
-          <div className="col-lg-8">
-            <div className="tp-apply-requirement-box">
-              <h3 className="tp-apply-process-title">
-               Admission Procedure
-              </h3>
-              <span>You will need:</span>
-              <div className="tp-apply-requirement-bullet mb-55">
-                {requirements.map((requirement, index) => (
-                  <p key={index}>
-                    <span>
-                      <HandCheck />
-                    </span>
-                    <i dangerouslySetInnerHTML={{ __html: requirement }}></i>
-                  </p>
-                ))}
-              </div>
-             
+        <div className="row mb-5">
+          <h2>LFES Admissions</h2>
+          <p>
+            LFES School admits students of any race, color, religion, national
+            and ethnic origin, or other legally protected status and provides
+            the rights, privileges, programs, and activities generally accorded
+            or made available to all the students in the school. We do not
+            discriminate on the basis of race, color, religion, national and
+            ethnic origin, or other legally protected status in our hiring or in
+            the administration of our educational policies and programs,
+            admissions policies, financial aid programs, or other
+            school-administered programs.
+          </p>
+        </div>
+
+        {/* Buttons */}
+        <div className="row mb-4">
+          <div className="col-12">
+            <div className="btn-group w-100" role="group">
+              <button
+                type="button"
+                className="btn"
+                onClick={() => setActiveTab("admission")}
+                style={{
+                  backgroundColor:
+                    activeTab === "admission" ? brandColor : "transparent",
+                  color: activeTab === "admission" ? "white" : brandColor,
+                  borderColor: brandColor,
+                  borderWidth: "2px",
+                  fontWeight: "600",
+                  padding: "12px 24px",
+                }}
+              >
+                Admission Procedure
+              </button>
+              <button
+                type="button"
+                className="btn"
+                onClick={() => setActiveTab("school")}
+                style={{
+                  backgroundColor:
+                    activeTab === "school" ? brandColor : "transparent",
+                  color: activeTab === "school" ? "white" : brandColor,
+                  borderColor: brandColor,
+                  borderWidth: "2px",
+                  fontWeight: "600",
+                  padding: "12px 24px",
+                }}
+              >
+                School
+              </button>
+              <button
+                type="button"
+                className="btn"
+                onClick={() => setActiveTab("senior")}
+                style={{
+                  backgroundColor:
+                    activeTab === "senior" ? brandColor : "transparent",
+                  color: activeTab === "senior" ? "white" : brandColor,
+                  borderColor: brandColor,
+                  borderWidth: "2px",
+                  fontWeight: "600",
+                  padding: "12px 24px",
+                }}
+              >
+                Senior High School
+              </button>
             </div>
-
-
-
-
-              <div className="tp-apply-requirement-box">
-              <h3 className="tp-apply-process-title">
-               Eligibility
-              </h3>
-              <span>You will need:</span>
-              <div className="tp-apply-requirement-bullet mb-55">
-                {eligibility.map((requirement, index) => (
-                  <p key={index}>
-                    <span>
-                      <HandCheck />
-                    </span>
-                    <i dangerouslySetInnerHTML={{ __html: requirement }}></i>
-                  </p>
-                ))}
-              </div>
-             
-            </div>
-
-
           </div>
+        </div>
 
-          <div className="col-lg-4">
-            <div className="tp-apply-dedline-box">
-              <h4 className="tp-apply-dedline-wrap-title">
-                Application Deadlines
-              </h4>
-              <div className="tp-apply-dedline-wrapper">
-                {deadlinesData.map((deadline, index) => (
-                  <div
-                    className={`tp-apply-dedline-wrap d-flex align-items-center justify-content-between ${
-                      index === deadlinesData.length - 1 ? "b-none" : ""
-                    }`}
-                    key={index}
-                  >
-                    <div className="tp-apply-dedline-content">
-                      <span>{deadline.category}</span>
-                      <p>{deadline.deadline}</p>
-                    </div>
-                    <div className="tp-apply-dedline-date">
-                      <p>{deadline.decision}</p>
+        {/* Content Area - Full Width */}
+        <div className="row">
+          <div className="col-12">
+            <div
+              className="card rounded-3 p-4"
+              style={{
+                border: `1px solid ${brandColor}`,
+                boxShadow: `0 0.125rem 0.25rem rgba(0, 121, 192, 0.15), 0 0.5rem 1rem rgba(0, 121, 192, 0.15)`,
+              }}
+            >
+              {/* Admission Procedure Content */}
+              {activeTab === "admission" && (
+                <div>
+                  <div className="row">
+                    <div className="col-lg-12 mb-4">
+                      <div className="tp-apply-requirement-box">
+                        <h3 className="mb-3" style={{ color: brandColor }}>
+                          LFES Admission Process
+                        </h3>
+                        <span className="text-muted d-block mb-3">
+                          To apply for admission, please follow these steps:
+                        </span>
+                        <div className="tp-apply-requirement-bullet">
+                          {requirements.map((requirement, index) => (
+                            <p key={index} className="mb-2 fs-6">
+                              <span>
+                                <HandCheck />
+                              </span>
+                              <i
+                                dangerouslySetInnerHTML={{
+                                  __html: requirement,
+                                }}
+                              ></i>
+                            </p>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                ))}
-                <div className="tp-apply-btn">
-                  <Link className="tp-btn" href="/university-financial">
-                    Visit Financial Aid
-                  </Link>
                 </div>
-              </div>
+              )}
+
+              {/* School Content */}
+              {activeTab === "school" && (
+                <div>
+                  <h3 className="mb-4" style={{ color: brandColor }}>
+                    Required Documents for School Admission
+                  </h3>
+                  <p className="text-muted mb-4">
+                    Please ensure you have the following documents ready when
+                    applying:
+                  </p>
+                  <div className="tp-apply-requirement-bullet">
+                    {schoolDocuments.map((document, index) => (
+                      <p key={index} className="mb-2 fs-6">
+                        <span>
+                          <HandCheck />
+                        </span>
+                        <i dangerouslySetInnerHTML={{ __html: document }}></i>
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Senior High School Content */}
+              {activeTab === "senior" && (
+                <div>
+                  <h3 className="mb-4" style={{ color: brandColor }}>
+                    Senior High School Admission Requirements
+                  </h3>
+                  <p className="text-muted mb-4">
+                    For admission to Senior High School, please complete the
+                    following:
+                  </p>
+                  <div className="tp-apply-requirement-bullet">
+                    {seniorHighSchoolContent.map((item, index) => (
+                      <p key={index} className="mb-2 fs-6">
+                        <span>
+                          <HandCheck />
+                        </span>
+                        <i dangerouslySetInnerHTML={{ __html: item }}></i>
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
+}

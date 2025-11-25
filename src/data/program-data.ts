@@ -5,7 +5,7 @@ export const high_school_program_data: IProgramDT[] = [
   {
     id: 1,
     img: "/assets/img/lfesimages/progressive-wing.png",
-    title: "Progressive Wings ",
+    title: "Progressive Wing ",
     description: "LFES Early Years Programme",
     link: "kindergarten",
   },
@@ -26,14 +26,14 @@ export const high_school_program_data: IProgramDT[] = [
     {
     id: 4,
     img: "/assets/img/lfesimages/secondary.png",
-    title: "Secondary School",
+    title: "High School",
     description: " LFES Lower Secondary Programme",
     link: "/secondary-school",
   },
   {
     id: 5,
     img: "/assets/img/lfesimages/High-school.png",
-    title: "High School",
+    title: "Senior High School",
     description: " LFES Upper Secondary Programme",
     link: "/senior-school",
   },

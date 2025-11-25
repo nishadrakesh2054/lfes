@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { RightArrow, ShapeLine } from "../svg";
+import { RightArrow } from "../svg";
 
 // images
 import thumb_1 from "@/assets/img/lfesimages/about-our-school02.png";
@@ -82,7 +82,7 @@ export default function AboutOne() {
                   Discover the Story <br /> Behind
                   <span>
                     {" "}
-                    &nbsp; LFES <ShapeLine />{" "}
+                    &nbsp; LFES 
                   </span>
                 </h3>
                 <p>

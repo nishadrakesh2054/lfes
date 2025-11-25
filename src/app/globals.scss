@@ -1,4 +1,13 @@
-@import '~bootstrap/scss/bootstrap';
-@import 'swiper/css/bundle';
+@import "~bootstrap/scss/bootstrap";
+@import "swiper/css/bundle";
 @import "slick-carousel/slick/slick.css";
-@import '../../public/assets/scss/main.scss';
+@import "../../public/assets/scss/main.scss";
+
+/* Poppins Font - Global */
+body {
+  font-family: var(--tp-ff-poppins), "Poppins", sans-serif !important;
+}
+
+* {
+  font-family: var(--tp-ff-poppins), "Poppins", sans-serif !important;
+}
