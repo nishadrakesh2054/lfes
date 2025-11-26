@@ -98,7 +98,7 @@ export default function CareerPage() {
         <div className="container">
           {/* Attractive Header Section */}
           <div className="row justify-content-start mb-20">
-            <div className="col-lg-10 text-center">
+            <div className="col-lg-12 text-center">
               <div className="tp-cv-header-content">
                 <div
                   className="d-inline-flex align-items-center justify-content-center mb-3"
