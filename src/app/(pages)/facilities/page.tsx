@@ -157,7 +157,7 @@ const Facilities = () => {
 
   return (
     <>
-      <BreadcrumbTwo title="Campus Facilities" subtitle="Explore LFES Campus" />
+      <BreadcrumbTwo title="School Facilities" subtitle="Explore LFES School" />
 
       <section className="about-area tp-about-bg pt-120 pb-120">
         <div className="container">

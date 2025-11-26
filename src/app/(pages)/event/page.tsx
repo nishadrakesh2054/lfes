@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function EventPage() {
   return (
     <main>
-      <BreadcrumbTwo title="Events" subtitle="School Events" />
+      <BreadcrumbTwo title="School Events" subtitle="Upcoming & Past Events" />
 
       {/* breadcrumb area end */}
 

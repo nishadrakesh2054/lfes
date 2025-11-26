@@ -5,7 +5,6 @@ import NavMenus from "./navbar/nav-menus";
 import logo from "@/assets/img/lfeslogo1.png";
 
 import HeaderTopArea from "./header-top/header-top-area";
-import logo_black from "@/assets/img/lfeslogo1.png";
 
 import HeaderStickyWrapper from "./header-sticky-provider/header-sticky-wrapper";
 import OffcanvasButton from "./button/offcanvas-btn";
@@ -30,22 +29,59 @@ export default function HeaderOne() {
                 {/* <div className="tp-header-logo-1 tp-header-logo "> */}
                 <div className=" w-0 ">
                   <Link href="/">
-                    <Image
-                      className="logo-1 "
-                      src={logo}
-                      alt="logo"
-                      priority
-                      width={80}
-                      height={80}
-                    />
-                    <Image
-                      className="logo-2 d-none"
-                      src={logo_black}
-                      alt="logo"
-                      priority
-                      width={80}
-                      height={80}
-                    />
+                    <div
+                      style={{
+                        width: "80px",
+                        height: "80px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Image
+                        className="logo-1 "
+                        src={logo}
+                        alt="logo"
+                        priority
+                        width={80}
+                        height={80}
+                        quality={100}
+                        style={{
+                          objectFit: "contain",
+                          width: "auto",
+                          height: "auto",
+                          maxWidth: "100%",
+                          maxHeight: "100%",
+                        }}
+                      />
+                    </div>
+                    <div
+                      className="d-none"
+                      style={{
+                        width: "80px",
+                        height: "80px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Image
+                        className="logo-2"
+                        src={logo}
+                        alt="logo"
+                        priority
+                        width={80}
+                        height={80}
+                        quality={100}
+                        style={{
+                          objectFit: "contain",
+                          width: "auto",
+                          height: "auto",
+                          maxWidth: "100%",
+                          maxHeight: "100%",
+                        }}
+                      />
+                    </div>
                   </Link>
                 </div>
               </div>

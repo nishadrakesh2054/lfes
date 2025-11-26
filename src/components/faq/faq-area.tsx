@@ -1,103 +1,133 @@
+"use client";
 import Link from "next/link";
-import { SearchSvgTwo } from "../svg";
 import FaqItem from "./faq-item";
 
 // navData.js
 export const navItems = [
-  { id: "home", label: "Student", active: true },
-  { id: "profile", label: "Instructor", active: false },
+  { id: "general", label: "General", active: true },
+  { id: "admission", label: "Admission", active: false },
 ];
 
 const tabContentData = [
   {
-    id: "home",
-    label: "home-tab",
-    title: "Home",
+    id: "general",
+    label: "general-tab",
+    title: "General",
     topics: [
-      { id: 1, text: "Account/Profile (1)", href: "/my-profile" },
-      { id: 2, text: "Course Taking (2)", href: "/course-with-filter" },
-      { id: 3, text: "Getting Started (1)", href: "#" },
-      { id: 4, text: "Mobile (1)", href: "#" },
-      { id: 5, text: "Purchase/Refunds (3)", href: "#" },
-      { id: 6, text: "Troubleshooting (2)", href: "#" },
+      { id: 1, text: "About LFES", href: "/about" },
+      { id: 2, text: "School Programs", href: "/primary-school" },
+      { id: 3, text: "Facilities", href: "/facilities" },
+      { id: 4, text: "Events", href: "/event" },
+      { id: 5, text: "Gallery", href: "/gallery" },
+      { id: 6, text: "Contact", href: "/contact" },
     ],
     faqs: [
       {
         id: 1,
-        question: "What is Emeritus Education System?",
+        active: true,
+        question: "What is Little Flowers English School (LFES)?",
         answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "Little Flowers English School (LFES) is a leading educational institution in Eastern Nepal, dedicated to providing world-class education with innovative teaching methods. We offer comprehensive programs from Primary School through Senior High School, focusing on holistic development, academic excellence, and character building.",
       },
       {
         id: 2,
-        active: true,
-        question: "Can I get a refund for my Premium Membership payment?",
+        question: "What programs does LFES offer?",
         answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "LFES offers multiple educational programs including Progressive Wing (Special Education), Primary School, Middle School, High School, and Senior High School. Each program is designed to meet the developmental needs of students at different stages, following the Nepal Government curriculum blended with progressive international teaching practices.",
       },
       {
         id: 3,
-        question: "How does the Affiliate Program work?",
+        question: "What facilities are available at LFES?",
         answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "LFES boasts state-of-the-art facilities including modern science laboratories, a well-stocked library, computer labs, sports complex with indoor stadium and swimming pool, auditorium, cafeteria, art and music rooms, playgrounds, and a medical room. All facilities are designed to support comprehensive learning and student well-being.",
       },
       {
         id: 4,
-        question: "What is included in Standard membership plan?",
+        question: "What is the New Zealand 3Di Program?",
         answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "The New Zealand 3Di Program is an international learning framework integrated into our curriculum. It focuses on developing inquiry, innovation, and inspiration in students, helping them become critical thinkers and creative problem solvers while maintaining alignment with the Nepal Government curriculum.",
       },
       {
         id: 5,
-        question: "How to choose the right class for me?",
+        question: "What extracurricular activities are available?",
         answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "LFES offers a wide range of extracurricular activities including sports (football, volleyball, basketball, cricket, table tennis, badminton, karate, tae-kwan-do), music and dance (folk, classical, modern), various musical instruments, fine arts, debates, quiz competitions, essay writing, and Nepal Scouts. These activities help students develop skills beyond academics.",
+      },
+      {
+        id: 6,
+        question: "How can I contact the school?",
+        answer:
+          "You can contact LFES by phone at +(977) 023-530172 or via email at info@lfes.edu.np. You can also visit our Contact page for more information, schedule a campus visit, or fill out our online inquiry form. Our administrative office is open during regular school hours.",
+      },
+      {
+        id: 7,
+        question: "Where is LFES located?",
+        answer:
+          "LFES is located in Eastern Nepal, serving students from the region and beyond. For specific address and directions, please visit our Contact page or call our administrative office. We also provide transportation services for students.",
       },
     ],
   },
   {
-    id: "profile",
-    label: "profile-tab",
-    title: "Profile",
+    id: "admission",
+    label: "admission-tab",
+    title: "Admission",
     topics: [
-      { id: 1, text: "Account/Profile (1)", href: "#" },
-      { id: 2, text: "Course Taking (2)", href: "#" },
-      { id: 3, text: "Getting Started (1)", href: "#" },
-      { id: 4, text: "Mobile (1)", href: "#" },
-      { id: 5, text: "Purchase/Refunds (3)", href: "#" },
-      { id: 6, text: "Troubleshooting (2)", href: "#" },
+      { id: 1, text: "Admission Process", href: "/admission" },
+      { id: 2, text: "Primary School", href: "/primary-school" },
+      { id: 3, text: "Middle School", href: "/middle-school" },
+      { id: 4, text: "High School", href: "/high-school" },
+      { id: 5, text: "Senior High School", href: "/senior-high-school" },
+      { id: 6, text: "Progressive Wing", href: "/progressive" },
     ],
     faqs: [
       {
-        id: 6,
-        question: "What is Emeritus Education System?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        id: 7,
-        active: true,
-        question: "Can I get a refund for my Premium Membership payment?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
         id: 8,
-        question: "How does the Affiliate Program work?",
+        active: true,
+        question: "How do I apply for admission to LFES?",
         answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "You can apply for admission by visiting our Admission page and filling out the online application form. The process includes submitting required documents, attending an interview (if applicable), and completing the enrollment formalities. For detailed information about admission requirements and procedures, please visit our Admission page or contact our admission office.",
       },
       {
         id: 9,
-        question: "What is included in Standard membership plan?",
+        question: "What documents are required for admission?",
         answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "Required documents typically include: birth certificate, previous school transcripts or report cards, transfer certificate (if applicable), passport-sized photographs, medical records, and parent/guardian identification documents. Specific requirements may vary by grade level. Please check our Admission page for the complete list of required documents.",
       },
       {
         id: 10,
-        question: "How to choose the right class for me?",
+        question: "What is the admission age requirement?",
         answer:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "Admission age requirements vary by program. For Primary School, students typically start at age 5-6. Each grade level has appropriate age ranges. We also consider individual student readiness and development. Please contact our admission office for specific age requirements for the grade you're interested in.",
+      },
+      {
+        id: 11,
+        question: "When does the admission process begin?",
+        answer:
+          "Admissions are open throughout the year, but the main admission period typically begins several months before the new academic year starts. We encourage early applications as seats are limited. For current admission dates and deadlines, please visit our Admission page or contact our admission office directly.",
+      },
+      {
+        id: 12,
+        question: "Is there an entrance exam or interview?",
+        answer:
+          "Depending on the grade level and program, we may conduct assessments or interviews to understand the student's academic level and learning needs. This helps us ensure proper placement and support. The Progressive Wing may have additional assessments. Details about specific requirements are provided during the application process.",
+      },
+      {
+        id: 13,
+        question: "What are the fee structures and payment options?",
+        answer:
+          "Fee structures vary by program and grade level. We offer transparent fee information and flexible payment options. For detailed fee information, please contact our admission office or visit our campus. We are committed to making quality education accessible and may have scholarship opportunities available.",
+      },
+      {
+        id: 14,
+        question: "Do you offer scholarships or financial aid?",
+        answer:
+          "LFES may offer scholarships and financial assistance to deserving students based on academic merit, financial need, or special circumstances. We believe in providing quality education to all students. Please contact our admission office for information about available scholarships and financial aid programs.",
+      },
+      {
+        id: 15,
+        question: "Can students transfer mid-year?",
+        answer:
+          "Mid-year transfers are considered on a case-by-case basis, subject to availability of seats and completion of required documentation including transfer certificates from the previous school. We recommend contacting our admission office as early as possible to discuss transfer possibilities and requirements.",
       },
     ],
   },
@@ -106,6 +136,23 @@ const tabContentData = [
 export default function FaqArea() {
   return (
     <section className="tp-faq-area tp-faq-p pt-50 pb-120">
+      <style jsx>{`
+        .nav-tabs .nav-link.active {
+          color: #0079c0 !important;
+          border-bottom-color: #0079c0 !important;
+          font-weight: 600 !important;
+        }
+        .nav-tabs .nav-link:not(.active) {
+          color: #666 !important;
+        }
+        .nav-tabs .nav-link:not(.active):hover {
+          color: #0079c0 !important;
+        }
+        .accordion-button:not(.collapsed) {
+          color: #161613 !important;
+          background-color: #f8f9fa !important;
+        }
+      `}</style>
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
@@ -127,6 +174,23 @@ export default function FaqArea() {
                       aria-controls={item.id}
                       aria-selected={item.active}
                       tabIndex={item.active ? 0 : -1}
+                      style={{
+                        color: item.active ? "#0079c0" : "#666",
+                        border: "none",
+                        fontWeight: item.active ? "600" : "500",
+                        padding: "12px 24px",
+                        transition: "all 0.3s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!item.active) {
+                          e.currentTarget.style.color = "#0079c0";
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!item.active) {
+                          e.currentTarget.style.color = "#666";
+                        }
+                      }}
                     >
                       {item.label}
                     </button>
@@ -139,30 +203,33 @@ export default function FaqArea() {
                   <div
                     key={tab.id}
                     className={`tab-pane fade ${
-                      tab.id === "home" ? "show active" : ""
+                      tab.id === "general" ? "show active" : ""
                     }`}
                     id={tab.id}
                     role="tabpanel"
                     aria-labelledby={tab.label}
                   >
                     <div className="row">
-                      <div className="col-lg-4">
-                        <div className="tp-faq-wrap">
-                          <div className="tp-faq-search">
-                            <div className="tp-header-2-search">
-                              <form action="#">
-                                <input type="text" placeholder="Search..." />
-                                <button
-                                  className="tp-header-2-search-btn"
-                                  type="submit"
-                                >
-                                  <span>
-                                    <SearchSvgTwo />
-                                  </span>
-                                </button>
-                              </form>
+                      <div className="col-lg-8 order-1 order-lg-2">
+                        <div className="tp-faq-box">
+                          <div className="tpd-accordion">
+                            <div
+                              className="accordion accordion-flush"
+                              id={tab.id}
+                            >
+                              {tab.faqs.map((faq) => (
+                                <FaqItem
+                                  key={faq.id}
+                                  faq={faq}
+                                  parentId={tab.id}
+                                />
+                              ))}
                             </div>
                           </div>
+                        </div>
+                      </div>
+                      <div className="col-lg-4 order-2 order-lg-1">
+                        <div className="tp-faq-wrap">
                           <div className="tp-faq-sidebar">
                             <h4 className="tp-faq-sidebar-title">
                               Related Topics
@@ -174,28 +241,7 @@ export default function FaqArea() {
                                 </li>
                               ))}
                             </ul>
-                            <div className="tp-faq-sidebar-btn">
-                              <Link
-                                className="tp-btn-inner w-100 text-center"
-                                href="/contact"
-                              >
-                                Contact Us
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-8">
-                        <div className="tp-faq-box">
-                          <div className="tpd-accordion">
-                            <div
-                              className="accordion accordion-flush"
-                              id={tab.id}
-                            >
-                              {tab.faqs.map((faq) => (
-                                <FaqItem key={faq.id} faq={faq} parentId={tab.id} />
-                              ))}
-                            </div>
+                    
                           </div>
                         </div>
                       </div>

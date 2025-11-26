@@ -10,7 +10,7 @@ export default function UniversityProgramPage() {
   return (
     <main>
       {/* breadcrumb area start */}
-      <BreadcrumbTwo title="Senior High School" subtitle="Programs" />
+      <BreadcrumbTwo title="Senior High School" subtitle="Advanced Programs" />
 
       {/* about area start */}
       <AboutTwo spacing="pt-90 pb-90" />

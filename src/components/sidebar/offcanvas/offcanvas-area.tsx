@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/assets/img/bglogo2.png";
+import logo from "@/assets/img/lfeslogo1.png";
 import {
   CloseThreeSvg,
   FbSvg,
@@ -42,7 +42,30 @@ export default function OffcanvasArea({
             <div className="offcanvas__top mb-90 d-flex justify-content-between align-items-center">
               <div className="offcanvas__logo tp-header-logo w-0">
                 <Link href="/">
-                  <Image src={logo} alt="logo" height={100} width={100} />
+                  <div
+                    style={{
+                      width: "70px",
+                      height: "70px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Image
+                      src={logo}
+                      alt="logo"
+                      height={70}
+                      width={70}
+                      quality={100}
+                      style={{
+                        objectFit: "contain",
+                        width: "auto",
+                        height: "auto",
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                      }}
+                    />
+                  </div>
                 </Link>
               </div>
             </div>

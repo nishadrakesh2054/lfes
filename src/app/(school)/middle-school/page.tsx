@@ -1,5 +1,5 @@
 // import AboutTwo from "@/components/about/about-two";
-'use client';
+"use client";
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 import school1 from "@/assets/img/hero/hero2.jpeg";
 import ECAgallery from "@/components/gallery/eca-gallery";
@@ -11,7 +11,7 @@ const Middlepage = () => {
     <>
       <main>
         {/* breadcrumb area start */}
-        <BreadcrumbTwo title="Middle School" subtitle="Programs" />
+        <BreadcrumbTwo title="Middle School" subtitle="Transition Years" />
 
         {/* Welcome Section */}
         <section className="pt-80 pb-60">
@@ -38,26 +38,37 @@ const Middlepage = () => {
                   </p>
                   <h2
                     className="fw-bold mb-4"
-                    style={{ color: "#0b1f3a", fontSize: "clamp(2rem, 3vw, 2.5rem)" }}
+                    style={{
+                      color: "#0b1f3a",
+                      fontSize: "clamp(2rem, 3vw, 2.5rem)",
+                    }}
                   >
                     Guiding Transition Years With Purpose & Confidence
                   </h2>
-                  <p className="text-muted lh-lg" style={{ textAlign: "justify" }}>
-                    LFES follows the Nepal Government curriculum and blends it with progressive
-                    teaching practices from international contexts. Meaningful, activity-based
-                    learning helps students discover their strengths, ambitions, and interests while
+                  <p
+                    className="text-muted lh-lg"
+                    style={{ textAlign: "justify" }}
+                  >
+                    LFES follows the Nepal Government curriculum and blends it
+                    with progressive teaching practices from international
+                    contexts. Meaningful, activity-based learning helps students
+                    discover their strengths, ambitions, and interests while
                     applying new knowledge in authentic ways.
                   </p>
-                  <p className="text-muted lh-lg" style={{ textAlign: "justify" }}>
-                    Middle schoolers are in a unique transition stage. We focus on developing
-                    independent learners who are ready for high school and beyond. Conceptual depth,
-                    specialized subject focus, and a wide range of extracurricular experiences keep
+                  <p
+                    className="text-muted lh-lg"
+                    style={{ textAlign: "justify" }}
+                  >
+                    Middle schoolers are in a unique transition stage. We focus
+                    on developing independent learners who are ready for high
+                    school and beyond. Conceptual depth, specialized subject
+                    focus, and a wide range of extracurricular experiences keep
                     students motivated and well-balanced.
                   </p>
                   <div className="quote-card mt-3 p-3 rounded-3">
                     <p className="mb-0 fst-italic text-muted text-center">
-                      “Working together, respecting all, because everyone is special and everyone
-                      matters.”
+                      “Working together, respecting all, because everyone is
+                      special and everyone matters.”
                     </p>
                   </div>
                 </div>

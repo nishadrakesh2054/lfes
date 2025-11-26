@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const page = () => {
   return (
     <>
-      <BreadcrumbTwo title="Staff & Teachers" subtitle="Our Dedicated Team Members" />
+      <BreadcrumbTwo title="Our Teachers" subtitle="Meet Our Educators" />
 
       {/* group pic */}
       <TeamArea />

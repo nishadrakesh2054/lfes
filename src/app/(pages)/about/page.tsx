@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main>
-      <BreadcrumbTwo title="About" subtitle="LFES DETAILS" />
+      <BreadcrumbTwo title="About Us" subtitle="Learn About LFES" />
 
       {/* tutor area start */}
       <TutorArea />

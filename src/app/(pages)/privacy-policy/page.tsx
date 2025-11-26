@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <main>
-      <BreadcrumbTwo title="Faq Page" subtitle="Faq Page" />
+      <BreadcrumbTwo title="Privacy Policy" subtitle="Your Privacy Matters" />
 
       {/* privacy policy area start */}
       <section

@@ -10,7 +10,7 @@ const SecondarySchool = () => {
     <>
       <main>
         {/* breadcrumb area start */}
-        <BreadcrumbTwo title="High School" subtitle="HIGH SCHOOL" />
+        <BreadcrumbTwo title="High School" subtitle="High School Education" />
 
         {/* Welcome Section */}
         <section className="pt-80 pb-60">

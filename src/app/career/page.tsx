@@ -56,7 +56,7 @@ export default function CareerPage() {
 
   return (
     <main>
-      <BreadcrumbTwo title="Career" subtitle="Explore Your Opportunities" />
+      <BreadcrumbTwo title="Career Opportunities" subtitle="Join Our Team" />
 
       <section className="pt-120 pb-120">
         <div className="container">

@@ -9,7 +9,10 @@ const page = () => {
     <>
       <main>
         {/* breadcrumb area start */}
-        <BreadcrumbTwo title="Progressive Wing" subtitle="PROGRESSIVE WING" />
+        <BreadcrumbTwo
+          title="Progressive Wing"
+          subtitle="Special Education Program"
+        />
         {/* breadcrumb area end */}
 
         {/* service area start */}

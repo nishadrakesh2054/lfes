@@ -11,7 +11,7 @@ export default function BlogListPage() {
     <main>
       {/* breadcrumb area start */}
       {/* <BreadcrumbOne subtitle="Our Blog" title="Right Sidebar" /> */}
-      <BreadcrumbTwo title="Our Blog" subtitle="Academic Blogs" />
+      <BreadcrumbTwo title="Our Blog" subtitle="Latest News & Articles" />
       {/* breadcrumb area end */}
 
       {/* blog list area start */}

@@ -9,7 +9,10 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <main>
-      <BreadcrumbTwo title="Faq Page" subtitle="Faq Page" />
+      <BreadcrumbTwo
+        title="Frequently Asked Questions"
+        subtitle="Get Your Answers"
+      />
 
       {/* breadcrumb area end */}
 
