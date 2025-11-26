@@ -1,10 +1,21 @@
 import { Metadata } from "next";
 import ContactArea from "@/components/contact/contact-area";
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
+import { generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact - lfes",
-};
+export const metadata: Metadata = generateMetadata({
+  title: "Contact Us",
+  description:
+    "Get in touch with Little Flowers English School (LFES) in Birtamod, Jhapa, Nepal. Contact us via phone, email, or visit our campus for admissions and inquiries.",
+  keywords: [
+    "Contact LFES",
+    "School Contact",
+    "Admission Inquiry",
+    "LFES Address",
+    "Birtamod School Contact",
+  ],
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

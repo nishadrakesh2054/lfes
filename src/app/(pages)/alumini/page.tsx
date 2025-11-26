@@ -3,10 +3,21 @@ import { Metadata } from "next";
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 // import Alumini from "@/components/alumini/alumini";
 import Image from "next/image";
+import { generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Alumni - LFES",
-};
+export const metadata: Metadata = generateMetadata({
+  title: "Our Alumni",
+  description:
+    "Join the LFES Alumni Network. Connect with past students, share achievements, and stay part of the Little Flowers English School community. Celebrating alumni success worldwide.",
+  keywords: [
+    "LFES Alumni",
+    "Alumni Network",
+    "School Alumni",
+    "Graduates",
+    "Alumni Community",
+  ],
+  path: "/alumini",
+});
 
 export default function AlumniPage() {
   return (

@@ -8,10 +8,21 @@ import TestimonialOne from "@/components/testimonial/testimonial-one";
 import ProgramAreaThree from "@/components/program/program-area-three";
 import HeroAreaOne from "@/components/hero-area/hero-area-one";
 import CounterSix from "@/components/counter/counter-six";
+import { generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "LFES",
-};
+export const metadata: Metadata = generateMetadata({
+  title: "Home",
+  description:
+    "Little Flowers English School (LFES) - Premier educational institution in Birtamod, Jhapa, Nepal. Offering quality education from Progressive Wing to Senior High School with world-class facilities.",
+  keywords: [
+    "LFES",
+    "Little Flowers English School",
+    "Education Nepal",
+    "School Birtamod",
+    "Jhapa School",
+    "Quality Education",
+  ],
+});
 
 export default function HomePage() {
   return (

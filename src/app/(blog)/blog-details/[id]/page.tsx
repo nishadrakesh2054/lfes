@@ -2,13 +2,35 @@ import all_blogs from "@/data/blog-data";
 import BlogDetailsArea from "../_components/blog-details-area";
 import BlogDetailsRelatedBlogs from "@/components/blog/details/blog-details-related-blogs";
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import { Metadata } from "next";
 
-export function generateMetadata({ params }: { params: { id: string } }) {
+export function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Metadata {
   const id = params.id;
   const blog = all_blogs.find((item) => item.id == Number(id));
-  return {
-    title: blog?.title,
-  };
+
+  if (!blog) {
+    return genMeta({
+      title: "Blog Not Found",
+      description: "The requested blog post could not be found.",
+      path: `/blog-details/${id}`,
+      noIndex: true,
+    });
+  }
+
+  return genMeta({
+    title: blog.title || "Blog Post",
+    description:
+      blog.desc ||
+      `Read ${blog.title} at Little Flowers English School (LFES).`,
+    keywords: ["LFES Blog", "School News", blog.title || ""],
+    path: `/blog-details/${id}`,
+    image: blog.img,
+  });
 }
 
 export default function BlogDetailsPage({

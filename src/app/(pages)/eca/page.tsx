@@ -2,10 +2,21 @@ import { Metadata } from "next";
 
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 import ECAgallery from "@/components/gallery/eca-gallery";
+import { generateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "ECA - LFES",
-};
+export const metadata: Metadata = generateMetadata({
+  title: "Extra Curricular Activities",
+  description:
+    "Discover our comprehensive Extra Curricular Activities (ECA) program at LFES including sports, music, dance, fine arts, debates, and more to develop students' talents and skills.",
+  keywords: [
+    "LFES ECA",
+    "Extra Curricular Activities",
+    "School Sports",
+    "Music Dance",
+    "Student Activities",
+  ],
+  path: "/eca",
+});
 
 export default function EcaPage() {
   return (
