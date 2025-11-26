@@ -140,7 +140,7 @@ const PrimarySchool = () => {
               </p>
             </div>
 
-            <ECAgallery />
+            <ECAgallery categories={["primary-school"]} />
           </div>
         </section>
       </main>

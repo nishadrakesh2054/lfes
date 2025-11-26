@@ -137,7 +137,7 @@ const SecondarySchool = () => {
               </p>
             </div>
 
-            <ECAgallery />
+            <ECAgallery categories={["high-school"]} />
           </div>
         </section>
       </main>

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { RightArrowSeven } from "../svg";
 import ErrMsg from "../err-msg";
@@ -46,9 +46,51 @@ export default function ApplicationForm() {
     reset,
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    reset();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/admission", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to submit application");
+      }
+
+      setSubmitStatus({
+        type: "success",
+        message:
+          result.message ||
+          "Your application has been submitted successfully! We will contact you soon.",
+      });
+      reset(); // Clear the form
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Sorry, there was an error submitting your application. Please try again later.";
+      setSubmitStatus({
+        type: "error",
+        message: errorMessage,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const brandColor = "#0079C0";
@@ -100,7 +142,7 @@ export default function ApplicationForm() {
             style={{ backgroundColor: brandColor }}
           >
             <div className="d-flex align-items-center">
-              <i className="fas fa-file-alt me-2 fs-5"></i>
+              <i className="bi bi-file-earmark-text me-2 fs-5"></i>
               <div>
                 <h5 className="mb-0 fw-bold text-light text-uppercase">
                   Application Form
@@ -118,7 +160,7 @@ export default function ApplicationForm() {
                 className="fw-bold mb-3 d-flex align-items-center"
                 style={{ color: brandColor }}
               >
-                <i className="fas fa-user-graduate me-2"></i>
+                <i className="bi bi-mortarboard me-2"></i>
                 Student Information
               </h6>
               <div className="row g-3">
@@ -130,7 +172,7 @@ export default function ApplicationForm() {
                   <div className="input-group">
                     <span className="input-group-text bg-light">
                       <i
-                        className="fas fa-user"
+                        className="bi bi-person"
                         style={{ color: brandColor }}
                       ></i>
                     </span>
@@ -141,6 +183,7 @@ export default function ApplicationForm() {
                       {...register("studentName", {
                         required: "Student name is required",
                       })}
+                      disabled={isSubmitting}
                     />
                   </div>
                   {errors.studentName?.message && (
@@ -155,7 +198,7 @@ export default function ApplicationForm() {
                   <div className="input-group">
                     <span className="input-group-text bg-light">
                       <i
-                        className="fas fa-calendar-alt"
+                        className="bi bi-calendar3"
                         style={{ color: brandColor }}
                       ></i>
                     </span>
@@ -166,6 +209,7 @@ export default function ApplicationForm() {
                       {...register("dateOfBirth", {
                         required: "Date of birth is required",
                       })}
+                      disabled={isSubmitting}
                     />
                   </div>
                   {errors.dateOfBirth?.message && (
@@ -188,6 +232,7 @@ export default function ApplicationForm() {
                           {...register("gender", {
                             required: "Gender is required",
                           })}
+                          disabled={isSubmitting}
                         />
                         <label
                           className="btn"
@@ -207,7 +252,13 @@ export default function ApplicationForm() {
                           }}
                         >
                           <i
-                            className={`fas fa-${value === "male" ? "mars" : value === "female" ? "venus" : "genderless"} me-1`}
+                            className={`bi ${
+                              value === "male"
+                                ? "bi-gender-male"
+                                : value === "female"
+                                  ? "bi-gender-female"
+                                  : "bi-gender-ambiguous"
+                            } me-1`}
                           ></i>
                           {value.charAt(0).toUpperCase() + value.slice(1)}
                         </label>
@@ -227,7 +278,7 @@ export default function ApplicationForm() {
                   <div className="input-group">
                     <span className="input-group-text bg-light">
                       <i
-                        className="fas fa-graduation-cap"
+                        className="bi bi-mortarboard"
                         style={{ color: brandColor }}
                       ></i>
                     </span>
@@ -237,6 +288,7 @@ export default function ApplicationForm() {
                       {...register("gradeApplied", {
                         required: "Grade / Level is required",
                       })}
+                      disabled={isSubmitting}
                     >
                       <option value="">Select grade / level</option>
                       {gradeOptions.map((option) => (
@@ -259,7 +311,7 @@ export default function ApplicationForm() {
                   <div className="input-group">
                     <span className="input-group-text bg-light">
                       <i
-                        className="fas fa-school"
+                        className="bi bi-bank"
                         style={{ color: brandColor }}
                       ></i>
                     </span>
@@ -270,6 +322,7 @@ export default function ApplicationForm() {
                       {...register("currentSchool", {
                         required: "Current school is required",
                       })}
+                      disabled={isSubmitting}
                     />
                   </div>
                   {errors.currentSchool?.message && (
@@ -288,7 +341,7 @@ export default function ApplicationForm() {
                 className="fw-bold mb-3 d-flex align-items-center"
                 style={{ color: brandColor }}
               >
-                <i className="fas fa-users me-2"></i>
+                <i className="bi bi-people-fill me-2"></i>
                 Parents Details
               </h6>
               <div className="row g-3">
@@ -299,7 +352,7 @@ export default function ApplicationForm() {
                   <div className="input-group">
                     <span className="input-group-text bg-light">
                       <i
-                        className="fas fa-user"
+                        className="bi bi-person"
                         style={{ color: brandColor }}
                       ></i>
                     </span>
@@ -310,6 +363,7 @@ export default function ApplicationForm() {
                       {...register("fatherName", {
                         required: "Father's name is required",
                       })}
+                      disabled={isSubmitting}
                     />
                   </div>
                   {errors.fatherName?.message && (
@@ -324,7 +378,7 @@ export default function ApplicationForm() {
                   <div className="input-group">
                     <span className="input-group-text bg-light">
                       <i
-                        className="fas fa-briefcase"
+                        className="bi bi-briefcase-fill"
                         style={{ color: brandColor }}
                       ></i>
                     </span>
@@ -335,6 +389,7 @@ export default function ApplicationForm() {
                       {...register("fatherOccupation", {
                         required: "Occupation is required",
                       })}
+                      disabled={isSubmitting}
                     />
                   </div>
                   {errors.fatherOccupation?.message && (
@@ -350,7 +405,7 @@ export default function ApplicationForm() {
                   <div className="input-group">
                     <span className="input-group-text bg-light">
                       <i
-                        className="fas fa-phone"
+                        className="bi bi-telephone-fill"
                         style={{ color: brandColor }}
                       ></i>
                     </span>
@@ -361,6 +416,7 @@ export default function ApplicationForm() {
                       {...register("fatherContact", {
                         required: "Contact is required",
                       })}
+                      disabled={isSubmitting}
                     />
                   </div>
                   {errors.fatherContact?.message && (
@@ -375,7 +431,7 @@ export default function ApplicationForm() {
                   <div className="input-group">
                     <span className="input-group-text bg-light">
                       <i
-                        className="fas fa-user"
+                        className="bi bi-person"
                         style={{ color: brandColor }}
                       ></i>
                     </span>
@@ -386,6 +442,7 @@ export default function ApplicationForm() {
                       {...register("motherName", {
                         required: "Mother's name is required",
                       })}
+                      disabled={isSubmitting}
                     />
                   </div>
                   {errors.motherName?.message && (
@@ -400,7 +457,7 @@ export default function ApplicationForm() {
                   <div className="input-group">
                     <span className="input-group-text bg-light">
                       <i
-                        className="fas fa-briefcase"
+                        className="bi bi-briefcase-fill"
                         style={{ color: brandColor }}
                       ></i>
                     </span>
@@ -411,6 +468,7 @@ export default function ApplicationForm() {
                       {...register("motherOccupation", {
                         required: "Occupation is required",
                       })}
+                      disabled={isSubmitting}
                     />
                   </div>
                   {errors.motherOccupation?.message && (
@@ -426,7 +484,7 @@ export default function ApplicationForm() {
                   <div className="input-group">
                     <span className="input-group-text bg-light">
                       <i
-                        className="fas fa-phone"
+                        className="bi bi-telephone-fill"
                         style={{ color: brandColor }}
                       ></i>
                     </span>
@@ -437,6 +495,7 @@ export default function ApplicationForm() {
                       {...register("motherContact", {
                         required: "Contact is required",
                       })}
+                      disabled={isSubmitting}
                     />
                   </div>
                   {errors.motherContact?.message && (
@@ -455,7 +514,7 @@ export default function ApplicationForm() {
                 className="fw-bold mb-3 d-flex align-items-center"
                 style={{ color: brandColor }}
               >
-                <i className="fas fa-address-card me-2"></i>
+                <i className="bi bi-person-lines-fill me-2"></i>
                 Contact & Address
               </h6>
               <div className="row g-3">
@@ -467,7 +526,7 @@ export default function ApplicationForm() {
                   <div className="input-group">
                     <span className="input-group-text bg-light">
                       <i
-                        className="fas fa-envelope"
+                        className="bi bi-envelope-fill"
                         style={{ color: brandColor }}
                       ></i>
                     </span>
@@ -477,7 +536,12 @@ export default function ApplicationForm() {
                       placeholder="Email address"
                       {...register("correspondenceEmail", {
                         required: "Email for correspondence is required",
+                        pattern: {
+                          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                          message: "Please enter a valid email address",
+                        },
                       })}
+                      disabled={isSubmitting}
                     />
                   </div>
                   {errors.correspondenceEmail?.message && (
@@ -492,7 +556,7 @@ export default function ApplicationForm() {
                   <div className="input-group">
                     <span className="input-group-text bg-light align-items-start pt-3">
                       <i
-                        className="fas fa-map-marker-alt"
+                        className="bi bi-geo-alt-fill"
                         style={{ color: brandColor }}
                       ></i>
                     </span>
@@ -501,6 +565,7 @@ export default function ApplicationForm() {
                       rows={3}
                       placeholder="Street, Area, District, Country"
                       {...register("localAddress")}
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
                 </div>
@@ -516,7 +581,7 @@ export default function ApplicationForm() {
                 className="fw-bold mb-3 d-flex align-items-center"
                 style={{ color: brandColor }}
               >
-                <i className="fas fa-info-circle me-2"></i>
+                <i className="bi bi-info-circle-fill me-2"></i>
                 How did you come to know about LFES?
               </h6>
               <div className="row g-3">
@@ -530,6 +595,7 @@ export default function ApplicationForm() {
                         value={label}
                         {...register("heardFrom")}
                         style={{ accentColor: brandColor }}
+                        disabled={isSubmitting}
                       />
                       <label
                         className="form-check-label fw-semibold"
@@ -555,22 +621,65 @@ export default function ApplicationForm() {
               backgroundColor: brandColor,
               borderColor: brandColor,
             }}
+            disabled={isSubmitting}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#005a8f";
-              e.currentTarget.style.borderColor = "#005a8f";
+              if (!isSubmitting) {
+                e.currentTarget.style.backgroundColor = "#005a8f";
+                e.currentTarget.style.borderColor = "#005a8f";
+              }
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = brandColor;
-              e.currentTarget.style.borderColor = brandColor;
+              if (!isSubmitting) {
+                e.currentTarget.style.backgroundColor = brandColor;
+                e.currentTarget.style.borderColor = brandColor;
+              }
             }}
           >
-            <i className="fas fa-paper-plane me-2"></i>
-            Submit Application
-            <span className="ms-2">
-              <RightArrowSeven />
-            </span>
+            {isSubmitting ? (
+              <>
+                <span
+                  className="spinner-border spinner-border-sm me-2"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                Submitting...
+              </>
+            ) : (
+              <>
+                <i className="bi bi-send-fill me-2"></i>
+                Submit Application
+                <span className="ms-2">
+                  <RightArrowSeven />
+                </span>
+              </>
+            )}
           </button>
         </div>
+
+        {/* Success/Error Message */}
+        {submitStatus.type && (
+          <div
+            className={`alert alert-${
+              submitStatus.type === "success" ? "success" : "danger"
+            } d-flex align-items-center mt-4 mb-0`}
+            role="alert"
+            style={{
+              borderRadius: "8px",
+              fontSize: "15px",
+              padding: "15px 20px",
+            }}
+          >
+            <i
+              className={`bi ${
+                submitStatus.type === "success"
+                  ? "bi-check-circle-fill"
+                  : "bi-exclamation-triangle-fill"
+              } me-2`}
+              style={{ fontSize: "1.2rem" }}
+            ></i>
+            <div>{submitStatus.message}</div>
+          </div>
+        )}
       </form>
     </>
   );

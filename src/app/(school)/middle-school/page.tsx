@@ -188,7 +188,7 @@ const Middlepage = () => {
               </p>
             </div>
 
-            <ECAgallery />
+            <ECAgallery categories={["middle-school"]} />
           </div>
         </section>
       </main>

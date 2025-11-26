@@ -1,50 +1,126 @@
 import Image from "next/image";
 import EventBox from "./event-box";
-import { PlusThreeSvg } from "@/components/svg";
-import details_overlay_img from "@/assets/img/event/event/event-details-overlay.png";
-import { IEventDT } from "@/types/event-d-t";
+
+type EventNotice = {
+  _id: string;
+  title: string;
+  date: string;
+  description?: string;
+  category: "event" | "notice";
+  image?: {
+    url: string;
+    metadata?: {
+      dimensions?: {
+        width: number;
+        height: number;
+      };
+    };
+  };
+};
 
 type IProps = {
-  event:IEventDT
-}
+  event: EventNotice;
+};
 
-export default function EventDetailsArea({event}:IProps) {
+export default function EventDetailsArea({ event }: IProps) {
   return (
     <section className="tp-event-details-area pt-80 pb-70">
       <div className="container">
         <div className="row">
           <div className="col-lg-8">
             <div className="tp-event-details-wrapper">
-              <div className="tp-event-details-about">
-                <h4 >{event.title}</h4>
-                <p>The Creating Futures Through Technology Conference – Lfes Tech Center is sponsored jointly by the Mississippi Community College Board and the Mississippi Universities Board with a goal of promoting collaboration as well as transforming teaching and learning on college campuses.
-                </p>
-                <p>Celebrating our 20th anniversary this year on the gulf coast, the annual conference is designed to be the key venue where the higher education faculty, administrators and IT professionals come to share with one another their strategies, methods, This is an excellent marketing opportunity to reach C-Suite level administrators and influential educators. Some limited vendor exhibitor spaces and sponsorships may still be available with speaking.</p>
-                <button className="tp-event-details-about-more">
-                  <span><PlusThreeSvg/></span> Show more
-                </button>
-                <div className="tp-event-details-about-overlay">
-                  <Image src={details_overlay_img} alt="details-overlay" style={{ height: "auto" }} />
+              {/* Event Image */}
+              {event.image?.url && (
+                <div
+                  className="mb-4"
+                  style={{ borderRadius: "12px", overflow: "hidden" }}
+                >
+                  <Image
+                    src={event.image.url}
+                    alt={event.title}
+                    width={800}
+                    height={500}
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      objectFit: "cover",
+                    }}
+                    className="img-fluid"
+                  />
                 </div>
+              )}
+
+              {/* Event Title */}
+              <div className="tp-event-details-about mb-4">
+                <h2
+                  className="mb-3"
+                  style={{
+                    color: "#0079c0",
+                    fontSize: "2rem",
+                    fontWeight: 700,
+                  }}
+                >
+                  {event.title}
+                </h2>
+
+                {/* Event Description */}
+                {event.description && (
+                  <div
+                    className="event-description"
+                    style={{
+                      fontSize: "1.1rem",
+                      lineHeight: "1.8",
+                      color: "#555",
+                      marginTop: "20px",
+                    }}
+                  >
+                    <p style={{ whiteSpace: "pre-line" }}>
+                      {event.description}
+                    </p>
+                  </div>
+                )}
+
+                {!event.description && (
+                  <p
+                    style={{
+                      color: "#666",
+                      fontSize: "1rem",
+                      lineHeight: "1.6",
+                    }}
+                  >
+                    More details about this {event.category} will be available
+                    soon.
+                  </p>
+                )}
               </div>
-              <div className="tp-event-details-cover">
-                <h4 >During this event we’ll cover</h4>
-                <ul>
-                  <li>How to get started learning JavaScript the right way</li>
-                  <li>JavaScript for Beginners & CS Prep curriculum details</li>
-                  <li>What the experience of learning in an online classroom is like</li>
-                  <li>How these programs prepare you for Coders and other top coding programs.</li>
-                </ul>
+
+              {/* Category Badge */}
+              <div className="mb-4">
+                <span
+                  style={{
+                    display: "inline-block",
+                    padding: "8px 20px",
+                    backgroundColor:
+                      event.category === "event" ? "#0079c0" : "#28a745",
+                    color: "#fff",
+                    borderRadius: "25px",
+                    fontSize: "0.9rem",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {event.category === "event" ? "Event" : "Notice"}
+                </span>
               </div>
-             
             </div>
           </div>
+
+          {/* Sidebar */}
           <div className="col-lg-4">
-            <EventBox />
+            <EventBox event={event} />
           </div>
         </div>
-      
       </div>
     </section>
-  )
+  );
 }

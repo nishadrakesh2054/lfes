@@ -74,7 +74,7 @@ export default function EcaPage() {
               {/* <ECAgallery /> */}
 
               <div className="mb-50 mt-50">
-                <ECAgallery />
+                <ECAgallery categories={["eca"]} />
               </div>
 
               <p className="text-muted lh-lg" style={{ textAlign: "justify" }}>

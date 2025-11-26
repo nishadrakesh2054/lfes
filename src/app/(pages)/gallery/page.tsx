@@ -3,9 +3,30 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 
+type GalleryImage = {
+  _id: string;
+  title: string;
+  category: string;
+  imageUrl: string;
+  driveLink?: string;
+  createdAt?: string;
+};
+
+const CATEGORY_LABELS: Record<string, string> = {
+  "progressive-wing": "Progressive Wing",
+  "primary-school": "Primary School",
+  "middle-school": "Middle School",
+  "secondary-school": "Secondary School",
+  events: "Events & Activities",
+  facilities: "Facilities",
+};
+
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [images, setImages] = useState<GalleryImage[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const closeLightbox = useCallback(() => {
     setSelectedImage(null);
@@ -31,125 +52,54 @@ export default function GalleryPage() {
     return () => window.removeEventListener("keydown", handleEscape);
   }, [selectedImage, closeLightbox]);
 
-  const galleryImages = [
-    // Progressive Wing
-    {
-      src: "/assets/img/eca/a.jpg",
-      category: "progressive-wing",
-      year: "2025",
-      title: "Progressive Wing Activity",
-    },
-    {
-      src: "/assets/img/eca/c.jpg",
-      category: "progressive-wing",
-      year: "2025",
-      title: "Progressive Wing Event",
-    },
-    {
-      src: "/assets/img/eca/d.jpg",
-      category: "progressive-wing",
-      year: "2024",
-      title: "Progressive Wing Celebration",
-    },
-    {
-      src: "/assets/img/eca/e.JPG",
-      category: "progressive-wing",
-      year: "2024",
-      title: "Progressive Wing Activity",
-    },
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch("/api/gallery");
+        if (!response.ok) {
+          throw new Error("Failed to load gallery images.");
+        }
+        const data = await response.json();
+        setImages(data.images || []);
+        setError(null);
+      } catch (err) {
+        console.error("Error loading gallery:", err);
+        setError(
+          err instanceof Error
+            ? err.message
+            : "Unable to load gallery right now."
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-    // Primary School
-    {
-      src: "/assets/img/eca/a.jpg",
-      category: "primary-school",
-      year: "2025",
-      title: "Primary School Event",
-    },
-    {
-      src: "/assets/img/eca/b.jpeg",
-      category: "primary-school",
-      year: "2025",
-      title: "Primary School Activity",
-    },
-    {
-      src: "/assets/img/eca/c.jpg",
-      category: "primary-school",
-      year: "2024",
-      title: "Primary School Celebration",
-    },
-    {
-      src: "/assets/img/eca/d.jpg",
-      category: "primary-school",
-      year: "2024",
-      title: "Primary School Event",
-    },
-    {
-      src: "/assets/img/eca/f.JPG",
-      category: "primary-school",
-      year: "2023",
-      title: "Primary School Activity",
-    },
+    fetchImages();
+  }, []);
 
-    // Middle School
-    {
-      src: "/assets/img/eca/g.JPG",
-      category: "middle-school",
-      year: "2025",
-      title: "Middle School Event",
-    },
-    {
-      src: "/assets/img/eca/h.JPG",
-      category: "middle-school",
-      year: "2025",
-      title: "Middle School Activity",
-    },
-    {
-      src: "/assets/img/eca/a.jpg",
-      category: "middle-school",
-      year: "2024",
-      title: "Middle School Celebration",
-    },
-    {
-      src: "/assets/img/eca/c.jpg",
-      category: "middle-school",
-      year: "2024",
-      title: "Middle School Event",
-    },
+  const availableCategories = Object.entries(CATEGORY_LABELS).filter(([id]) =>
+    images.some((img) => img.category === id)
+  );
 
-    // Secondary School
-    {
-      src: "/assets/img/eca/d.jpg",
-      category: "secondary-school",
-      year: "2025",
-      title: "Secondary School Event",
-    },
-    {
-      src: "/assets/img/eca/e.JPG",
-      category: "secondary-school",
-      year: "2025",
-      title: "Secondary School Activity",
-    },
-    {
-      src: "/assets/img/eca/f.JPG",
-      category: "secondary-school",
-      year: "2024",
-      title: "Secondary School Celebration",
-    }
- 
-  ];
-
-  const categories = [
-    { id: "all", name: "All " },
-    { id: "progressive-wing", name: "Progressive Wing" },
-    { id: "primary-school", name: "Primary School" },
-    { id: "middle-school", name: "Middle School" },
-    { id: "secondary-school", name: "Secondary School" },
-  ];
+  const categories =
+    availableCategories.length > 0
+      ? [
+          { id: "all", name: "All" },
+          ...availableCategories.map(([id, name]) => ({ id, name })),
+        ]
+      : [
+          { id: "all", name: "All" },
+          ...Object.entries(CATEGORY_LABELS).map(([id, name]) => ({
+            id,
+            name,
+          })),
+        ];
 
   const filteredImages =
     selectedCategory === "all"
-      ? galleryImages
-      : galleryImages.filter((img) => img.category === selectedCategory);
+      ? images
+      : images.filter((img) => img.category === selectedCategory);
 
   return (
     <main>
@@ -179,46 +129,82 @@ export default function GalleryPage() {
           {/* Gallery Grid */}
           <div className="row">
             <div className="col-12">
-              <div className="row tp-gallery-masonry g-3">
-                {filteredImages.map((item, index) => (
-                  <div
-                    key={index}
-                    className="col-lg-3 col-md-4 col-sm-6 tp-gallery-item"
-                  >
+              {isLoading ? (
+                <div className="text-center py-5">
+                  <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                  <p className="mt-3">Loading gallery images...</p>
+                </div>
+              ) : error ? (
+                <div className="alert alert-danger">{error}</div>
+              ) : filteredImages.length === 0 ? (
+                <div className="text-center py-5">
+                  <h5>No images in this category yet.</h5>
+                  <p className="text-muted">
+                    Please check back later as we continue to update our
+                    gallery.
+                  </p>
+                </div>
+              ) : (
+                <div className="row tp-gallery-masonry g-3">
+                  {filteredImages.map((item) => (
                     <div
-                      className="tp-gallery-item-wrapper"
-                      onClick={() => openLightboxWithBodyLock(item.src)}
+                      key={item._id}
+                      className="col-lg-3 col-md-4 col-sm-6 tp-gallery-item"
                     >
-                      <div className="tp-gallery-thumb">
-                        <Image
-                          src={item.src}
-                          alt={item.title}
-                          width={400}
-                          height={400}
-                          className="w-100"
-                          style={{
-                            height: "auto",
-                            objectFit: "cover",
-                            borderRadius: "12px",
-                          }}
-                        />
-                        <div className="tp-gallery-overlay">
-                          <div className="tp-gallery-content">
-                            <h5 className="tp-gallery-title">{item.title}</h5>
-                            <span className="tp-gallery-year">{item.year}</span>
-                            <div className="tp-gallery-icon">
-                              <i
-                                className="bi bi-zoom-in"
-                                style={{ fontSize: "20px", color: "white" }}
-                              ></i>
+                      <div
+                        className="tp-gallery-item-wrapper"
+                        onClick={() => openLightboxWithBodyLock(item.imageUrl)}
+                      >
+                        <div className="tp-gallery-thumb">
+                          <Image
+                            src={item.imageUrl}
+                            alt={item.title}
+                            width={400}
+                            height={400}
+                            className="w-100"
+                            style={{
+                              height: "auto",
+                              objectFit: "cover",
+                              borderRadius: "12px",
+                            }}
+                          />
+                          <div className="tp-gallery-overlay">
+                            <div className="tp-gallery-content">
+                              <div className="d-flex align-items-center justify-content-between gap-2">
+                                <div>
+                                  <h5 className="tp-gallery-title">
+                                    {item.title}
+                                  </h5>
+                                </div>
+                                {item.driveLink && (
+                                  <a
+                                    href={item.driveLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="tp-gallery-drive-link"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <i className="bi bi-link-45deg me-1"></i>
+                                    Drive
+                                  </a>
+                                )}
+                              </div>
+                              <div className="tp-gallery-icon">
+                                <i
+                                  className="bi bi-zoom-in"
+                                  style={{ fontSize: "20px", color: "white" }}
+                                ></i>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -346,18 +332,32 @@ export default function GalleryPage() {
           color: #ffffff;
         }
 
+        .tp-gallery-drive-link {
+          background: rgba(255, 255, 255, 0.18);
+          color: #ffffff;
+          padding: 4px 12px;
+          border-radius: 999px;
+          font-size: 12px;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          transition:
+            background 0.3s ease,
+            transform 0.3s ease;
+        }
+
+        .tp-gallery-drive-link:hover {
+          background: rgba(255, 255, 255, 0.35);
+          color: #ffffff;
+          transform: translateY(-1px);
+        }
+
         .tp-gallery-title {
           font-size: 18px;
           font-weight: 600;
           margin-bottom: 5px;
           color: #ffffff;
-        }
-
-        .tp-gallery-year {
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.9);
-          display: block;
-          margin-bottom: 10px;
         }
 
         .tp-gallery-icon {

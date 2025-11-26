@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import EventAreaFour from "@/components/event/event-area-four";
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 import { generateMetadata } from "@/lib/seo";
+import EventListArea from "@/components/event/event-list-area";
 
 export const metadata: Metadata = generateMetadata({
   title: "School Events",
@@ -21,12 +21,7 @@ export default function EventPage() {
   return (
     <main>
       <BreadcrumbTwo title="School Events" subtitle="Upcoming & Past Events" />
-
-      {/* breadcrumb area end */}
-
-      {/* event area start */}
-      <EventAreaFour />
-      {/* event area end */}
+      <EventListArea />
     </main>
   );
 }
