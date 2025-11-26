@@ -21,7 +21,7 @@ export const metadata: Metadata = genMeta({
     "LFES",
     "Little Flowers English School",
     "Education Nepal",
-    "School Birtamod",
+    "School Biratnagar",
     "Jhapa School",
     "Quality Education",
     "Progressive Education",

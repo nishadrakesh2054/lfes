@@ -26,7 +26,6 @@ const PrimarySchool = () => {
                     alt="Primary School Students"
                     className="w-100 h-100 object-fit-cover"
                   />
-                  <span className="school-hero-badge">Primary Block</span>
                 </div>
               </div>
               <div className="col-lg-6">
