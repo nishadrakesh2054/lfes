@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { Email } from "../svg";
 import FooterSocial from "./footer-social";
+import NewsletterForm from "../form/newsletter-form";
 import logo from "@/assets/img/lfeslogo1.png";
 
 import { footerLinks } from "@/data/footer-links";
@@ -225,50 +226,13 @@ export default function FooterOne({ style_2 = false }: IProps) {
                         marginBottom: "20px",
                         fontSize: "15px",
                         lineHeight: "1.6",
+                        color: "#e0e0e0",
                       }}
                     >
                       Enter your email and we will send you more information
                       about LFES
                     </p>
-                    <form action="#">
-                      <div className="tp-footer-newsletter-wrapper mb-30">
-                        <div
-                          className={`tp-footer-newsletter-input ${
-                            style_2 ? "tp-footer-5-newsletter-input" : ""
-                          }`}
-                        >
-                          <input type="email" placeholder="Your email" />
-                        </div>
-                        <div
-                          className={`${
-                            style_2
-                              ? "tp-footer-5-newsletter-submit"
-                              : "tp-footer-newsletter-submit"
-                          }`}
-                        >
-                          <style>{`
-                          .footer-subscribe-btn {
-                            background-color: #0079C0 !important;
-                            border-color: #0079C0 !important;
-                            color: white !important;
-                            transition: all 0.3s ease !important;
-                          }
-                          .footer-subscribe-btn:hover {
-                            background-color: #005a8f !important;
-                            border-color: #005a8f !important;
-                          }
-                        `}</style>
-                          <button
-                            type="submit"
-                            className={`${
-                              style_2 ? "tp-btn-4" : "tp-btn"
-                            } footer-subscribe-btn`}
-                          >
-                            Subscribe
-                          </button>
-                        </div>
-                      </div>
-                    </form>
+                    <NewsletterForm source="footer" style_2={style_2} />
                     {/* footer social */}
                     <div className="tp-footer-newsletter-social">
                       <FooterSocial />

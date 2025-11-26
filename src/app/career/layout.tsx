@@ -1,5 +1,9 @@
 import { Metadata } from "next";
 import { generateMetadata } from "@/lib/seo";
+import MainProvider from "@/components/provider/main-provider";
+import BackToTop from "@/components/back-to-top";
+import FooterOne from "@/components/footer/footer-one";
+import HeaderOne from "@/components/header/header-one";
 
 export const metadata: Metadata = generateMetadata({
   title: "Career Opportunities",
@@ -20,5 +24,23 @@ export default function CareerLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <MainProvider>
+      {/* header area start */}
+      <HeaderOne />
+      {/* header area end */}
+
+      {/* main content */}
+      {children}
+      {/* main content */}
+
+      {/* footer area start */}
+      <FooterOne />
+      {/* footer area end */}
+
+      {/* back to top */}
+      <BackToTop />
+      {/* back to top */}
+    </MainProvider>
+  );
 }

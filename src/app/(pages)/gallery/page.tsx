@@ -134,19 +134,8 @@ export default function GalleryPage() {
       category: "secondary-school",
       year: "2024",
       title: "Secondary School Celebration",
-    },
-    {
-      src: "/assets/img/eca/g.JPG",
-      category: "secondary-school",
-      year: "2024",
-      title: "Secondary School Event",
-    },
-    {
-      src: "/assets/img/eca/h.JPG",
-      category: "secondary-school",
-      year: "2023",
-      title: "Secondary School Activity",
-    },
+    }
+ 
   ];
 
   const categories = [

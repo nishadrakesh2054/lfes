@@ -1,10 +1,10 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SwiperOptions } from "swiper/types";
 import { NextArrow, PrevArrow } from "../svg";
-import { testimonial_one_data } from "@/data/testimonial-data";
+import { getTestimonials } from "@/lib/sanity-queries";
 
 const swiper_options: SwiperOptions = {
   slidesPerView: 1,
@@ -19,21 +19,67 @@ const swiper_options: SwiperOptions = {
   },
 };
 
+type Testimonial = {
+  _id: string;
+  name: string;
+  position: string;
+  content: string;
+};
 
 export default function TestimonialSliderOne() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchTestimonials() {
+      try {
+        const data = await getTestimonials();
+        setTestimonials(data);
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+        // Fallback to empty array or default data
+        setTestimonials([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchTestimonials();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center py-4">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!testimonials || testimonials.length === 0) {
+    return (
+      <div className="text-center py-4">
+        <p>No testimonials available at the moment.</p>
+      </div>
+    );
+  }
+
+  // Only enable loop if there are more than 1 testimonials
+  const swiperConfig = {
+    ...swiper_options,
+    loop: testimonials.length > 1 ? swiper_options.loop : false,
+  };
+
   return (
     <>
       <Swiper
-        {...swiper_options}
+        {...swiperConfig}
         modules={[Navigation]}
         className="swiper tp-testimonial-active"
       >
-        {testimonial_one_data.map((item) => (
-          <SwiperSlide
-            key={item.id}
-            className="tp-testimonial-item"
-          >
-     
+        {testimonials.map((item) => (
+          <SwiperSlide key={item._id} className="tp-testimonial-item">
             <div className="">
               <p>{item.content}</p>
             </div>

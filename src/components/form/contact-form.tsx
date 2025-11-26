@@ -1,21 +1,68 @@
 "use client";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useState } from "react";
 import ErrMsg from "../err-msg";
 
 type Inputs = {
   name: string;
   email: string;
-  subject: string;
+  phone: string;
   message: string;
 };
+
 export default function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message");
+      }
+
+      setSubmitStatus({
+        type: "success",
+        message:
+          result.message ||
+          "Thank you! Your message has been sent successfully. We'll get back to you soon.",
+      });
+      reset(); // Clear the form
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Sorry, there was an error sending your message. Please try again later or contact us directly.";
+      setSubmitStatus({
+        type: "error",
+        message: errorMessage,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   const brandColor = "#0079C0";
 
@@ -99,7 +146,7 @@ export default function ContactForm() {
               className="form-label fw-semibold"
               style={{ fontSize: "0.9rem" }}
             >
-              Subject <span className="text-danger">*</span>
+              Phone Number <span className="text-danger">*</span>
             </label>
             <div className="input-group input-group-sm">
               <span className="input-group-text bg-light">
@@ -110,12 +157,12 @@ export default function ContactForm() {
               </span>
               <input
                 type="text"
-                className={`form-control ${errors.subject ? "is-invalid" : ""}`}
-                placeholder="What is this regarding?"
-                {...register("subject", { required: "Subject is required" })}
+                className={`form-control ${errors.phone ? "is-invalid" : ""}`}
+                placeholder="Enter your phone number"
+                {...register("phone", { required: "Phone is required" })}
               />
             </div>
-            {errors.subject?.message && <ErrMsg msg={errors.subject.message} />}
+            {errors.phone?.message && <ErrMsg msg={errors.phone.message} />}
           </div>
 
           <div className="col-12">
@@ -160,19 +207,54 @@ export default function ContactForm() {
             </div>
           </div>
 
+          {submitStatus.type && (
+            <div className="col-12">
+              <div
+                className={`alert alert-${
+                  submitStatus.type === "success" ? "success" : "danger"
+                } d-flex align-items-center`}
+                role="alert"
+              >
+                <i
+                  className={`bi ${
+                    submitStatus.type === "success"
+                      ? "bi-check-circle-fill"
+                      : "bi-exclamation-triangle-fill"
+                  } me-2`}
+                ></i>
+                <div>{submitStatus.message}</div>
+              </div>
+            </div>
+          )}
+
           <div className="col-12 text-center mt-2">
             <button
               type="submit"
               className="btn btn-sm px-4 py-1 text-white"
+              disabled={isSubmitting}
               style={{
-                backgroundColor: brandColor,
-                borderColor: brandColor,
+                backgroundColor: isSubmitting ? "#6c757d" : brandColor,
+                borderColor: isSubmitting ? "#6c757d" : brandColor,
                 minWidth: "120px",
                 fontSize: "0.9rem",
+                cursor: isSubmitting ? "not-allowed" : "pointer",
               }}
             >
-              <i className="bi bi-send me-2"></i>
-              Send Message
+              {isSubmitting ? (
+                <>
+                  <span
+                    className="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <i className="bi bi-send me-2"></i>
+                  Send Message
+                </>
+              )}
             </button>
           </div>
         </div>

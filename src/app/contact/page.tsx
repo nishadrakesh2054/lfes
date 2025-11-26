@@ -29,15 +29,8 @@ export default function ContactPage() {
       {/* map area start */}
       <div className="tp-map-area">
         <div className="tp-contact-map-content">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3178401.37203209!2d35.68689745030553!3d38.926089619386694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1696137917870!5m2!1sen!2sbd"
-            width="600"
-            height="450"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
+       
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3566.5188597555093!2d87.9875100760875!3d26.631864872102224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e5baf2f96b471b%3A0x7cd8929eb75daa0c!2sLittle%20Flowers&#39;%20English%20School!5e0!3m2!1sen!2snp!4v1764143323648!5m2!1sen!2snp" width="600" height="450" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
       {/* map area end */}

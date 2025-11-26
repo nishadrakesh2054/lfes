@@ -1,57 +1,130 @@
 "use client";
+
+import { useEffect, useState, useRef } from "react";
+import { useForm } from "react-hook-form";
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 
-export default function CareerPage() {
-  const jobListings = [
-    {
-      id: 1,
-      title: "Mathematics Teacher",
-      department: "Primary School",
-      type: "Full-time",
-      location: "Biratnagar",
-      postedDate: "2025-01-15",
-      description:
-        "We are seeking an experienced Mathematics Teacher to join our primary school team.",
-    },
-    {
-      id: 2,
-      title: "Science Teacher",
-      department: "Middle School",
-      type: "Full-time",
-      location: "Biratnagar",
-      postedDate: "2025-01-14",
-      description:
-        "Join our middle school team as a Science Teacher and inspire young minds.",
-    },
-    {
-      id: 3,
-      title: "English Teacher",
-      department: "Secondary School",
-      type: "Full-time",
-      location: "Biratnagar",
-      postedDate: "2025-01-13",
-      description:
-        "We are looking for a passionate English Teacher for our secondary school.",
-    },
-    {
-      id: 4,
-      title: "Administrative Assistant",
-      department: "Administration",
-      type: "Part-time",
-      location: "Biratnagar",
-      postedDate: "2025-01-12",
-      description:
-        "Support our administrative team in daily operations and student services.",
-    },
-  ];
+type JobOpening = {
+  _id: string;
+  title: string;
+  department: string;
+  employmentType: string;
+  location: string;
+  postedDate?: string;
+  description: string;
+  requirements?: string[];
+};
 
-  const formatDate = (dateString: string) => {
+type ApplicationInputs = {
+  name: string;
+  email: string;
+  phone: string;
+  position: string;
+  resume: FileList;
+  coverLetter: string;
+};
+
+export default function CareerPage() {
+  const [jobs, setJobs] = useState<JobOpening[]>([]);
+  const [jobsLoading, setJobsLoading] = useState(true);
+  const [jobsError, setJobsError] = useState<string | null>(null);
+  const cvFormRef = useRef<HTMLDivElement>(null);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ApplicationInputs>();
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const scrollToCVForm = () => {
+    cvFormRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      setJobsLoading(true);
+      try {
+        const response = await fetch("/api/jobs");
+        if (!response.ok) {
+          throw new Error("Failed to load job openings.");
+        }
+        const data = await response.json();
+        setJobs(data.jobs || []);
+        setJobsError(null);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+        setJobsError(
+          error instanceof Error ? error.message : "Unable to load jobs now."
+        );
+      } finally {
+        setJobsLoading(false);
+      }
+    };
+
+    fetchJobs();
+  }, []);
+
+  const formatDate = (dateString?: string) => {
+    if (!dateString) return "Recently Posted";
     const date = new Date(dateString);
+    if (Number.isNaN(date.getTime())) return "Recently Posted";
     return date.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
     });
+  };
+
+  const onSubmit = async (values: ApplicationInputs) => {
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+    try {
+      const formData = new FormData();
+      formData.append("name", values.name);
+      formData.append("email", values.email);
+      formData.append("phone", values.phone);
+      formData.append("position", values.position || "");
+      formData.append("coverLetter", values.coverLetter || "");
+      formData.append("source", "career_page");
+
+      if (values.resume && values.resume.length > 0) {
+        formData.append("resume", values.resume[0]);
+      }
+
+      const response = await fetch("/api/job-applications", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to submit application");
+      }
+
+      setSubmitStatus({
+        type: "success",
+        message: result.message || "Application submitted successfully!",
+      });
+      reset();
+    } catch (error) {
+      console.error("Application error:", error);
+      setSubmitStatus({
+        type: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Sorry, something went wrong. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -60,41 +133,81 @@ export default function CareerPage() {
 
       <section className="pt-120 pb-120">
         <div className="container">
-          <div className="row g-4">
-            {jobListings.map((job) => (
-              <div key={job.id} className="col-lg-6 col-md-6">
-                <div className="tp-career-item-wrapper">
-                  <div className="tp-career-content">
-                    <div className="tp-career-header">
-                      <h3 className="tp-career-title">{job.title}</h3>
-                      <span className="tp-career-type">{job.type}</span>
+          {jobsLoading ? (
+            <div className="text-center py-5">
+              <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              <p className="mt-3 mb-0">Loading job openings...</p>
+            </div>
+          ) : jobsError ? (
+            <div className="alert alert-danger text-center" role="alert">
+              {jobsError}
+            </div>
+          ) : jobs.length === 0 ? (
+            <div className="text-center py-5">
+              <h4>No job openings available right now.</h4>
+              <p className="text-muted">
+                Please check back later or submit your CV below so we can reach
+                out when something opens up.
+              </p>
+            </div>
+          ) : (
+            <div className="row g-4">
+              {jobs.map((job) => (
+                <div key={job._id} className="col-lg-6 col-md-6">
+                  <div className="tp-career-item-wrapper">
+                    <div className="tp-career-content">
+                      <div className="tp-career-header">
+                        <h3 className="tp-career-title">{job.title}</h3>
+                        <span className="tp-career-type">
+                          {job.employmentType}
+                        </span>
+                      </div>
+                      <div className="tp-career-meta">
+                        <span className="tp-career-department">
+                          <i className="bi bi-people-fill"></i>
+                          {job.department}
+                        </span>
+                        <span className="tp-career-location">
+                          <i className="bi bi-geo-alt-fill"></i>
+                          {job.location}
+                        </span>
+                        <span className="tp-career-date">
+                          <i className="bi bi-calendar3"></i>
+                          Posted: {formatDate(job.postedDate)}
+                        </span>
+                      </div>
+                      <p className="tp-career-description">{job.description}</p>
+                      {job.requirements && job.requirements.length > 0 && (
+                        <ul className="tp-career-requirements">
+                          {job.requirements.slice(0, 3).map((req, idx) => (
+                            <li key={idx}>{req}</li>
+                          ))}
+                        </ul>
+                      )}
+                      <button
+                        className="tp-career-apply-btn"
+                        onClick={scrollToCVForm}
+                        type="button"
+                      >
+                        Apply Now
+                      </button>
                     </div>
-                    <div className="tp-career-meta">
-                      <span className="tp-career-department">
-                        <i className="bi bi-people-fill"></i>
-                        {job.department}
-                      </span>
-                      <span className="tp-career-location">
-                        <i className="bi bi-geo-alt-fill"></i>
-                        {job.location}
-                      </span>
-                      <span className="tp-career-date">
-                        <i className="bi bi-calendar3"></i>
-                        Posted: {formatDate(job.postedDate)}
-                      </span>
-                    </div>
-                    <p className="tp-career-description">{job.description}</p>
-                    <button className="tp-career-apply-btn">Apply Now</button>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       {/* CV Upload Section */}
-      <section className="pt-20 pb-80" style={{ backgroundColor: "#f8f9fa" }}>
+      <section
+        ref={cvFormRef}
+        className="pt-20 pb-80"
+      
+      >
         <div className="container">
           {/* Attractive Header Section */}
           <div className="row justify-content-start mb-20">
@@ -193,7 +306,10 @@ export default function CareerPage() {
                   </div>
                 </div>
                 <div className="card-body p-4">
-                  <form>
+                  <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    encType="multipart/form-data"
+                  >
                     <div className="row g-3">
                       <div className="col-md-6">
                         <label className="form-label fw-semibold">
@@ -201,10 +317,20 @@ export default function CareerPage() {
                         </label>
                         <input
                           type="text"
-                          className="form-control"
+                          className={`form-control ${
+                            errors.name ? "is-invalid" : ""
+                          }`}
                           placeholder="Your full name"
-                          required
+                          {...register("name", {
+                            required: "Name is required",
+                          })}
+                          disabled={isSubmitting}
                         />
+                        {errors.name && (
+                          <div className="invalid-feedback">
+                            {errors.name.message}
+                          </div>
+                        )}
                       </div>
                       <div className="col-md-6">
                         <label className="form-label fw-semibold">
@@ -212,10 +338,24 @@ export default function CareerPage() {
                         </label>
                         <input
                           type="email"
-                          className="form-control"
+                          className={`form-control ${
+                            errors.email ? "is-invalid" : ""
+                          }`}
                           placeholder="your.email@example.com"
-                          required
+                          {...register("email", {
+                            required: "Email is required",
+                            pattern: {
+                              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                              message: "Please enter a valid email address",
+                            },
+                          })}
+                          disabled={isSubmitting}
                         />
+                        {errors.email && (
+                          <div className="invalid-feedback">
+                            {errors.email.message}
+                          </div>
+                        )}
                       </div>
                       <div className="col-md-6">
                         <label className="form-label fw-semibold">
@@ -223,10 +363,20 @@ export default function CareerPage() {
                         </label>
                         <input
                           type="tel"
-                          className="form-control"
+                          className={`form-control ${
+                            errors.phone ? "is-invalid" : ""
+                          }`}
                           placeholder="+977 98XXXXXXXX"
-                          required
+                          {...register("phone", {
+                            required: "Phone number is required",
+                          })}
+                          disabled={isSubmitting}
                         />
+                        {errors.phone && (
+                          <div className="invalid-feedback">
+                            {errors.phone.message}
+                          </div>
+                        )}
                       </div>
                       <div className="col-md-6">
                         <label className="form-label fw-semibold">
@@ -236,6 +386,8 @@ export default function CareerPage() {
                           type="text"
                           className="form-control"
                           placeholder="e.g., Teacher, Administrator"
+                          {...register("position")}
+                          disabled={isSubmitting}
                         />
                       </div>
                       <div className="col-12">
@@ -246,9 +398,14 @@ export default function CareerPage() {
                         <div className="input-group">
                           <input
                             type="file"
-                            className="form-control"
+                            className={`form-control ${
+                              errors.resume ? "is-invalid" : ""
+                            }`}
                             accept=".pdf,.doc,.docx"
-                            required
+                            {...register("resume", {
+                              required: "Please upload your resume",
+                            })}
+                            disabled={isSubmitting}
                           />
                           <span className="input-group-text">
                             <i className="bi bi-paperclip"></i>
@@ -257,6 +414,11 @@ export default function CareerPage() {
                         <small className="text-muted">
                           Accepted formats: PDF, DOC, DOCX (Max 5MB)
                         </small>
+                        {errors.resume && (
+                          <div className="text-danger small mt-1">
+                            {errors.resume.message as string}
+                          </div>
+                        )}
                       </div>
                       <div className="col-12">
                         <label className="form-label fw-semibold">
@@ -266,19 +428,52 @@ export default function CareerPage() {
                           className="form-control"
                           rows={4}
                           placeholder="Tell us why you'd like to join LFES..."
+                          {...register("coverLetter")}
+                          disabled={isSubmitting}
                         ></textarea>
                       </div>
                       <div className="col-12">
                         <button
                           type="submit"
                           className="btn text-white tp-cv-submit-btn"
+                          disabled={isSubmitting}
                         >
-                          <i className="bi bi-upload me-2"></i>
-                          Submit CV
+                          {isSubmitting ? (
+                            <>
+                              <span
+                                className="spinner-border spinner-border-sm me-2"
+                                role="status"
+                                aria-hidden="true"
+                              ></span>
+                              Submitting...
+                            </>
+                          ) : (
+                            <>
+                              <i className="bi bi-upload me-2"></i>
+                              Submit CV
+                            </>
+                          )}
                         </button>
                       </div>
                     </div>
                   </form>
+                  {submitStatus.type && (
+                    <div
+                      className={`alert alert-${
+                        submitStatus.type === "success" ? "success" : "danger"
+                      } d-flex align-items-center mt-4 mb-0`}
+                      role="alert"
+                    >
+                      <i
+                        className={`bi ${
+                          submitStatus.type === "success"
+                            ? "bi-check-circle-fill"
+                            : "bi-exclamation-triangle-fill"
+                        } me-2`}
+                      ></i>
+                      <div>{submitStatus.message}</div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -367,6 +562,17 @@ export default function CareerPage() {
           line-height: 1.6;
           margin-bottom: 25px;
           flex-grow: 1;
+        }
+
+        .tp-career-requirements {
+          padding-left: 20px;
+          margin-bottom: 20px;
+          color: #555;
+          font-size: 14px;
+        }
+
+        .tp-career-requirements li {
+          margin-bottom: 6px;
         }
 
         .tp-career-apply-btn {
