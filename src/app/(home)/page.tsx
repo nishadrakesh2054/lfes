@@ -1,16 +1,16 @@
 import React from "react";
 import { Metadata } from "next";
-// import HeroAreaOne from "@/components/hero-area/hero-area-one";
 import ServiceOne from "@/components/service/service-one";
 import AboutOne from "@/components/about/about-one";
 import EventArea from "@/components/event/event-area";
 import TestimonialOne from "@/components/testimonial/testimonial-one";
 import ProgramAreaThree from "@/components/program/program-area-three";
-import HeroAreaOne from "@/components/hero-area/hero-area-one";
 import CounterSix from "@/components/counter/counter-six";
 import { generateMetadata } from "@/lib/seo";
 import FaqArea from "@/components/faq/faq-area";
 import VidyaApp from "@/components/Vidya/vidya";
+import { getHeroSlides } from "@/lib/sanity-queries";
+import HeroAreaOne from "@/components/hero-area/hero-area-one";
 
 export const metadata: Metadata = generateMetadata({
   title: "Home",
@@ -26,11 +26,17 @@ export const metadata: Metadata = generateMetadata({
   ],
 });
 
-export default function HomePage() {
+// Enable ISR - revalidate every 60 seconds
+export const revalidate = 60;
+
+export default async function HomePage() {
+  // Fetch hero slides server-side for better performance
+  const heroSlides = await getHeroSlides();
+
   return (
     <main>
       {/* hero area start */}
-      <HeroAreaOne />
+      <HeroAreaOne slides={heroSlides} />
       {/* hero area end */}
 
       {/* service area start */}

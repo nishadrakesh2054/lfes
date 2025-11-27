@@ -9,8 +9,8 @@ import shape_3 from "@/assets/img/testimonial/testimonial-shape-3.svg";
 export default function TestimonialOne() {
   return (
     <section
-      className="testimonial-area tp-testimonial-bg fix p-relative mt-80"
-      style={{ backgroundImage: `url(/assets/img/bg/testimonial-bg-2.jpg)` }}
+      className="testimonial-area tp-testimonial-bg fix p-relative mt-80 rounded"
+      style={{ backgroundImage: `url(/assets/img/bg/testimonial-bg-2.png)` }}
     >
       <div className="tp-testimonial-themebg">
         <span></span>

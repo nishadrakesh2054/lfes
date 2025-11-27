@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { EffectFade, Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SwiperOptions } from "swiper/types";
@@ -39,33 +39,13 @@ const slider_options: SwiperOptions = {
   },
 };
 
-export default function HeroAreaOne() {
-  const [slides, setSlides] = useState<HeroSlide[]>([]);
-  const [loading, setLoading] = useState(true);
+type HeroAreaOneProps = {
+  slides?: HeroSlide[];
+};
 
-  useEffect(() => {
-    let isMounted = true;
-    const fetchSlides = async () => {
-      try {
-        const res = await fetch("/api/hero-slides");
-        if (!res.ok) throw new Error("Failed to fetch hero slides");
-        const data = await res.json();
-        if (isMounted && Array.isArray(data.slides)) {
-          setSlides(data.slides);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    };
-    fetchSlides();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
-  const heroSlides = !loading && slides.length > 0 ? slides : fallbackSlides;
+export default function HeroAreaOne({ slides }: HeroAreaOneProps) {
+  // Use server-fetched slides or fallback
+  const heroSlides = slides && slides.length > 0 ? slides : fallbackSlides;
 
   return (
     <section className="tp-hero-area">
