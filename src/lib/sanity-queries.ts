@@ -90,6 +90,7 @@ export const eventNoticesQuery = groq`*[_type == "eventNotice"] | order(date des
   date,
   description,
   category,
+  videoUrl,
   "image": image.asset->{
     url,
     metadata
@@ -128,6 +129,7 @@ export const eventNoticeByIdQuery = groq`*[_type == "eventNotice" && _id == $id]
   date,
   description,
   category,
+  videoUrl,
   "image": image.asset->{
     url,
     metadata
@@ -141,6 +143,110 @@ export async function getEventNoticeById(id: string) {
     return item;
   } catch (error) {
     console.error(`Error fetching event/notice with ID ${id}:`, error);
+    return null;
+  }
+}
+
+// GROQ query to fetch blogs
+export const blogsQuery = groq`*[_type == "blog"] | order(publishedAt desc, _createdAt desc) {
+  _id,
+  title,
+  category,
+  description,
+  publishedAt,
+  "image": image.asset->{
+    url,
+    metadata
+  }
+}`;
+
+// Fetch blogs by category
+export async function getBlogs(category?: string) {
+  try {
+    const query = category
+      ? groq`*[_type == "blog" && category == $category] | order(publishedAt desc, _createdAt desc) {
+        _id,
+        title,
+        category,
+        description,
+        publishedAt,
+        "image": image.asset->{
+          url,
+          metadata
+        }
+      }`
+      : blogsQuery;
+
+    const params = category ? { category } : {};
+    const blogs = await client.fetch(query, params);
+
+    // Always log in development
+    console.log("=== BLOG FETCH DEBUG ===");
+    console.log("Query params:", params);
+    console.log("Blogs fetched count:", blogs?.length || 0);
+    if (blogs && blogs.length > 0) {
+      console.log("First blog:", {
+        _id: blogs[0]._id,
+        title: blogs[0].title,
+        category: blogs[0].category,
+        hasImage: !!blogs[0].image?.url,
+        imageUrl: blogs[0].image?.url,
+      });
+    } else {
+      console.log("⚠️ No blogs returned from Sanity!");
+      console.log(
+        "Check: 1) Are blogs published? 2) Is schema name correct? 3) Is Sanity config correct?"
+      );
+    }
+    console.log("========================");
+
+    return Array.isArray(blogs) ? blogs : [];
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
+    return [];
+  }
+}
+
+// GROQ query to fetch hero slides
+export const heroSlidesQuery = groq`*[_type == "heroSlide"] | order(order asc, _createdAt asc) {
+  _id,
+  title,
+  subtitle,
+  "image": image.asset->{
+    url,
+    metadata
+  }
+}`;
+
+export async function getHeroSlides() {
+  try {
+    const slides = await client.fetch(heroSlidesQuery);
+    return Array.isArray(slides) ? slides : [];
+  } catch (error) {
+    console.error("Error fetching hero slides:", error);
+    return [];
+  }
+}
+
+// GROQ query to fetch active popup notice
+export const popupNoticeQuery = groq`*[_type == "popupNotice" && isActive == true] | order(_createdAt desc)[0]{
+  _id,
+  image{
+    asset->{
+      url,
+      metadata
+    },
+    alt
+  }
+}`;
+
+// Fetch active popup notice
+export async function getActivePopupNotice() {
+  try {
+    const popup = await client.fetch(popupNoticeQuery);
+    return popup;
+  } catch (error) {
+    console.error("Error fetching popup notice:", error);
     return null;
   }
 }

@@ -48,7 +48,7 @@ export default function ServiceTwo() {
                 className="tp-about-tutor-content col-lg-12 wow fadeInUp " data-wow-delay=".3s"
                 style={{ textAlign: "justify" }}
               >
-                <p className="text-light">
+                <p className="custom-paragraph text-light">
                   The academic program of the LFES Progressive Wing has been
                   modified to better equip students for life beyond the exam.
                   Our dynamic classrooms are intentionally designed to serve as
@@ -64,7 +64,7 @@ export default function ServiceTwo() {
                   culture of resiliency and intellectual curiosity.
                 </p>
                 <br />
-                <p className="text-light">
+                <p className="custom-paragraph text-light">
                   Ultimately, this comprehensive approach fosters a solid and
                   lifelong enthusiasm for education that extends beyond the
                   classroom boundaries. We are committed to developing students

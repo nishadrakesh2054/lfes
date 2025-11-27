@@ -11,3 +11,22 @@ body {
 * {
   font-family: var(--tp-ff-poppins), "Poppins", sans-serif !important;
 }
+
+
+.custom-paragraph {
+    font-size: 1rem;          /* Comfortable reading size */
+    line-height: 1.7;         /* Good vertical spacing */
+    color: #585757;              /* Smooth contrast */
+    text-align: justify;      /* Justified text */
+    margin-bottom: 1rem;     
+    letter-spacing: 0.3px;    /* Slight spacing for clean look */
+    word-spacing: 1px;
+}
+@media (max-width: 640px) {
+    .custom-paragraph {
+        word-spacing: 0; /* remove extra spacing */
+        letter-spacing: 0.1px; /* lighter for small screens */
+        text-align: justify; /* optional: prevents weird gaps */
+        hyphens: auto;
+    }
+}

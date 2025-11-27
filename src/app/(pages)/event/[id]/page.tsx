@@ -1,9 +1,9 @@
-import EventBreadcrumb from "../../event-details/_components/event-breadcrumb";
 import EventDetailsArea from "../../event-details/_components/event-details-area";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { Metadata } from "next";
 import { getEventNoticeById } from "@/lib/sanity-queries";
 import { notFound } from "next/navigation";
+import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 
 type Props = {
   params: { id: string };
@@ -47,9 +47,9 @@ export default async function EventDetailsPage({ params }: Props) {
 
   return (
     <main>
-      {/* breadcrumb area start */}
-      <EventBreadcrumb event={event} />
+  
       {/* breadcrumb area end */}
+      <BreadcrumbTwo title={"School Event Details"} subtitle="Event Details" />
 
       {/* event details area start */}
       <EventDetailsArea event={event} />

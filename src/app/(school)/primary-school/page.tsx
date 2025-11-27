@@ -46,8 +46,8 @@ const PrimarySchool = () => {
                     Nurturing Curious Minds With Heart & Purpose
                   </h2>
                   <p
-                    className="text-muted lh-lg"
-                    style={{ textAlign: "justify" }}
+                    className="custom-paragraph"
+                  
                   >
                     At our Primary Block, every child’s journey is unique. We
                     embrace a holistic approach that goes beyond textbooks to
@@ -56,8 +56,8 @@ const PrimarySchool = () => {
                     experiences so that learning feels meaningful and joyful.
                   </p>
                   <p
-                    className="text-muted lh-lg"
-                    style={{ textAlign: "justify" }}
+                    className="custom-paragraph"
+                 
                   >
                     Parents are true partners in this journey. We keep families
                     informed about every milestone—from academic progress to
@@ -119,7 +119,9 @@ const PrimarySchool = () => {
                   <div className="feature-card h-100 p-4 text-center">
                     <div className="display-4 mb-3">{feature.icon}</div>
                     <h5 className="fw-semibold mb-2">{feature.title}</h5>
-                    <p className="text-muted mb-0">{feature.description}</p>
+                    <p className="  mb-0">
+                      {feature.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -135,7 +137,10 @@ const PrimarySchool = () => {
                 Everyday Moments at <br />
                 <span>LFES Primary</span>
               </h3>
-              <p className="lead wow fadeInUp" data-wow-delay=".4s">
+              <p
+                className="custom-paragraph lead wow fadeInUp"
+                data-wow-delay=".4s"
+              >
                 Capturing precious moments of learning and growth
               </p>
             </div>

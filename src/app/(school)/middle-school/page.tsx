@@ -45,20 +45,14 @@ const Middlepage = () => {
                   >
                     Guiding Transition Years With Purpose & Confidence
                   </h2>
-                  <p
-                    className="text-muted lh-lg"
-                    style={{ textAlign: "justify" }}
-                  >
+                  <p className="custom-paragraph">
                     LFES follows the Nepal Government curriculum and blends it
                     with progressive teaching practices from international
                     contexts. Meaningful, activity-based learning helps students
                     discover their strengths, ambitions, and interests while
                     applying new knowledge in authentic ways.
                   </p>
-                  <p
-                    className="text-muted lh-lg"
-                    style={{ textAlign: "justify" }}
-                  >
+                  <p className="custom-paragraph">
                     Middle schoolers are in a unique transition stage. We focus
                     on developing independent learners who are ready for high
                     school and beyond. Conceptual depth, specialized subject
@@ -66,9 +60,9 @@ const Middlepage = () => {
                     students motivated and well-balanced.
                   </p>
                   <div className="quote-card mt-3 p-3 rounded-3">
-                    <p className="mb-0 fst-italic text-muted text-center">
-                      “Working together, respecting all, because everyone is
-                      special and everyone matters.”
+                    <p className="custom-paragraph mb-0 fst-italic  ">
+                      &quot;Working together, respecting all, because everyone is
+                      special and everyone matters.&quot;
                     </p>
                   </div>
                 </div>
@@ -144,7 +138,9 @@ const Middlepage = () => {
                     <h5 className="fw-semibold mb-2 text-black">
                       {feature.title}
                     </h5>
-                    <p className="text-muted mb-0">{feature.description}</p>
+                    <p className=" text-muted mb-0">
+                      {feature.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -183,7 +179,10 @@ const Middlepage = () => {
                 Everyday Moments at <br />
                 <span>LFES Middle School</span>
               </h3>
-              <p className="lead wow fadeInUp" data-wow-delay=".4s">
+              <p
+                className="custom-paragraph lead wow fadeInUp"
+                data-wow-delay=".4s"
+              >
                 Capturing precious moments of learning and growth
               </p>
             </div>

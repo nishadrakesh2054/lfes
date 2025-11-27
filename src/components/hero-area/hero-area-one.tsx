@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { EffectFade, Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SwiperOptions } from "swiper/types";
@@ -9,25 +9,21 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 
-const heroSliderData = [
-  {
-    id: 2,
-    subtitle: "Where Knowledge Meets Values",
-    title: "Learning with Purpose Always.",
-    bgImg: "/assets/img/hero/home-3.png",
-  },
-  {
-    id: 1,
-    subtitle: "Beyond Books and Classrooms",
-    title: "Shaping Leaders for Tomorrow.",
-    bgImg: "/assets/img/hero/home-2.png",
-  },
+type HeroSlide = {
+  _id?: string;
+  title: string;
+  subtitle: string;
+  image?: {
+    url: string;
+  };
+};
 
+const fallbackSlides: HeroSlide[] = [
   {
-    id: 3,
+    _id: "fallback-1",
     subtitle: "Celebrating 45+ Years of Excellence",
     title: "Bright Minds Shape Futures.",
-    bgImg: "/assets/img/hero/home-1.png",
+    image: { url: "/assets/img/hero/home-1.png" },
   },
 ];
 
@@ -44,6 +40,33 @@ const slider_options: SwiperOptions = {
 };
 
 export default function HeroAreaOne() {
+  const [slides, setSlides] = useState<HeroSlide[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchSlides = async () => {
+      try {
+        const res = await fetch("/api/hero-slides");
+        if (!res.ok) throw new Error("Failed to fetch hero slides");
+        const data = await res.json();
+        if (isMounted && Array.isArray(data.slides)) {
+          setSlides(data.slides);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+    fetchSlides();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const heroSlides = !loading && slides.length > 0 ? slides : fallbackSlides;
+
   return (
     <section className="tp-hero-area">
       <Swiper
@@ -51,8 +74,8 @@ export default function HeroAreaOne() {
         modules={[EffectFade, Autoplay, Pagination]}
         className="swiper tp-slider-active"
       >
-        {heroSliderData.map((item) => (
-          <SwiperSlide key={item.id}>
+        {heroSlides.map((item, index) => (
+          <SwiperSlide key={item._id || index}>
             <div className="tp-hero-item ">
               <div className="container">
                 <div className="row">
@@ -80,7 +103,7 @@ export default function HeroAreaOne() {
               <div
                 className="tp-hero-bg"
                 style={{
-                  backgroundImage: `url(${item.bgImg})`,
+                  backgroundImage: `url(${item.image?.url || "/assets/img/hero/home-1.png"})`,
                 }}
               ></div>
             </div>

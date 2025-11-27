@@ -12,7 +12,7 @@ import OffcanvasButton from "./button/offcanvas-btn";
 export default function HeaderOne() {
   return (
     <>
-      <header className="header-area tp-header-transparent p-relative">
+      <header className="header-area tp-header-transparent p-relative ">
         {/* header top start*/}
         <div>
           <div className="header-top-border d-none d-lg-block" />
@@ -23,8 +23,8 @@ export default function HeaderOne() {
         {/* header top end */}
 
         <HeaderStickyWrapper>
-          <div className="container">
-            <div className="row align-items-center">
+          <div className="container ">
+            <div className="row align-items-center ">
               <div className="col-xxl-2 col-xl-2 col-lg-6 col-md-6 col-6 ">
                 {/* <div className="tp-header-logo-1 tp-header-logo "> */}
                 <div className=" w-0 ">
@@ -43,35 +43,8 @@ export default function HeaderOne() {
                         src={logo}
                         alt="logo"
                         priority
-                        width={80}
-                        height={80}
-                        quality={100}
-                        style={{
-                          objectFit: "contain",
-                          width: "auto",
-                          height: "auto",
-                          maxWidth: "100%",
-                          maxHeight: "100%",
-                        }}
-                      />
-                    </div>
-                    <div
-                      className="d-none"
-                      style={{
-                        width: "80px",
-                        height: "80px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Image
-                        className="logo-2"
-                        src={logo}
-                        alt="logo"
-                        priority
-                        width={80}
-                        height={80}
+                        width={70}
+                        height={70}
                         quality={100}
                         style={{
                           objectFit: "contain",

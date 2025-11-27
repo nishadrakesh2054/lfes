@@ -33,6 +33,13 @@ const eventNotice = {
       ],
     },
     {
+      name: "videoUrl",
+      title: "YouTube Video URL",
+      type: "url",
+      description:
+        "Optional: paste a YouTube link to embed a highlight video for this event.",
+    },
+    {
       name: "description",
       title: "Description",
       type: "text",

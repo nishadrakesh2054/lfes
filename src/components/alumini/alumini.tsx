@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { NextArrowTwo, PrevArrowTwo } from "../svg";
 import shape_underline from "@/assets/img/unlerline/team-2-svg-1.svg";
-import AluminiSlider from "./slider";
 
 const Alumini = () => {
   return (
@@ -42,9 +41,7 @@ const Alumini = () => {
               </div>
             </div>
           </div>
-          {/* team slider */}
-          <AluminiSlider />
-          {/* team slider */}
+      
         </div>
       </section>
     </>

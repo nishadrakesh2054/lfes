@@ -7,6 +7,7 @@ type EventNotice = {
   date: string;
   description?: string;
   category: "event" | "notice";
+  videoUrl?: string;
   image?: {
     url: string;
     metadata?: {
@@ -23,6 +24,29 @@ type IProps = {
 };
 
 export default function EventDetailsArea({ event }: IProps) {
+  const getYoutubeEmbedUrl = (url?: string) => {
+    if (!url) return null;
+    try {
+      const parsed = new URL(url);
+      let videoId = parsed.searchParams.get("v");
+
+      if (!videoId && parsed.hostname.includes("youtu.be")) {
+        videoId = parsed.pathname.replace("/", "");
+      }
+
+      if (!videoId && parsed.pathname.includes("/embed/")) {
+        videoId = parsed.pathname.split("/embed/")[1];
+      }
+
+      return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+    } catch (error) {
+      console.warn("Invalid YouTube URL for event video:", error);
+      return null;
+    }
+  };
+
+  const videoEmbedUrl = getYoutubeEmbedUrl(event.videoUrl);
+
   return (
     <section className="tp-event-details-area pt-80 pb-70">
       <div className="container">
@@ -51,12 +75,12 @@ export default function EventDetailsArea({ event }: IProps) {
               )}
 
               {/* Event Title */}
-              <div className="tp-event-details-about mb-4">
+              <div className="tp-event-details-abou mb-4">
                 <h2
                   className="mb-3"
                   style={{
                     color: "#0079c0",
-                    fontSize: "2rem",
+                    fontSize: "1.5rem",
                     fontWeight: 700,
                   }}
                 >
@@ -74,43 +98,61 @@ export default function EventDetailsArea({ event }: IProps) {
                       marginTop: "20px",
                     }}
                   >
-                    <p style={{ whiteSpace: "pre-line" }}>
-                      {event.description}
-                    </p>
+                    <p className="custom-paragraph">{event.description}</p>
                   </div>
                 )}
 
                 {!event.description && (
                   <p
+                    className="custom-paragraph"
                     style={{
                       color: "#666",
-                      fontSize: "1rem",
-                      lineHeight: "1.6",
                     }}
                   >
                     More details about this {event.category} will be available
                     soon.
                   </p>
                 )}
-              </div>
 
-              {/* Category Badge */}
-              <div className="mb-4">
-                <span
-                  style={{
-                    display: "inline-block",
-                    padding: "8px 20px",
-                    backgroundColor:
-                      event.category === "event" ? "#0079c0" : "#28a745",
-                    color: "#fff",
-                    borderRadius: "25px",
-                    fontSize: "0.9rem",
-                    fontWeight: 600,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {event.category === "event" ? "Event" : "Notice"}
-                </span>
+                {videoEmbedUrl && (
+                  <div className="mt-5">
+                    <h4
+                      style={{
+                        color: "#0079c0",
+                        fontWeight: 600,
+                        marginBottom: "16px",
+                      }}
+                    >
+                      Event Highlights
+                    </h4>
+                    <div
+                      style={{
+                        position: "relative",
+                        paddingBottom: "56.25%",
+                        height: 0,
+                        overflow: "hidden",
+                        borderRadius: "12px",
+                        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)",
+                        backgroundColor: "#000",
+                      }}
+                    >
+                      <iframe
+                        src={videoEmbedUrl}
+                        title={`${event.title} video`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          width: "100%",
+                          height: "100%",
+                          border: 0,
+                        }}
+                      ></iframe>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

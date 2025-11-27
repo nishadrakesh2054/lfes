@@ -64,7 +64,7 @@ export default function AboutOne() {
                   <h3 className="tp-about-exprience-count">
                     <CounterItem min={0} max={45} />
                   </h3>
-                  <p>
+                  <p className="custom-paragraph">
                     Years of <br /> Experience
                   </p>
                 </div>
@@ -80,14 +80,11 @@ export default function AboutOne() {
                 <h5 className="tp-section-subtitle">About Our School</h5>
                 <h3 className="tp-section-title mb-30">
                   Discover the Story <br /> Behind
-                  <span>
-                    {" "}
-                    &nbsp; LFES 
-                  </span>
+                  <span> &nbsp; LFES</span>
                 </h3>
-                <p>
+                <p className="custom-paragraph">
                   {" "}
-                  Little Flowers’ English School, established in 2038 BS, has
+                  Little Flowers&apos; English School, established in 2038 BS, has
                   been a trusted name in education for over four decades. With a
                   student-centric approach, we provide a balance of academics,
                   discipline, creativity, and life skills—preparing students not

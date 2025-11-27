@@ -36,7 +36,7 @@ export default function TutorArea() {
           <div className="col-lg-12">
             <div className="tp-about-tutor-heading mb-130">
               <div>
-                <p style={{ textAlign: "justify" }}>
+                <p className="custom-paragraph">
                   Little Flowers English School (LFES), a household name in the
                   field of education in the Eastern region of Nepal, known for
                   providing and delivering quality education, was established in
@@ -77,7 +77,9 @@ export default function TutorArea() {
                   <h4 className="tp-tutor-title" style={{ color: "#fff" }}>
                     <a href="#">{item.title}</a>
                   </h4>
-                  <p style={{ color: "#fff" }}>{item.description}</p>
+                  <p className="custom-paragraph" style={{ color: "#fff" }}>
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </div>

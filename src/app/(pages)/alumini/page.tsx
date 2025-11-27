@@ -50,21 +50,21 @@ export default function AlumniPage() {
                 </h3>
               </div>
 
-              <p className="text-muted lh-lg mb-3">
+              <p className="custom-paragraph mb-3">
                 LFES alumni are our pride! From graduating students in Eastern
                 Nepal to leaders and professionals across the globe, our alumni
                 continue to make a mark in every field. This network connects
                 past students to celebrate achievements, share experiences, and
                 stay part of the LFES family.
               </p>
-              <p className="text-muted lh-lg">
-                Whether it’s sharing career milestones, contributing to
+              <p className="custom-paragraph">
+                Whether it&apos;s sharing career milestones, contributing to
                 community development, or attending alumni events, our LFES
                 alumni network fosters lifelong connections and keeps the spirit
                 of learning alive.
               </p>
-              <p className="text-muted lh-lg">
-                Whether it’s sharing career milestones, contributing to
+              <p className="custom-paragraph">
+                Whether it&apos;s sharing career milestones, contributing to
                 community development, or attending alumni events, our LFES
                 alumni network fosters lifelong connections and keeps the spirit
                 of learning alive.

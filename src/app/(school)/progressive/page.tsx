@@ -28,7 +28,10 @@ const page = () => {
                 Everyday Moments at <br />
                 <span>LFES Progressive</span>
               </h3>
-              <p className="lead wow fadeInUp" data-wow-delay=".4s">
+              <p
+                className="custom-paragraph  wow fadeInUp"
+                data-wow-delay=".4s"
+              >
                 Capturing precious moments of learning and growth at LFES
                 Progressive.
               </p>

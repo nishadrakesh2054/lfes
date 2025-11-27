@@ -39,10 +39,7 @@ export default function EcaPage() {
                 </h3>
               </div>
 
-              <p
-                className="text-muted lh-lg mb-3 "
-                style={{ textAlign: "justify" }}
-              >
+              <p className=" custom-paragraph">
                 At our Primary Block, we believe that every child’s journey is
                 unique and deserves careful attention. Our approach to teaching
                 is holistic—going beyond textbooks to nurture creativity,
@@ -51,10 +48,7 @@ export default function EcaPage() {
                 every lesson is designed to connect with real-life experiences,
                 making learning meaningful and enjoyable.
               </p>
-              <p
-                className="text-muted lh-lg mb-3"
-                style={{ textAlign: "justify" }}
-              >
+              <p className="custom-paragraph">
                 Co-curricular activities are activities that take place outside
                 the classroom but reinforce or supplement classroom curriculum
                 in some way. They are ungraded and do not offer any form of
@@ -77,7 +71,7 @@ export default function EcaPage() {
                 <ECAgallery categories={["eca"]} />
               </div>
 
-              <p className="text-muted lh-lg" style={{ textAlign: "justify" }}>
+              <p className="custom-paragraph">
                 Involvement in such activities has proven to improve academic
                 performance, help students explore interests and create broader
                 perspectives, generate higher self-esteem, provide social
@@ -96,7 +90,7 @@ export default function EcaPage() {
                 writing, handwriting & spelling have been included.
               </p>
 
-              <p className="text-muted lh-lg" style={{ textAlign: "justify" }}>
+              <p className="custom-paragraph">
                 We also understand how important it is for parents to be part of
                 this journey. That is why we make it a priority to keep parents
                 informed about even the smallest details of their child’s

@@ -38,6 +38,7 @@ export default function HeaderTopArea() {
                 <i className="bi bi-linkedin"></i>
               </a>
               <a href="/admission">Admission</a>
+              <a href="/faq">FAQs</a>
               <a href="/career">Careers</a>
             </div>
           </div>

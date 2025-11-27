@@ -66,14 +66,14 @@ export default function AboutTwo({ spacing = "pt-115 pb-90" }: IProps) {
               >
                 Future-Focused Learning With Heart, Discipline & Purpose
               </h2>
-              <p className="text-muted lh-lg mb-3">
+              <p className="custom-paragraph  mb-3">
                 LFES Senior High School in Birtamode equips students with the
                 knowledge, skills, and values needed to excel in university and
                 beyond. Academic rigor blends with personal care, career
                 guidance, and holistic opportunities so every learner grows into
                 a confident, responsible young adult.
               </p>
-              <p className="text-muted lh-lg mb-0">
+              <p className="custom-paragraph  mb-0">
                 We emphasize practical application, leadership, and creativity
                 through project-based learning, innovation labs, and weekly
                 enrichment. Discipline, resilience, and respect sit at the heart
@@ -110,15 +110,10 @@ export default function AboutTwo({ spacing = "pt-115 pb-90" }: IProps) {
                     <span>{String(idx + 1).padStart(2, "0")}</span>
                   </div>
                   <div>
-                    <h5
-                      className=" mb-1"
-                      style={{ color: "#0b1f3a" }}
-                    >
+                    <h5 className=" mb-1" style={{ color: "#0b1f3a" }}>
                       {info.title}
                     </h5>
-                    <p className="text-muted mb-0" style={{ lineHeight: 1.6 }}>
-                      {info.text}
-                    </p>
+                    <p className="custom-paragraph  mb-0">{info.text}</p>
                   </div>
                 </div>
               ))}
@@ -129,14 +124,14 @@ export default function AboutTwo({ spacing = "pt-115 pb-90" }: IProps) {
         <div className="row pt-30">
           <div className="col-12 wow fadeInUp" data-wow-delay=".4s">
             <h4 className="mb-3">Academic Streams Offered</h4>
-            <p>
+            <p className="custom-paragraph">
               Students at LFES Senior High School can choose from two streams
               designed to match their academic interests and career goals:
             </p>
             <UndergraduateArea />
 
             <h4 className="mt-4">Preparation for University and Life</h4>
-            <p>
+            <p className="custom-paragraph">
               Our comprehensive guidance program assists students in course
               selection, university applications, and career planning. Beyond
               academics, we emphasize life skills such as critical thinking,
@@ -151,7 +146,6 @@ export default function AboutTwo({ spacing = "pt-115 pb-90" }: IProps) {
         </div>
       </div>
       <style jsx>{`
-     
         .about-thumb-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));

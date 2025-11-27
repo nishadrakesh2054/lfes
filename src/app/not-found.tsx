@@ -38,7 +38,9 @@ export default function NotFound() {
                     <h4 className="tp-error-title-sm">
                       Something went Wrong...
                     </h4>
-                    <p>Sorry, {"we couldn't"} find your page.</p>
+                    <p className="custom-paragraph">
+                      Sorry, {"we couldn't"} find your page.
+                    </p>
                     <Link className="tp-btn-inner" href="/">
                       Back to Home
                     </Link>

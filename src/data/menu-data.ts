@@ -36,7 +36,7 @@ const menu_data: IMenu[] = [
     dropdown_menus: [
       { id: 1, title: "ECA", link: "/eca" },
       { id: 2, title: "ALUMINI", link: "/alumini" },
-      { id: 3, title: "NEWS", link: "/blog-list" },
+      { id: 3, title: "NEWS & BLOG", link: "/blog" },
       { id: 4, title: "EVENTS", link: "/event" },
     ],
   },

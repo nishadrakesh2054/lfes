@@ -45,8 +45,8 @@ const SecondarySchool = () => {
                     Building Future-Ready, Thoughtful Global Citizens
                   </h2>
                   <p
-                    className="text-muted lh-lg"
-                    style={{ textAlign: "justify" }}
+                    className="custom-paragraph"
+                   
                   >
                     LFES High School develops in students the ability to seek
                     knowledge, connect learning with real life, and align theory
@@ -55,8 +55,8 @@ const SecondarySchool = () => {
                     confidence to manage conflicts for sustainable peace.
                   </p>
                   <p
-                    className="text-muted lh-lg"
-                    style={{ textAlign: "justify" }}
+                    className="custom-paragraph"
+                   
                   >
                     With strong integration of ICT skills, entrepreneurship, and
                     modern pedagogy, our goal is to shape capable, competitive
@@ -116,7 +116,9 @@ const SecondarySchool = () => {
                   <div className="feature-card h-100 p-4 text-center">
                     <div className="display-4 mb-3">{feature.icon}</div>
                     <h5 className="fw-semibold mb-2">{feature.title}</h5>
-                    <p className="text-muted mb-0">{feature.description}</p>
+                    <p className="mb-0">
+                      {feature.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -132,7 +134,10 @@ const SecondarySchool = () => {
                 Everyday Moments at <br />
                 <span>LFES High School</span>
               </h3>
-              <p className="lead wow fadeInUp" data-wow-delay=".4s">
+              <p
+                className="custom-paragraph  wow fadeInUp"
+                data-wow-delay=".4s"
+              >
                 Capturing precious moments of learning and growth
               </p>
             </div>

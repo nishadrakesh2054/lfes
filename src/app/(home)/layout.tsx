@@ -3,6 +3,7 @@ import HeaderOne from "@/components/header/header-one";
 import FooterOne from "@/components/footer/footer-one";
 import BackToTop from "@/components/back-to-top";
 import MainProvider from "@/components/provider/main-provider";
+import PopupNoticeWrapper from "@/components/popup/popup-notice-wrapper";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,12 +17,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* main content */}
 
       {/* footer area start */}
-      <FooterOne/>
+      <FooterOne />
       {/* footer area end */}
 
       {/* back to top */}
-      <BackToTop/>
+      <BackToTop />
       {/* back to top */}
+
+      {/* popup notice */}
+      <PopupNoticeWrapper />
+      {/* popup notice */}
     </MainProvider>
   );
 }

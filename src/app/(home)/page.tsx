@@ -9,6 +9,8 @@ import ProgramAreaThree from "@/components/program/program-area-three";
 import HeroAreaOne from "@/components/hero-area/hero-area-one";
 import CounterSix from "@/components/counter/counter-six";
 import { generateMetadata } from "@/lib/seo";
+import FaqArea from "@/components/faq/faq-area";
+import VidyaApp from "@/components/Vidya/vidya";
 
 export const metadata: Metadata = generateMetadata({
   title: "Home",
@@ -54,6 +56,8 @@ export default function HomePage() {
       {/* testimonial area start */}
       <TestimonialOne />
       {/* testimonial area end */}
+      <VidyaApp />
+      <FaqArea />
     </main>
   );
 }

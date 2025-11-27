@@ -51,7 +51,7 @@ export default function CampusChooseAreaThree() {
             >
               Preparing Students for a Purpose-Driven Future
             </h2>
-            <p className="text-muted mb-0" style={{ fontSize: "1.05rem" }}>
+            <p className="custom-paragraph mb-0" style={{ fontSize: "1.05rem" }}>
               LFES provides a supportive, creative, and faith-filled environment
               where every learner discovers their calling and develops the
               character to impact the world.

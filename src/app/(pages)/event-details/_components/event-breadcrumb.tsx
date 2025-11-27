@@ -7,6 +7,7 @@ type EventNotice = {
   date: string;
   description?: string;
   category: "event" | "notice";
+  videoUrl?: string;
   image?: {
     url: string;
     metadata?: {

@@ -138,7 +138,9 @@ export default function CareerPage() {
               <div className="spinner-border text-primary" role="status">
                 <span className="visually-hidden">Loading...</span>
               </div>
-              <p className="mt-3 mb-0">Loading job openings...</p>
+              <p className="custom-paragraph mt-3 mb-0">
+                Loading job openings...
+              </p>
             </div>
           ) : jobsError ? (
             <div className="alert alert-danger text-center" role="alert">
@@ -147,7 +149,7 @@ export default function CareerPage() {
           ) : jobs.length === 0 ? (
             <div className="text-center py-5">
               <h4>No job openings available right now.</h4>
-              <p className="text-muted">
+              <p className="custom-paragraph ">
                 Please check back later or submit your CV below so we can reach
                 out when something opens up.
               </p>
@@ -178,7 +180,9 @@ export default function CareerPage() {
                           Posted: {formatDate(job.postedDate)}
                         </span>
                       </div>
-                      <p className="tp-career-description">{job.description}</p>
+                      <p className="custom-paragraph tp-career-description">
+                        {job.description}
+                      </p>
                       {job.requirements && job.requirements.length > 0 && (
                         <ul className="tp-career-requirements">
                           {job.requirements.slice(0, 3).map((req, idx) => (
@@ -203,11 +207,7 @@ export default function CareerPage() {
       </section>
 
       {/* CV Upload Section */}
-      <section
-        ref={cvFormRef}
-        className="pt-20 pb-80"
-      
-      >
+      <section ref={cvFormRef} className="pt-20 pb-80">
         <div className="container">
           {/* Attractive Header Section */}
           <div className="row justify-content-start mb-20">

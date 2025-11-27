@@ -191,10 +191,7 @@ const Facilities = () => {
                       >
                         {facility.title}
                       </h3>
-                      <p
-                        className="text-muted mb-4"
-                        style={{ lineHeight: 1.7 }}
-                      >
+                      <p className="custom-paragraph">
                         {facility.description}
                       </p>
 

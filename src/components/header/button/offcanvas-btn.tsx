@@ -39,11 +39,11 @@ export default function OffcanvasButton({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          border: "2px solid #0079c0",
+          border: "2px solid #c41230",
           backgroundColor: "transparent",
         }}
       >
-        {children ? children : <Menu size={24} color="white" />}
+        {children ? children : <Menu size={24} color="#0079c0" />}
       </button>
 
       {/* Only create the portal if modalRef.current is available and mounted is true */}

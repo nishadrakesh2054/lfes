@@ -10,6 +10,7 @@ type EventNotice = {
   date: string;
   description?: string;
   category: "event" | "notice";
+  videoUrl?: string;
   image?: {
     url: string;
     metadata?: {
@@ -26,6 +27,8 @@ export default function EventListArea() {
   const [notices, setNotices] = useState<EventNotice[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"all" | "event" | "notice">("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
 
   useEffect(() => {
     async function fetchData() {
@@ -48,6 +51,11 @@ export default function EventListArea() {
     fetchData();
   }, []);
 
+  // Reset to page 1 when tab changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeTab]);
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const day = date.getDate().toString().padStart(2, "0");
@@ -69,8 +77,14 @@ export default function EventListArea() {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
-  const displayItems =
+  const allDisplayItems =
     activeTab === "all" ? allItems : activeTab === "event" ? events : notices;
+
+  // Calculate pagination
+  const totalPages = Math.ceil(allDisplayItems.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayItems = allDisplayItems.slice(startIndex, endIndex);
 
   if (loading) {
     return (
@@ -115,7 +129,7 @@ export default function EventListArea() {
                     activeTab === "event" ? "#0079c0" : "transparent",
                   borderColor: "#0079c0",
                   color: activeTab === "event" ? "#fff" : "#0079c0",
-             
+
                   borderRadius: "25px",
                   fontWeight: 500,
                 }}
@@ -182,7 +196,6 @@ export default function EventListArea() {
                               objectFit: "cover",
                             }}
                           />
-                       
                         </div>
                       ) : (
                         <div
@@ -207,7 +220,7 @@ export default function EventListArea() {
                               color: "#fff",
                               borderRadius: "20px",
                               fontSize: "0.75rem",
-                              fontWeight: 600,
+                              fontWeight: 500,
                               textTransform: "uppercase",
                             }}
                           >
@@ -231,96 +244,103 @@ export default function EventListArea() {
                           padding: "25px",
                           flexGrow: 1,
                           display: "flex",
-                          flexDirection: "column",
+                          flexDirection: "row",
+                          gap: "15px",
+                          alignItems: "flex-start",
                         }}
                       >
-                        {/* Date */}
+                        {/* Date Box - All date info in one box */}
                         <div
                           style={{
+                            width: "80px",
+                            height: "80px",
+                            background: "#f0f7ff",
+                            borderRadius: "8px",
                             display: "flex",
+                            flexDirection: "column",
                             alignItems: "center",
-                            gap: "10px",
-                            marginBottom: "15px",
+                            justifyContent: "center",
+                            border: "2px solid #0079c0",
+                            flexShrink: 0,
                           }}
                         >
-                          <div
+                          <span
                             style={{
-                              width: "60px",
-                              height: "60px",
-                              background: "#f0f7ff",
-                              borderRadius: "8px",
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              border: "2px solid #0079c0",
+                              fontSize: "1.4rem",
+                              fontWeight: 700,
+                              color: "#0079c0",
+                              marginTop: "-4px",
                             }}
                           >
-                            <span
-                              style={{
-                                fontSize: "1.5rem",
-                                fontWeight: 700,
-                                color: "#0079c0",
-                                lineHeight: 1,
-                              }}
-                            >
-                              {dateInfo.day}
-                            </span>
-                            <span
-                              style={{
-                                fontSize: "0.7rem",
-                                color: "#0079c0",
-                                textTransform: "uppercase",
-                              }}
-                            >
-                              {dateInfo.month}
-                            </span>
-                          </div>
-                          <div>
-                            <div
-                              style={{
-                                fontSize: "0.9rem",
-                                color: "#666",
-                                fontWeight: 500,
-                              }}
-                            >
-                              {dateInfo.full}
-                            </div>
-                          </div>
+                            {dateInfo.day}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: "0.75rem",
+                              color: "#0079c0",
+                              textTransform: "uppercase",
+                              fontWeight: 600,
+                              margin: 0,
+                              lineHeight: 1,
+                              padding: 0,
+                              marginTop: "4px",
+                            }}
+                          >
+                            {dateInfo.month}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: "0.7rem",
+                              color: "#666",
+                              fontWeight: 500,
+                              marginTop: "-4px",
+                            }}
+                          >
+                            {dateInfo.year}
+                          </span>
                         </div>
 
-                        {/* Title */}
-                        <h4
-                          style={{
-                            fontSize: "1.3rem",
-                            fontWeight: 700,
-                            color: "#1a1a1a",
-                            marginBottom: "12px",
-                            lineHeight: 1.3,
-                            minHeight: "60px",
-                          }}
-                        >
-                          {item.title}
-                        </h4>
-
-                     
-
-                        {/* Read More */}
+                        {/* Title and Button Container */}
                         <div
                           style={{
-                            marginTop: "auto",
+                            flex: 1,
                             display: "flex",
-                            alignItems: "center",
-                            color: "#0079c0",
-                            fontWeight: 600,
-                            fontSize: "0.9rem",
+                            flexDirection: "column",
+                            justifyContent: "flex-start",
                           }}
                         >
-                          Read More{" "}
-                          <i
-                            className="bi bi-arrow-right ms-2"
-                            style={{ fontSize: "1rem" }}
-                          ></i>
+                          {/* Title */}
+                          <h4
+                            style={{
+                              fontSize: "1rem",
+                              fontWeight: 600,
+                              color: "#1a1a1a",
+                              textAlign: "left",
+                              margin: 0,
+                              marginBottom: "8px",
+                            }}
+                          >
+                            {item.title}
+                          </h4>
+
+                          {/* Read More */}
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              color: "#0079c0",
+                              fontWeight: 600,
+                              fontSize: "0.9rem",
+                              textAlign: "left",
+                              marginTop: "auto",
+                            }}
+                          >
+                            Read More{" "}
+                            <i
+                              className="bi bi-arrow-right ms-2"
+                              style={{ fontSize: "1rem" }}
+                            ></i>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -340,6 +360,175 @@ export default function EventListArea() {
                   : "notices"}{" "}
               available at the moment.
             </p>
+          </div>
+        )}
+
+        {/* Pagination Controls */}
+        {allDisplayItems.length > itemsPerPage && (
+          <div className="row mt-5">
+            <div className="col-12">
+              <div
+                className="d-flex justify-content-center align-items-center gap-3 flex-wrap"
+                style={{ marginTop: "40px" }}
+              >
+                {/* Previous Button */}
+                <button
+                  onClick={() => {
+                    setCurrentPage((prev) => Math.max(1, prev - 1));
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  disabled={currentPage === 1}
+                  className="btn btn-outline-primary"
+                  style={{
+                    borderColor: "#0079c0",
+                    color: currentPage === 1 ? "#ccc" : "#0079c0",
+                    borderRadius: "8px",
+                    padding: "8px 20px",
+                    fontWeight: 500,
+                    cursor: currentPage === 1 ? "not-allowed" : "pointer",
+                    opacity: currentPage === 1 ? 0.5 : 1,
+                  }}
+                >
+                  <i className="bi bi-chevron-left me-1"></i>
+                  Previous
+                </button>
+
+                {/* Page Numbers */}
+                <div className="d-flex gap-2 align-items-center">
+                  {(() => {
+                    const pages: (number | string)[] = [];
+
+                    // Always show first page
+                    pages.push(1);
+
+                    // Add ellipsis if needed
+                    if (currentPage > 3) {
+                      pages.push("ellipsis-start");
+                    }
+
+                    // Add pages around current page
+                    for (
+                      let i = Math.max(2, currentPage - 1);
+                      i <= Math.min(totalPages - 1, currentPage + 1);
+                      i++
+                    ) {
+                      if (i !== 1 && i !== totalPages) {
+                        pages.push(i);
+                      }
+                    }
+
+                    // Add ellipsis if needed
+                    if (currentPage < totalPages - 2) {
+                      pages.push("ellipsis-end");
+                    }
+
+                    // Always show last page (if more than 1 page)
+                    if (totalPages > 1) {
+                      pages.push(totalPages);
+                    }
+
+                    // Remove duplicates
+                    const uniquePages = pages.filter((page, index, self) => {
+                      if (typeof page === "string") {
+                        // Only keep one ellipsis of each type
+                        const prev = self[index - 1];
+                        return (
+                          !(
+                            prev === "ellipsis-start" &&
+                            page === "ellipsis-start"
+                          ) &&
+                          !(prev === "ellipsis-end" && page === "ellipsis-end")
+                        );
+                      }
+                      return self.indexOf(page) === index;
+                    });
+
+                    return uniquePages.map((page, idx) => {
+                      if (typeof page === "string") {
+                        return (
+                          <span
+                            key={`${page}-${idx}`}
+                            style={{
+                              color: "#0079c0",
+                              padding: "0 5px",
+                            }}
+                          >
+                            ...
+                          </span>
+                        );
+                      }
+
+                      return (
+                        <button
+                          key={page}
+                          onClick={() => {
+                            setCurrentPage(page);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
+                          className="btn"
+                          style={{
+                            backgroundColor:
+                              currentPage === page ? "#0079c0" : "transparent",
+                            borderColor: "#0079c0",
+                            color: currentPage === page ? "#fff" : "#0079c0",
+                            borderRadius: "8px",
+                            minWidth: "40px",
+                            height: "40px",
+                            fontWeight: currentPage === page ? 600 : 500,
+                            padding: "0",
+                          }}
+                        >
+                          {page}
+                        </button>
+                      );
+                    });
+                  })()}
+                </div>
+
+                {/* Next Button */}
+                <button
+                  onClick={() => {
+                    setCurrentPage((prev) => Math.min(totalPages, prev + 1));
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  disabled={currentPage === totalPages}
+                  className="btn btn-outline-primary"
+                  style={{
+                    borderColor: "#0079c0",
+                    color: currentPage === totalPages ? "#ccc" : "#0079c0",
+                    borderRadius: "8px",
+                    padding: "8px 20px",
+                    fontWeight: 500,
+                    cursor:
+                      currentPage === totalPages ? "not-allowed" : "pointer",
+                    opacity: currentPage === totalPages ? 0.5 : 1,
+                  }}
+                >
+                  Next
+                  <i className="bi bi-chevron-right ms-1"></i>
+                </button>
+              </div>
+
+              {/* Page Info */}
+              <div className="text-center mt-3">
+                <p
+                  style={{
+                    color: "#666",
+                    fontSize: "0.9rem",
+                    margin: 0,
+                  }}
+                >
+                  Showing {startIndex + 1} -{" "}
+                  {Math.min(endIndex, allDisplayItems.length)} of{" "}
+                  {allDisplayItems.length}{" "}
+                  {activeTab === "all"
+                    ? "items"
+                    : activeTab === "event"
+                      ? "events"
+                      : "notices"}
+                </p>
+              </div>
+            </div>
           </div>
         )}
       </div>

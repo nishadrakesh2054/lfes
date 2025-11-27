@@ -37,7 +37,7 @@ export default function ApplyRequirement() {
       <div className="container">
         <div className="row mb-5">
           <h2>LFES Admissions</h2>
-          <p>
+          <p className="custom-paragraph">
             LFES School admits students of any race, color, religion, national
             and ethnic origin, or other legally protected status and provides
             the rights, privileges, programs, and activities generally accorded
@@ -130,7 +130,7 @@ export default function ApplyRequirement() {
                         </span>
                         <div className="tp-apply-requirement-bullet">
                           {requirements.map((requirement, index) => (
-                            <p key={index} className="mb-2 fs-6">
+                            <p key={index} className="mb-2 fs-6 custom-paragraph">
                               <span>
                                 <HandCheck />
                               </span>
@@ -160,7 +160,7 @@ export default function ApplyRequirement() {
                   </p>
                   <div className="tp-apply-requirement-bullet">
                     {schoolDocuments.map((document, index) => (
-                      <p key={index} className="mb-2 fs-6">
+                      <p key={index} className="mb-2 fs-6 custom-paragraph">
                         <span>
                           <HandCheck />
                         </span>
@@ -183,7 +183,7 @@ export default function ApplyRequirement() {
                   </p>
                   <div className="tp-apply-requirement-bullet">
                     {seniorHighSchoolContent.map((item, index) => (
-                      <p key={index} className="mb-2 fs-6">
+                      <p key={index} className="mb-2 fs-6 custom-paragraph">
                         <span>
                           <HandCheck />
                         </span>

@@ -7,6 +7,9 @@ import admissionApplication from "./admissionApplication";
 import galleryImage from "./galleryImage";
 import academicGalleryImage from "./academicGalleryImage";
 import eventNotice from "./eventNotice";
+import blog from "./blog";
+import popupNotice from "./popupNotice";
+import heroSlide from "./heroSlide";
 
 export const schema = {
   types: [
@@ -19,5 +22,8 @@ export const schema = {
     galleryImage,
     academicGalleryImage,
     eventNotice,
+    blog,
+    popupNotice,
+    heroSlide,
   ],
 };

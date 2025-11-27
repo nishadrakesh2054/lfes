@@ -10,6 +10,7 @@ type EventNotice = {
   date: string;
   description?: string;
   category: "event" | "notice";
+  videoUrl?: string;
   image?: {
     url: string;
     metadata?: {
@@ -104,12 +105,13 @@ export default function EventArea() {
                             <div className="row align-items-center">
                               <div className="col-2">
                                 <div className="tp-event-list">
-                                  <h4 className="tp-event-list-count">
+                                  <h4
+                                    className="tp-event-list-count"
+                                    style={{ fontSize: "2.5rem" }}
+                                  >
                                     {dateInfo.day}
                                   </h4>
-                                  <span>
-                                    {dateInfo.month}, {dateInfo.year}
-                                  </span>
+                                  <span>{dateInfo.month}</span>
                                 </div>
                               </div>
                               <div className="col-9">
@@ -168,12 +170,13 @@ export default function EventArea() {
                             <div className="row align-items-center">
                               <div className="col-2">
                                 <div className="tp-event-list">
-                                  <h4 className="tp-event-list-count">
+                                  <h4
+                                    className="tp-event-list-count"
+                                    style={{ fontSize: "2.5rem" }}
+                                  >
                                     {dateInfo.day}
                                   </h4>
-                                  <span>
-                                    {dateInfo.month}, {dateInfo.year}
-                                  </span>
+                                  <span>{dateInfo.month}</span>
                                 </div>
                               </div>
                               <div className="col-9">
@@ -199,6 +202,12 @@ export default function EventArea() {
                 </div>
               )}
             </div>
+          </div>
+
+          <div className="text-center">
+            <Link href="/event" className="tp-btn">
+              View All Events
+            </Link>
           </div>
         </div>
       </div>

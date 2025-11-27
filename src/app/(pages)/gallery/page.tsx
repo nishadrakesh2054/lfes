@@ -134,14 +134,16 @@ export default function GalleryPage() {
                   <div className="spinner-border text-primary" role="status">
                     <span className="visually-hidden">Loading...</span>
                   </div>
-                  <p className="mt-3">Loading gallery images...</p>
+                  <p className="custom-paragraph mt-3">
+                    Loading gallery images...
+                  </p>
                 </div>
               ) : error ? (
                 <div className="alert alert-danger">{error}</div>
               ) : filteredImages.length === 0 ? (
                 <div className="text-center py-5">
                   <h5>No images in this category yet.</h5>
-                  <p className="text-muted">
+                  <p className="custom-paragraph ">
                     Please check back later as we continue to update our
                     gallery.
                   </p>

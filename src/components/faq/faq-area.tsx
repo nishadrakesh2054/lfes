@@ -1,11 +1,12 @@
 "use client";
-import Link from "next/link";
 import FaqItem from "./faq-item";
 
 // navData.js
 export const navItems = [
   { id: "general", label: "General", active: true },
   { id: "admission", label: "Admission", active: false },
+  { id: "academic", label: "Academic", active: false },
+  { id: "events", label: "Events", active: false },
 ];
 
 const tabContentData = [
@@ -131,36 +132,161 @@ const tabContentData = [
       },
     ],
   },
+  {
+    id: "academic",
+    label: "academic-tab",
+    title: "Academic",
+    topics: [
+      { id: 1, text: "Curriculum Overview", href: "/academics" },
+      { id: 2, text: "Assessment & Evaluation", href: "/academics/assessment" },
+      { id: 3, text: "Progressive Wing", href: "/progressive" },
+      { id: 4, text: "STEM & Labs", href: "/facilities#labs" },
+      { id: 5, text: "Library & Resources", href: "/facilities#library" },
+    ],
+    faqs: [
+      {
+        id: 16,
+        active: true,
+        question: "What curriculum does LFES follow?",
+        answer:
+          "LFES follows the Nepal Government curriculum enriched with international best practices and project-based learning. We integrate the New Zealand 3Di framework and progressive methodologies to develop critical thinking, creativity, and problem-solving skills.",
+      },
+      {
+        id: 17,
+        question: "How are students assessed?",
+        answer:
+          "Assessment is continuous and comprehensive. We use a mix of formative assessments, projects, presentations, exams, and performance-based evaluations. Teachers provide regular feedback and share progress reports with parents each term.",
+      },
+      {
+        id: 18,
+        question: "Do you offer support for students who need extra help?",
+        answer:
+          "Yes. Our Progressive Wing and Academic Support teams provide personalized learning plans, remedial sessions, and counseling for students who need additional academic or behavioral assistance.",
+      },
+      {
+        id: 19,
+        question: "What technology or digital tools are used in classrooms?",
+        answer:
+          "Classrooms are equipped with interactive panels and high-speed internet. Students have access to digital resources, virtual labs, coding platforms, and Google Workspace to collaborate and complete assignments.",
+      },
+      {
+        id: 20,
+        question: "Are there enrichment or gifted programs?",
+        answer:
+          "We run enrichment clubs, STEM challenges, Olympiad prep sessions, and leadership workshops to challenge advanced learners. Students can join specialized programs in science, entrepreneurship, arts, and social impact.",
+      },
+    ],
+  },
+  {
+    id: "events",
+    label: "events-tab",
+    title: "Events & Activities",
+    topics: [
+      { id: 1, text: "Upcoming Events", href: "/event" },
+      { id: 2, text: "ECA & Clubs", href: "/eca" },
+      { id: 3, text: "Sports Programs", href: "/sports" },
+      { id: 4, text: "Community Service", href: "/community" },
+      { id: 5, text: "Alumni Stories", href: "/alumni" },
+    ],
+    faqs: [
+      {
+        id: 21,
+        active: true,
+        question: "What types of events does LFES host?",
+        answer:
+          "We host academic competitions, cultural festivals, sports meets, talent shows, science fairs, parent forums, and international exchange events throughout the year. Events are curated to celebrate creativity, collaboration, and community.",
+      },
+      {
+        id: 22,
+        question: "How can students participate in clubs or ECAs?",
+        answer:
+          "Students can enroll in clubs at the start of each term. Options include music, dance, robotics, debate, art, Model UN, coding, entrepreneurship, Scouts, and more. Club coordinators guide students based on interests and skill levels.",
+      },
+      {
+        id: 23,
+        question: "Do you organize educational trips or excursions?",
+        answer:
+          "Yes. Grade-wise field trips, leadership camps, university visits, and international study tours are organized to extend learning beyond the classroom. Safety guidelines and parental consent are strictly followed.",
+      },
+      {
+        id: 24,
+        question: "How are parents informed about events?",
+        answer:
+          "Parents receive event calendars via email, WhatsApp broadcasts, and the LFES mobile app. Important updates are also posted on the website, social media channels, and sent home through circulars.",
+      },
+      {
+        id: 25,
+        question: "Can alumni participate in school programs?",
+        answer:
+          "Absolutely. Our alumni network often collaborates as speakers, mentors, and judges for competitions. They also lead community service drives, career talks, and scholarship initiatives for current students.",
+      },
+    ],
+  },
 ];
 
 export default function FaqArea() {
   return (
-    <section className="tp-faq-area tp-faq-p pt-50 pb-120">
+    <section
+      className="tp-faq-area tp-faq-p pt-120 pb-120"
+      style={{
+        backgroundImage: `url(/assets/img/bg/a.jpg)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+        position: "relative",
+        minHeight: "100vh",
+      }}
+    >
       <style jsx>{`
+        .nav-tabs {
+          border: none !important;
+          margin-bottom: 40px;
+        }
+        .nav-tabs .nav-link {
+          border: none !important;
+          box-shadow: none !important;
+        }
         .nav-tabs .nav-link.active {
-          color: #0079c0 !important;
-          border-bottom-color: #0079c0 !important;
-          font-weight: 600 !important;
+          color: #ffffff !important;
+          background: transparent !important;
+          position: relative;
         }
-        .nav-tabs .nav-link:not(.active) {
-          color: #666 !important;
+        .nav-tabs .nav-link.active::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 40px;
+          height: 3px;
+          background: #ffffff;
+          border-radius: 2px;
         }
-        .nav-tabs .nav-link:not(.active):hover {
-          color: #0079c0 !important;
+        .accordion-button {
+          box-shadow: none !important;
         }
-        .accordion-button:not(.collapsed) {
-          color: #161613 !important;
-          background-color: #f8f9fa !important;
+        .accordion-button:focus {
+          box-shadow: none !important;
+          border-color: transparent !important;
         }
       `}</style>
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12">
+
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        <div className="col-lg-12">
+          <div className="tp-program-4-section mb-60">
+            <h3 className="tp-section-4-title text-center text-light">FAQS </h3>
+          </div>
+        </div>
+        <div className="row justify-content-center">
+          <div className="col-lg-10">
             <div className="tp-instructor-become-tab">
+              {/* Enhanced Tab Navigation */}
               <ul
-                className="nav nav-tabs justify-content-center"
+                className="nav nav-tabs justify-content-start justify-content-md-center"
                 id="myTab"
                 role="tablist"
+                style={{ borderBottom: "none", gap: "8px" }}
               >
                 {navItems.map((item) => (
                   <li key={item.id} className="nav-item" role="presentation">
@@ -175,20 +301,35 @@ export default function FaqArea() {
                       aria-selected={item.active}
                       tabIndex={item.active ? 0 : -1}
                       style={{
-                        color: item.active ? "#0079c0" : "#666",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        color: item.active
+                          ? "#ffffff"
+                          : "rgba(255, 255, 255, 0.85)",
                         border: "none",
-                        fontWeight: item.active ? "600" : "500",
-                        padding: "12px 24px",
+                        fontWeight: item.active ? "500" : "400",
+                        padding: "4px 20px",
                         transition: "all 0.3s ease",
+                        background: item.active
+                          ? "rgba(0, 121, 192, 0.08)"
+                          : "rgba(255, 255, 255, 0.1)",
+                        borderRadius: "50px",
+                        fontSize: "16px",
+                        position: "relative",
                       }}
                       onMouseEnter={(e) => {
                         if (!item.active) {
-                          e.currentTarget.style.color = "#0079c0";
+                          e.currentTarget.style.color = "#ffffff";
+                          e.currentTarget.style.background =
+                            "rgba(0, 121, 192, 0.05)";
                         }
                       }}
                       onMouseLeave={(e) => {
                         if (!item.active) {
-                          e.currentTarget.style.color = "#666";
+                          e.currentTarget.style.color =
+                            "rgba(255, 255, 255, 0.75)";
+                          e.currentTarget.style.background =
+                            "rgba(255, 255, 255, 0.1)";
                         }
                       }}
                     >
@@ -198,7 +339,11 @@ export default function FaqArea() {
                 ))}
               </ul>
 
-              <div className="tab-content" id="myTabContent">
+              <div
+                className="tab-content"
+                id="myTabContent"
+                style={{ marginTop: "10px" }}
+              >
                 {tabContentData.map((tab) => (
                   <div
                     key={tab.id}
@@ -209,8 +354,8 @@ export default function FaqArea() {
                     role="tabpanel"
                     aria-labelledby={tab.label}
                   >
-                    <div className="row">
-                      <div className="col-lg-8 order-1 order-lg-2">
+                    <div className="row justify-content-center">
+                      <div className="col-lg-10 order-1 order-lg-2">
                         <div className="tp-faq-box">
                           <div className="tpd-accordion">
                             <div
@@ -225,23 +370,6 @@ export default function FaqArea() {
                                 />
                               ))}
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 order-2 order-lg-1">
-                        <div className="tp-faq-wrap">
-                          <div className="tp-faq-sidebar">
-                            <h4 className="tp-faq-sidebar-title">
-                              Related Topics
-                            </h4>
-                            <ul>
-                              {tab.topics.map((topic) => (
-                                <li key={topic.id}>
-                                  <Link href={topic.href}>{topic.text}</Link>
-                                </li>
-                              ))}
-                            </ul>
-                    
                           </div>
                         </div>
                       </div>

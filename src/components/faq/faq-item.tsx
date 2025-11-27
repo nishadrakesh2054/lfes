@@ -14,10 +14,15 @@ export default function FaqItem({ faq, parentId }: IProps) {
       className={`accordion-item ${faq.active ? "expand" : ""}`}
       key={faq.id}
       style={{
-        marginBottom: "12px",
-        border: "1px solid #e0e0e0",
-        borderRadius: "8px",
+        marginBottom: "16px",
+        border: "none",
+        borderRadius: "12px",
         overflow: "hidden",
+        background: faq.active
+          ? "linear-gradient(135deg, rgba(0, 121, 192, 0.4) 0%, rgba(0, 121, 192, 0.2) 100%)"
+          : "rgba(0, 0, 0, 0.10)",
+        backdropFilter: "blur(10px)",
+        transition: "all 0.3s ease",
       }}
     >
       <h2 className="accordion-header">
@@ -31,19 +36,27 @@ export default function FaqItem({ faq, parentId }: IProps) {
           aria-expanded="false"
           aria-controls={`flush-collapse${faq.id}`}
           style={{
-            fontSize: "15px",
-            fontWeight: "500",
-            lineHeight: "1.5",
-            color: "#161613",
-            padding: "16px 20px",
-            backgroundColor: faq.active ? "#f8f9fa" : "#ffffff",
+            fontSize: "16px",
+            fontWeight: faq.active ? "600" : "500",
+            lineHeight: "1.6",
+            color: faq.active ? "#ffffff" : "rgba(255, 255, 255, 0.85)",
+            padding: "20px 24px",
+            backgroundColor: "transparent",
             border: "none",
             boxShadow: "none",
             textAlign: "left",
+            transition: "all 0.3s ease",
           }}
         >
           {faq.question}
-          <span className="accordion-btn" style={{ color: "#0079c0" }}></span>
+          <span
+            className="accordion-btn"
+            style={{
+              color: faq.active ? "#ffffff" : "rgba(255, 255, 255, 0.7)",
+              fontSize: "20px",
+              fontWeight: "bold",
+            }}
+          ></span>
         </button>
       </h2>
       <div
@@ -52,13 +65,13 @@ export default function FaqItem({ faq, parentId }: IProps) {
         data-bs-parent={`#${parentId}`}
       >
         <div
-          className="accordion-body"
+          className="accordion-body custom-paragraph"
           style={{
-            fontSize: "14px",
-            lineHeight: "1.7",
-            color: "#57595f",
-            padding: "20px",
-            backgroundColor: "#ffffff",
+            fontSize: "15px",
+            lineHeight: "1.8",
+            color: faq.active ? "#ffffff" : "rgba(255, 255, 255, 0.85)",
+            padding: "0 24px 24px 24px",
+            backgroundColor: "transparent",
           }}
         >
           {faq.answer}

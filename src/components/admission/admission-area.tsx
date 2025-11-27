@@ -62,8 +62,8 @@ export function Message() {
                       {facility.name}
                     </h3>
                     <p
-                      className="text-muted lh-lg mb-0"
-                      style={{ textAlign: "justify", flexGrow: 1 }}
+                      className="custom-paragraph mb-0"
+                      style={{  flexGrow: 1 }}
                       dangerouslySetInnerHTML={{
                         __html: facility.description,
                       }}
