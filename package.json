@@ -15,6 +15,7 @@
         "@fullcalendar/interaction": "^6.1.15",
         "@fullcalendar/react": "^6.1.15",
         "@fullcalendar/timegrid": "^6.1.15",
+        "@sanity/client": "^7.6.0",
         "@sanity/icons": "^2.8.0",
         "@sanity/image-url": "^1.2.0",
         "@sanity/vision": "^3.57.0",
@@ -57,6 +58,10 @@
         "typescript": "^5"
     },
     "overrides": {
-        "@sanity/icons": "^2.8.0"
+        "@sanity/icons": "^2.8.0",
+        "@sanity/client": "^7.6.0",
+        "@sanity/preview-kit-compat": {
+            "@sanity/client": "^7.6.0"
+        }
     }
 }
