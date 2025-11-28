@@ -16,7 +16,7 @@
         "@fullcalendar/react": "^6.1.15",
         "@fullcalendar/timegrid": "^6.1.15",
         "@sanity/client": "^7.6.0",
-        "@sanity/icons": "^2.30.0",
+        "@sanity/icons": "^3.7.4",
         "@sanity/image-url": "^1.2.0",
         "@sanity/vision": "3.57.0",
         "bootstrap": "^5.3.3",
@@ -58,13 +58,13 @@
         "typescript": "^5"
     },
     "overrides": {
-        "@sanity/icons": "^2.30.0",
+        "@sanity/icons": "^3.7.4",
         "@sanity/client": "^7.6.0",
         "@sanity/preview-kit-compat": {
             "@sanity/client": "^7.6.0"
         },
         "sanity": {
-            "@sanity/icons": "^2.30.0"
+            "@sanity/icons": "^3.7.4"
         }
     }
 }
