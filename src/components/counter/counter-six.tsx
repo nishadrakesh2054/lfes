@@ -38,7 +38,7 @@ export default function CounterSix() {
           {counterData.map((item, index) => (
             <div key={index} className="col-lg-3 col-sm-6">
               <div className="tp-instructor-counter-item text-center">
-                <h4 className=" mb-10" style={{ fontSize: "50px", fontWeight: "400", letterSpacing: "3px" ,color: "#fff", fontStyle: "italic"}}>
+                <h4 className=" mb-10" style={{ fontSize: "50px", fontWeight: "400", letterSpacing: "3px" ,color: "#fff"}}>
                   <CounterItem min={0} max={item.endValue} />
                   {item.suffix}
                 </h4>

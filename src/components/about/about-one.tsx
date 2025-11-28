@@ -38,17 +38,17 @@ export default function AboutOne() {
     <section className="about-area tp-about-bg grey-bg pt-105">
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 border">
+          <div className="col-lg-6 border rounded-1 ">
             <div
               className="tp-about-wrap mb-60 wow fadeInLeft"
               data-wow-delay=".3s"
             >
               <div className="tp-about-thumb-wrapper">
-                <div className="tp-about-thumb-1">
-                  <Image src={thumb_1} alt="about-thumb" style={imgStyle} />
+                <div className="tp-about-thumb-1 rounded">
+                  <Image src={thumb_1} alt="about-thumb" style={imgStyle} className="rounded" />
                 </div>
                 <div className="tp-about-thumb-2">
-                  <Image src={thumb_2} alt="about-thumb" style={imgStyle} />
+                  <Image src={thumb_2} alt="about-thumb" style={imgStyle} className="rounded" />
                 </div>
               </div>
               <div className="tp-about-shape">

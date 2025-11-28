@@ -51,9 +51,13 @@ export default function ProgramSliderTwo() {
               <Image
                 src={item.img}
                 alt={item.title}
-                width={468}
-                height={543}
-                style={{ height: "auto" }}
+                width={936}
+                height={1086}
+                sizes="(max-width: 576px) 100vw, (max-width: 768px) 50vw, (max-width: 992px) 33vw, (max-width: 1200px) 25vw, 468px"
+                style={{ height: "auto", width: "100%", objectFit: "cover" }}
+                quality={100}
+                priority={item.id <= 4}
+                unoptimized={false}
               />
             </div>
             <div className="tp-program-4-content">

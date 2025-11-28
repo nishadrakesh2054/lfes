@@ -3863,7 +3863,7 @@ div.demo img {
 .tp-section-subtitle {
   color: var(--tp-theme-primary);
   font-size: 18px;
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   text-transform: uppercase;
   margin-bottom: 5px;
@@ -12381,7 +12381,7 @@ a.social-yout {
 .tp-hero-subtitle {
   color: var(--tp-common-white);
   font-size: 22px;
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   text-transform: uppercase;
   display: inline-block;
@@ -13044,7 +13044,7 @@ a.social-yout {
   margin-bottom: 0;
   color: var(--tp-theme-primary);
   font-size: 90px;
-  font-style: italic;
+  font-style: normal;
   font-weight: 900;
   letter-spacing: -2.7px;
   line-height: 0.74;
@@ -15325,7 +15325,7 @@ a.social-yout {
   background-color: #57575a;
 }
 .tp-privacy-content-bottom p {
-  font-style: italic;
+  font-style: normal;
   font-size: 14px;
 }
 
@@ -15422,7 +15422,7 @@ a.social-yout {
 .tp-counter-4-count {
   color: #161613;
   font-size: 100px;
-  font-style: italic;
+  font-style: normal;   
   font-weight: 300;
   letter-spacing: -3px;
   margin-bottom: 4px;

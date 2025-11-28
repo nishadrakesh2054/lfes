@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 import { EffectFade, Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SwiperOptions } from "swiper/types";
@@ -80,17 +81,64 @@ export default function HeroAreaOne({ slides }: HeroAreaOneProps) {
                   </div>
                 </div>
               </div>
-              <div
-                className="tp-hero-bg"
-                style={{
-                  backgroundImage: `url(${item.image?.url || "/assets/img/hero/home-1.png"})`,
-                }}
-              ></div>
+              <div className="tp-hero-bg">
+                {item.image?.url && item.image.url.startsWith("http") ? (
+                  // Sanity CDN image - optimize URL for HD quality
+                  <Image
+                    src={`${item.image.url}?w=3840&q=100&auto=format`}
+                    alt={item.title}
+                    fill
+                    priority={index === 0}
+                    quality={100}
+                    sizes="100vw"
+                    style={{ objectFit: "cover" }}
+                    unoptimized={false}
+                  />
+                ) : (
+                  // Local image - use Next.js Image optimization
+                  <Image
+                    src={item.image?.url || "/assets/img/hero/home-1.png"}
+                    alt={item.title}
+                    fill
+                    priority={index === 0}
+                    quality={100}
+                    sizes="100vw"
+                    style={{ objectFit: "cover" }}
+                    unoptimized={false}
+                  />
+                )}
+                <div className="tp-hero-overlay"></div>
+              </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
       <style jsx>{`
+        .tp-hero-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+        }
+        .tp-hero-bg :global(img) {
+          object-fit: cover;
+        }
+        .tp-hero-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(0, 0, 0, 0.2) 50%,
+            rgba(0, 0, 0, 0) 100%
+          );
+          z-index: 1;
+        }
         .hero-content {
           max-width: 720px;
           padding: 3rem 0;

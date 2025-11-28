@@ -226,7 +226,7 @@ export default function FooterOne({ style_2 = false }: IProps) {
                         marginBottom: "20px",
                         fontSize: "15px",
                         lineHeight: "1.6",
-                        color: "#e0e0e0",
+                        color: "#bfbfbf",
                       }}
                     >
                       Enter your email and we will send you more information

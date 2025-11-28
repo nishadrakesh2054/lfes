@@ -19,12 +19,12 @@ type AcademicGalleryDoc = {
   _createdAt?: string;
 };
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const categoryParam = searchParams.get("category");
+    // Using request.nextUrl avoids marking route as dynamic just to parse query params
+    const categoryParam = request.nextUrl.searchParams.get("category");
     const categories = categoryParam
       ? categoryParam
           .split(",")

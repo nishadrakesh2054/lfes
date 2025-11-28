@@ -145,7 +145,7 @@ export default function ApplicationForm() {
               <i className="bi bi-file-earmark-text me-2 fs-5"></i>
               <div>
                 <h5 className="mb-0 fw-bold text-light text-uppercase">
-                  Application Form
+                 Register Your Interest in LFES
                 </h5>
                 <small className="opacity-75">
                   Please fill in all the required information

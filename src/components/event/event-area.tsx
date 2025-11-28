@@ -107,7 +107,7 @@ export default function EventArea() {
                                 <div className="tp-event-list">
                                   <h4
                                     className="tp-event-list-count"
-                                    style={{ fontSize: "2.5rem" }}
+                                    style={{ fontSize: "2.5rem" ,fontStyle: "normal"}}
                                   >
                                     {dateInfo.day}
                                   </h4>
@@ -172,7 +172,7 @@ export default function EventArea() {
                                 <div className="tp-event-list">
                                   <h4
                                     className="tp-event-list-count"
-                                    style={{ fontSize: "2.5rem" }}
+                                    style={{ fontSize: "2.5rem" ,fontStyle: "normal"}}
                                   >
                                     {dateInfo.day}
                                   </h4>
