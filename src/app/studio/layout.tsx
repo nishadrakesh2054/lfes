@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import StudioStyles from "./studio-styles";
 
 export const metadata: Metadata = {
   title: "Sanity Studio",
@@ -10,5 +11,10 @@ export default function StudioLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <StudioStyles />
+      {children}
+    </>
+  );
 }

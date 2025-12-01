@@ -7,6 +7,11 @@
 .main-menu {
   & > nav {
     & > ul {
+      @media #{$xl} {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+      }
       & > li {
         position: relative;
         list-style: none;
@@ -15,6 +20,10 @@
         @media #{$lg} {
           margin-left: 25px;
         }
+        @media #{$xl} {
+          margin: 0px 10px;
+          flex-shrink: 0;
+        }
         & > a {
           display: inline-block;
           color: var(--tp-common-white);
@@ -22,6 +31,10 @@
           line-height: 1.5;
           font-size: 17px;
           font-weight: 500;
+          @media #{$xl} {
+            font-size: 15px;
+            padding: 35px 0 35px 0;
+          }
         }
         &.has-dropdown {
           & > a {

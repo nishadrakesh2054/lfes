@@ -60,14 +60,14 @@ export default function HeaderOne() {
               </div>
               {/* </div> */}
 
-              <div className="col-xxl-8 col-xl-7  d-none d-xl-block">
+              <div className="col-xxl-8 col-xl-8  d-none d-xl-block">
                 <div className="main-menu text-end  ">
                   {/* nav menus start */}
                   <NavMenus />
                   {/* nav menus end */}
                 </div>
               </div>
-              <div className="col-xxl-2 col-xl-3 col-lg-6 col-md-6 col-6">
+              <div className="col-xxl-2 col-xl-2 col-lg-6 col-md-6 col-6">
                 <div className="tp-header-contact d-flex align-items-center justify-content-end">
                   <div className="tp-header-bar d-xl-none ml-30">
                     <OffcanvasButton />

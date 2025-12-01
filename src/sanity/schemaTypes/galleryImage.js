@@ -2,7 +2,10 @@ const categoryOptions = [
   { title: "Progressive Wing", value: "progressive-wing" },
   { title: "Primary School", value: "primary-school" },
   { title: "Middle School", value: "middle-school" },
-  { title: "Secondary School", value: "secondary-school" },
+  { title: "High School", value: "high-school" },
+  { title: "Senior High School", value: "senior-high-school" },
+  { title: "ECA", value: "eca" },
+  { title: "MUN", value: "mun" },
   { title: "Events & Activities", value: "events" },
   { title: "Facilities", value: "facilities" },
 ];

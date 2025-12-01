@@ -1,7 +1,7 @@
 /**
  * This configuration is used to for the Sanity Studio that's mounted on the `\src\app\studio\[[...tool]]\page.jsx` route
  */
-
+"use client";
 import { visionTool } from "@sanity/vision";
 import { defineConfig, buildLegacyTheme } from "sanity";
 import { structureTool } from "sanity/structure";
@@ -19,6 +19,7 @@ const lfesStudioTheme = buildLegacyTheme({
   "--component-text-color": "#1f2a37",
   "--default-button-color": "#ffffff",
   "--default-button-primary-color": brandColor,
+  "--default-button-primary-invert": "#ffffff", // White text on primary button
   "--default-button-success-color": "#1aba77",
   "--default-button-warning-color": "#f4b400",
   "--default-button-danger-color": "#e53935",
