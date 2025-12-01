@@ -2,7 +2,7 @@
 import React from "react";
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
 import Image from "next/image";
-import school1 from "@/assets/img/hero/hero2.jpeg";
+import school1 from "@/assets/img/shs.webp";
 import ECAgallery from "@/components/gallery/eca-gallery";
 
 const SecondarySchool = () => {

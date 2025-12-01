@@ -1,7 +1,7 @@
 // import AboutTwo from "@/components/about/about-two";
 "use client";
 import BreadcrumbTwo from "@/components/breadcrumb/breadcrumb-two";
-import school1 from "@/assets/img/hero/hero2.jpeg";
+import school1 from "@/assets/img/shs2.jpg";
 import ECAgallery from "@/components/gallery/eca-gallery";
 import Image from "next/image";
 import React from "react";

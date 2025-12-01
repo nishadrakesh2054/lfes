@@ -20,6 +20,7 @@ type AcademicGalleryDoc = {
 };
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0; // Always revalidate
 
 export async function GET(request: NextRequest) {
   try {
@@ -32,23 +33,49 @@ export async function GET(request: NextRequest) {
           .filter(Boolean)
       : undefined;
 
+    console.log("Academic Gallery API - Categories requested:", categories);
+
     const images = await getAcademicGalleryImages(categories);
 
-    const formatted = images.map((image: AcademicGalleryDoc) => ({
-      ...image,
-      createdAt: image._createdAt,
-      imageUrl: image.image
-        ? urlFor(image.image).width(1000).quality(90).url()
-        : "",
-    }));
+    console.log("Academic Gallery API - Raw images fetched:", images.length);
 
-    return NextResponse.json({ images: formatted });
+    const formatted = images
+      .map((image: AcademicGalleryDoc) => {
+        const imageUrl = image.image
+          ? urlFor(image.image).width(1000).quality(90).url()
+          : image.driveLink || "";
+
+        return {
+          _id: image._id,
+          createdAt: image._createdAt,
+          category: image.category,
+          imageUrl: imageUrl,
+        };
+      })
+      .filter((item) => item.imageUrl); // Filter out items without valid image URLs
+
+    console.log(
+      "Academic Gallery API - Formatted images with URLs:",
+      formatted.length
+    );
+
+    // Return response with no-cache headers
+    return NextResponse.json(
+      { images: formatted },
+      {
+        headers: {
+          "Cache-Control": "no-store, max-age=0, must-revalidate",
+          Pragma: "no-cache",
+        },
+      }
+    );
   } catch (error) {
     console.error("Error fetching academic gallery images:", error);
     return NextResponse.json(
       {
         error: "Failed to load academic gallery images",
         message: error instanceof Error ? error.message : "Unexpected error",
+        images: [], // Always return images array even on error
       },
       { status: 500 }
     );

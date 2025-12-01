@@ -1,5 +1,15 @@
 import { client } from "@/sanity/lib/client";
+import { createClient } from "next-sanity";
 import { groq } from "next-sanity";
+import { apiVersion, dataset, projectId } from "@/sanity/env";
+
+// Create a client without CDN for real-time gallery updates
+const galleryClient = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: false, // Disable CDN for real-time updates
+});
 
 // GROQ query to fetch all testimonials
 export const testimonialsQuery = `*[_type == "testimonial"] | order(_createdAt desc) {
@@ -61,22 +71,84 @@ export async function getGalleryImages() {
   }
 }
 
-const academicGalleryQuery = groq`*[_type == "academicGalleryImage" && (!defined($categories) || category in $categories)] | order(_createdAt desc) {
-  _id,
-  title,
-  category,
-  image,
-  driveLink,
-  _createdAt
-}`;
-
 export async function getAcademicGalleryImages(categories?: string[]) {
   try {
-    const list = categories && categories.length > 0 ? categories : undefined;
-    const images = await client.fetch(academicGalleryQuery, {
-      categories: list,
+    let query;
+
+    if (categories && categories.length > 0) {
+      // Filter by specific categories
+      query = groq`*[_type == "academicGalleryImage" && category in $categories] | order(_createdAt desc) {
+        _id,
+        title,
+        category,
+        image,
+        driveLink,
+        _createdAt
+      }`;
+    } else {
+      // Get all images when no categories specified
+      query = groq`*[_type == "academicGalleryImage"] | order(_createdAt desc) {
+        _id,
+        title,
+        category,
+        image,
+        driveLink,
+        _createdAt
+      }`;
+    }
+
+    const params = categories && categories.length > 0 ? { categories } : {};
+
+    // Use galleryClient (without CDN) for real-time updates
+    // This ensures newly uploaded images appear immediately
+    const images = await galleryClient.fetch(query, params, {
+      cache: "no-store", // Always fetch fresh data, no caching
     });
-    return images;
+
+    // Enhanced debug logging (always log to help diagnose upload issues)
+    console.log("=== ACADEMIC GALLERY FETCH DEBUG ===");
+    console.log("Timestamp:", new Date().toISOString());
+    console.log("Using non-CDN client:", true);
+    console.log("Categories requested:", categories || "All categories");
+    console.log("Query params:", params);
+    console.log("Images fetched count:", images?.length || 0);
+
+    if (images && images.length > 0) {
+      console.log("First image:", {
+        _id: images[0]._id,
+        category: images[0].category,
+        hasImage: !!images[0].image,
+        createdAt: images[0]._createdAt,
+      });
+      console.log("Last image:", {
+        _id: images[images.length - 1]._id,
+        category: images[images.length - 1].category,
+        createdAt: images[images.length - 1]._createdAt,
+      });
+
+      type AcademicImage = {
+        category?: string;
+      };
+      const categoryList = (images as AcademicImage[])
+        .map((img) => img.category)
+        .filter(
+          (cat): cat is string => typeof cat === "string" && cat.length > 0
+        );
+      const uniqueCategories = Array.from(new Set(categoryList));
+      console.log("Categories found in results:", uniqueCategories);
+    } else {
+      console.log("⚠️ No images returned!");
+      console.log(
+        "TROUBLESHOOTING:",
+        "\n1. Check Sanity Studio - Are images PUBLISHED (not just saved as drafts)?",
+        "\n2. Check category values - Do they match exactly?",
+        "\n3. Check schema - Is 'academicGalleryImage' the correct type?",
+        "\n4. Try fetching ALL images (no category filter) to see if query works"
+      );
+    }
+    console.log("===================================");
+
+    return Array.isArray(images) ? images : [];
   } catch (error) {
     console.error("Error fetching academic gallery images:", error);
     return [];
