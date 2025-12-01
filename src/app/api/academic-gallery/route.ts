@@ -33,16 +33,26 @@ export async function GET(request: NextRequest) {
           .filter(Boolean)
       : undefined;
 
-    console.log("Academic Gallery API - Categories requested:", categories);
+    if (process.env.NODE_ENV === "development") {
+      console.log("Academic Gallery API - Categories requested:", categories);
+    }
 
     const images = await getAcademicGalleryImages(categories);
 
-    console.log("Academic Gallery API - Raw images fetched:", images.length);
+    if (process.env.NODE_ENV === "development") {
+      console.log("Academic Gallery API - Raw images fetched:", images.length);
+    }
 
     const formatted = images
       .map((image: AcademicGalleryDoc) => {
+        // Optimize image URLs for mobile performance - smaller sizes, better compression
         const imageUrl = image.image
-          ? urlFor(image.image).width(1000).quality(90).url()
+          ? urlFor(image.image)
+              .width(600) // Reduced for faster mobile loading
+              .quality(75) // Optimized for mobile - good quality with smaller file size
+              .format("webp") // WebP format for better compression
+              .auto("format") // Auto-optimize format
+              .url()
           : image.driveLink || "";
 
         return {
@@ -54,10 +64,12 @@ export async function GET(request: NextRequest) {
       })
       .filter((item) => item.imageUrl); // Filter out items without valid image URLs
 
-    console.log(
-      "Academic Gallery API - Formatted images with URLs:",
-      formatted.length
-    );
+    if (process.env.NODE_ENV === "development") {
+      console.log(
+        "Academic Gallery API - Formatted images with URLs:",
+        formatted.length
+      );
+    }
 
     // Return response with no-cache headers
     return NextResponse.json(

@@ -9,11 +9,9 @@ const nextConfig = {
     ],
     // Optimize images for better performance
     formats: ["image/avif", "image/webp"],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 2560, 3840],
-    imageSizes: [
-      16, 32, 48, 64, 96, 128, 256, 384, 468, 640, 750, 828, 936, 1080, 1200,
-    ],
-    minimumCacheTTL: 60,
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000, // 1 year cache for images
   },
   // Enable compression
   compress: true,
@@ -21,8 +19,15 @@ const nextConfig = {
   swcMinify: true,
   // Reduce bundle size
   experimental: {
-    optimizePackageImports: ["swiper"],
+    optimizePackageImports: ["swiper", "lucide-react"],
   },
+  // Optimize CSS
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+  // Performance optimizations
+  poweredByHeader: false,
+  reactStrictMode: true,
 };
 
 export default nextConfig;

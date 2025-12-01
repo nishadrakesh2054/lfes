@@ -18,7 +18,6 @@ const images = [
 
 export default function StaffArea() {
   return (
-
     <section className="team-area pt-50 mb-100">
       <div className="container">
         {images.map((item, index) => (
@@ -50,6 +49,9 @@ export default function StaffArea() {
                   alt={item.title}
                   className="w-full rounded-lg"
                   style={{ width: "100%", height: "auto" }}
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 100vw"
+                  quality={85}
                 />
               </div>
             </div>

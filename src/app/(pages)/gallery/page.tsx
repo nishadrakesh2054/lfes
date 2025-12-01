@@ -166,6 +166,9 @@ export default function GalleryPage() {
                             width={400}
                             height={400}
                             className="w-100"
+                            loading="lazy"
+                            sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 25vw"
+                            quality={85}
                             style={{
                               height: "auto",
                               objectFit: "cover",

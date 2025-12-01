@@ -33,8 +33,10 @@ export default function AcademicGallery({
         setError(null);
 
         const url = `/api/academic-gallery${categoryQuery}`;
-        console.log("Fetching gallery images from:", url);
-        console.log("Categories:", categories);
+        if (process.env.NODE_ENV === "development") {
+          console.log("Fetching gallery images from:", url);
+          console.log("Categories:", categories);
+        }
 
         const response = await fetch(url);
 
@@ -47,25 +49,30 @@ export default function AcademicGallery({
         }
 
         const data = await response.json();
-        console.log("Gallery API Response:", {
-          imagesCount: data.images?.length || 0,
-          hasError: !!data.error,
-          error: data.error,
-        });
+
+        if (process.env.NODE_ENV === "development") {
+          console.log("Gallery API Response:", {
+            imagesCount: data.images?.length || 0,
+            hasError: !!data.error,
+            error: data.error,
+          });
+        }
 
         if (data.error) {
           throw new Error(data.error);
         }
 
         const imageList = data.images || [];
-        console.log("Images received:", imageList.length);
 
-        if (imageList.length > 0) {
-          console.log("First image:", {
-            _id: imageList[0]._id,
-            imageUrl: imageList[0].imageUrl,
-            hasImageUrl: !!imageList[0].imageUrl,
-          });
+        if (process.env.NODE_ENV === "development") {
+          console.log("Images received:", imageList.length);
+          if (imageList.length > 0) {
+            console.log("First image:", {
+              _id: imageList[0]._id,
+              imageUrl: imageList[0].imageUrl,
+              hasImageUrl: !!imageList[0].imageUrl,
+            });
+          }
         }
 
         const sorted = imageList.sort(
@@ -171,9 +178,12 @@ export default function AcademicGallery({
                 src={item.imageUrl}
                 alt="Gallery image"
                 width={600}
-                height={600}
+                height={450}
                 className="w-100 h-100 object-fit-cover gallery-img"
                 style={{ minHeight: "280px", aspectRatio: "4/3" }}
+                loading="lazy"
+                sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
+                quality={85}
                 onError={(e) => {
                   console.error("Failed to load image:", item.imageUrl);
                   e.currentTarget.style.display = "none";

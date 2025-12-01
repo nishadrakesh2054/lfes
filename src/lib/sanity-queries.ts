@@ -105,48 +105,50 @@ export async function getAcademicGalleryImages(categories?: string[]) {
       cache: "no-store", // Always fetch fresh data, no caching
     });
 
-    // Enhanced debug logging (always log to help diagnose upload issues)
-    console.log("=== ACADEMIC GALLERY FETCH DEBUG ===");
-    console.log("Timestamp:", new Date().toISOString());
-    console.log("Using non-CDN client:", true);
-    console.log("Categories requested:", categories || "All categories");
-    console.log("Query params:", params);
-    console.log("Images fetched count:", images?.length || 0);
+    // Enhanced debug logging (only in development)
+    if (process.env.NODE_ENV === "development") {
+      console.log("=== ACADEMIC GALLERY FETCH DEBUG ===");
+      console.log("Timestamp:", new Date().toISOString());
+      console.log("Using non-CDN client:", true);
+      console.log("Categories requested:", categories || "All categories");
+      console.log("Query params:", params);
+      console.log("Images fetched count:", images?.length || 0);
 
-    if (images && images.length > 0) {
-      console.log("First image:", {
-        _id: images[0]._id,
-        category: images[0].category,
-        hasImage: !!images[0].image,
-        createdAt: images[0]._createdAt,
-      });
-      console.log("Last image:", {
-        _id: images[images.length - 1]._id,
-        category: images[images.length - 1].category,
-        createdAt: images[images.length - 1]._createdAt,
-      });
+      if (images && images.length > 0) {
+        console.log("First image:", {
+          _id: images[0]._id,
+          category: images[0].category,
+          hasImage: !!images[0].image,
+          createdAt: images[0]._createdAt,
+        });
+        console.log("Last image:", {
+          _id: images[images.length - 1]._id,
+          category: images[images.length - 1].category,
+          createdAt: images[images.length - 1]._createdAt,
+        });
 
-      type AcademicImage = {
-        category?: string;
-      };
-      const categoryList = (images as AcademicImage[])
-        .map((img) => img.category)
-        .filter(
-          (cat): cat is string => typeof cat === "string" && cat.length > 0
+        type AcademicImage = {
+          category?: string;
+        };
+        const categoryList = (images as AcademicImage[])
+          .map((img) => img.category)
+          .filter(
+            (cat): cat is string => typeof cat === "string" && cat.length > 0
+          );
+        const uniqueCategories = Array.from(new Set(categoryList));
+        console.log("Categories found in results:", uniqueCategories);
+      } else {
+        console.log("⚠️ No images returned!");
+        console.log(
+          "TROUBLESHOOTING:",
+          "\n1. Check Sanity Studio - Are images PUBLISHED (not just saved as drafts)?",
+          "\n2. Check category values - Do they match exactly?",
+          "\n3. Check schema - Is 'academicGalleryImage' the correct type?",
+          "\n4. Try fetching ALL images (no category filter) to see if query works"
         );
-      const uniqueCategories = Array.from(new Set(categoryList));
-      console.log("Categories found in results:", uniqueCategories);
-    } else {
-      console.log("⚠️ No images returned!");
-      console.log(
-        "TROUBLESHOOTING:",
-        "\n1. Check Sanity Studio - Are images PUBLISHED (not just saved as drafts)?",
-        "\n2. Check category values - Do they match exactly?",
-        "\n3. Check schema - Is 'academicGalleryImage' the correct type?",
-        "\n4. Try fetching ALL images (no category filter) to see if query works"
-      );
+      }
+      console.log("===================================");
     }
-    console.log("===================================");
 
     return Array.isArray(images) ? images : [];
   } catch (error) {

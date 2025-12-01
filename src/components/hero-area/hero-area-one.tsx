@@ -6,9 +6,7 @@ import { EffectFade, Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SwiperOptions } from "swiper/types";
 import { RightArrow } from "../svg";
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/pagination";
+// Swiper CSS is imported globally in globals.scss
 
 type HeroSlide = {
   _id?: string;
@@ -83,16 +81,16 @@ export default function HeroAreaOne({ slides }: HeroAreaOneProps) {
               </div>
               <div className="tp-hero-bg">
                 {item.image?.url && item.image.url.startsWith("http") ? (
-                  // Sanity CDN image - optimize URL for HD quality
+                  // Sanity CDN image - optimized for mobile performance
                   <Image
-                    src={`${item.image.url}?w=3840&q=100&auto=format`}
+                    src={`${item.image.url}?w=1920&q=75&auto=format`}
                     alt={item.title}
                     fill
                     priority={index === 0}
-                    quality={100}
+                    quality={75}
                     sizes="100vw"
                     style={{ objectFit: "cover" }}
-                    unoptimized={false}
+                    loading={index === 0 ? "eager" : "lazy"}
                   />
                 ) : (
                   // Local image - use Next.js Image optimization
@@ -101,10 +99,10 @@ export default function HeroAreaOne({ slides }: HeroAreaOneProps) {
                     alt={item.title}
                     fill
                     priority={index === 0}
-                    quality={100}
+                    quality={80}
                     sizes="100vw"
                     style={{ objectFit: "cover" }}
-                    unoptimized={false}
+                    loading={index === 0 ? "eager" : "lazy"}
                   />
                 )}
                 <div className="tp-hero-overlay"></div>

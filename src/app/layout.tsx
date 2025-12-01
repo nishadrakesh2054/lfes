@@ -9,9 +9,12 @@ import {
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"], // Reduced weights for better performance
   variable: "--tp-ff-poppins",
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
+  fallback: ["system-ui", "arial"],
 });
 
 export const metadata: Metadata = genMeta({
@@ -44,10 +47,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Resource hints for better performance */}
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
         />
+        <link rel="preconnect" href="https://cdn.sanity.io" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
+
+        {/* Bootstrap-icons loaded asynchronously via script below */}
         <link rel="icon" href="/assets/img/lfesicon2.png" />
         <link rel="apple-touch-icon" href="/assets/img/lfesicon2.png" />
         <script
@@ -63,6 +75,27 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        {/* Async CSS loader - non-render-blocking */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css';
+                link.media = 'print';
+                link.onload = function() { this.media = 'all'; };
+                link.onerror = function() {
+                  var fallback = document.createElement('link');
+                  fallback.rel = 'stylesheet';
+                  fallback.href = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css';
+                  document.head.appendChild(fallback);
+                };
+                document.head.appendChild(link);
+              })();
+            `,
+          }}
         />
       </head>
       <body
