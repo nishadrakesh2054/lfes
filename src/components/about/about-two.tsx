@@ -1,16 +1,17 @@
 "use client";
 import Image from "next/image";
-import ab_img_1 from "@/assets/img/about/4/about-thumb-1.jpg";
-import ab_img_2 from "@/assets/img/about/4/about-thumb-2.jpg";
-import ab_img_3 from "@/assets/img/about/4/about-thumb-3.jpg";
-import ab_img_4 from "@/assets/img/about/4/about-thumb-4.jpg";
+import ab_img_1 from "@/assets/img/about/4/shs1.png";
+import ab_img_2 from "@/assets/img/about/4/shs2.png";
+import ab_img_3 from "@/assets/img/about/4/shs3.png";
+import ab_img_4 from "@/assets/img/about/4/shs4.png";
 import UndergraduateArea from "../undergraduate/undergraduate-area";
 
 const thumbs = [
   { id: 1, col_lg: 3, img: ab_img_1, delay: 0.5 },
   { id: 2, col_lg: 4, img: ab_img_2, delay: 0.7 },
-  { id: 3, col_lg: 3, img: ab_img_3, delay: 0.9 },
-  { id: 4, col_lg: 2, img: ab_img_4, delay: 1 },
+  { id: 3, col_lg: 2, img: ab_img_3, delay: 1 },
+  { id: 4, col_lg: 2, img: ab_img_4, delay: 0.9 },
+
 ];
 
 const infoSections = [
