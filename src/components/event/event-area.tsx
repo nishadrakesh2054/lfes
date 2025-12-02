@@ -37,7 +37,6 @@ export default function EventArea() {
         setEvents(eventsData.slice(0, 3)); // Show only 2 events
         setNotices(noticesData.slice(0, 3)); // Show only 2 notices
       } catch (error) {
-        console.error("Error fetching events and notices:", error);
         setEvents([]);
         setNotices([]);
       } finally {
@@ -107,7 +106,10 @@ export default function EventArea() {
                                 <div className="tp-event-list">
                                   <h4
                                     className="tp-event-list-count"
-                                    style={{ fontSize: "2.5rem" ,fontStyle: "normal"}}
+                                    style={{
+                                      fontSize: "2.5rem",
+                                      fontStyle: "normal",
+                                    }}
                                   >
                                     {dateInfo.day}
                                   </h4>
@@ -172,7 +174,10 @@ export default function EventArea() {
                                 <div className="tp-event-list">
                                   <h4
                                     className="tp-event-list-count"
-                                    style={{ fontSize: "2.5rem" ,fontStyle: "normal"}}
+                                    style={{
+                                      fontSize: "2.5rem",
+                                      fontStyle: "normal",
+                                    }}
                                   >
                                     {dateInfo.day}
                                   </h4>

@@ -29,7 +29,7 @@ const PopupNoticeWrapper = () => {
           setPopupData(data.popup);
         }
       } catch (error) {
-        console.error("Error fetching popup notice:", error);
+        // Error handled silently
       } finally {
         setLoading(false);
       }

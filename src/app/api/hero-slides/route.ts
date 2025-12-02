@@ -18,7 +18,6 @@ export async function GET() {
       }
     );
   } catch (error) {
-    console.error("Error fetching hero slides:", error);
     return NextResponse.json(
       {
         error: "Failed to load hero slides",

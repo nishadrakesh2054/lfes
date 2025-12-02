@@ -59,7 +59,6 @@ export default function CareerPage() {
         setJobs(data.jobs || []);
         setJobsError(null);
       } catch (error) {
-        console.error("Error fetching jobs:", error);
         setJobsError(
           error instanceof Error ? error.message : "Unable to load jobs now."
         );
@@ -114,7 +113,6 @@ export default function CareerPage() {
       });
       reset();
     } catch (error) {
-      console.error("Application error:", error);
       setSubmitStatus({
         type: "error",
         message:

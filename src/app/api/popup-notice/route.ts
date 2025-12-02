@@ -23,7 +23,6 @@ export async function GET() {
 
     return NextResponse.json({ popup: formatted });
   } catch (error) {
-    console.error("Error fetching popup notice:", error);
     return NextResponse.json(
       {
         error: "Failed to load popup notice",

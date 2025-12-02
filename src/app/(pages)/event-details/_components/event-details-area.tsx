@@ -40,7 +40,6 @@ export default function EventDetailsArea({ event }: IProps) {
 
       return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
     } catch (error) {
-      console.warn("Invalid YouTube URL for event video:", error);
       return null;
     }
   };

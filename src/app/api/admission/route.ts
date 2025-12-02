@@ -84,7 +84,6 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch (error: unknown) {
-    console.error("Error submitting admission application:", error);
     return NextResponse.json(
       {
         error: "Failed to submit application",

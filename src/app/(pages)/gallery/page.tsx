@@ -64,7 +64,6 @@ export default function GalleryPage() {
         setImages(data.images || []);
         setError(null);
       } catch (err) {
-        console.error("Error loading gallery:", err);
         setError(
           err instanceof Error
             ? err.message

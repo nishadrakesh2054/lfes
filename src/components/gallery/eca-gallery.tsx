@@ -33,16 +33,11 @@ export default function AcademicGallery({
         setError(null);
 
         const url = `/api/academic-gallery${categoryQuery}`;
-        if (process.env.NODE_ENV === "development") {
-          console.log("Fetching gallery images from:", url);
-          console.log("Categories:", categories);
-        }
 
         const response = await fetch(url);
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));
-          console.error("API Error Response:", errorData);
           throw new Error(
             errorData.message || "Failed to load gallery images."
           );
@@ -50,30 +45,11 @@ export default function AcademicGallery({
 
         const data = await response.json();
 
-        if (process.env.NODE_ENV === "development") {
-          console.log("Gallery API Response:", {
-            imagesCount: data.images?.length || 0,
-            hasError: !!data.error,
-            error: data.error,
-          });
-        }
-
         if (data.error) {
           throw new Error(data.error);
         }
 
         const imageList = data.images || [];
-
-        if (process.env.NODE_ENV === "development") {
-          console.log("Images received:", imageList.length);
-          if (imageList.length > 0) {
-            console.log("First image:", {
-              _id: imageList[0]._id,
-              imageUrl: imageList[0].imageUrl,
-              hasImageUrl: !!imageList[0].imageUrl,
-            });
-          }
-        }
 
         const sorted = imageList.sort(
           (a: AcademicGalleryImage, b: AcademicGalleryImage) => {
@@ -86,7 +62,6 @@ export default function AcademicGallery({
         setImages(sorted);
         setError(null);
       } catch (err) {
-        console.error("Error loading academic gallery:", err);
         setError(
           err instanceof Error
             ? err.message
@@ -185,7 +160,6 @@ export default function AcademicGallery({
                 sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw"
                 quality={85}
                 onError={(e) => {
-                  console.error("Failed to load image:", item.imageUrl);
                   e.currentTarget.style.display = "none";
                 }}
               />

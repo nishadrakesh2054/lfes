@@ -45,19 +45,7 @@ export default async function BlogPage() {
   try {
     blogs = await getBlogs();
   } catch (error) {
-    console.error("Error in BlogPage:", error);
-  }
-
-  // Debug: Log the fetched blogs
-  if (process.env.NODE_ENV === "development") {
-    console.log("Fetched blogs count:", blogs.length);
-    if (blogs.length > 0) {
-      console.log("First blog sample:", JSON.stringify(blogs[0], null, 2));
-    } else {
-      console.log(
-        "No blogs found. Make sure blogs are published in Sanity Studio."
-      );
-    }
+    // Error handled silently
   }
 
   return (

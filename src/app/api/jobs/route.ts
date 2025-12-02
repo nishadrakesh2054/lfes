@@ -8,7 +8,6 @@ export async function GET() {
     const jobs = await getJobOpenings();
     return NextResponse.json({ jobs });
   } catch (error) {
-    console.error("Error fetching jobs:", error);
     return NextResponse.json(
       {
         error: "Failed to fetch job openings",

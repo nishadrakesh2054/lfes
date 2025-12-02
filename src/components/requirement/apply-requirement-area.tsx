@@ -51,12 +51,51 @@ export default function ApplyRequirement() {
         </div>
 
         {/* Buttons */}
+        <style jsx>{`
+          .admission-tabs-container {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+          }
+          .admission-tab-btn {
+            flex: 1;
+            min-width: 0;
+            white-space: normal;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            text-align: center;
+            border-radius: 6px !important;
+            transition: all 0.3s ease;
+          }
+          @media only screen and (max-width: 767px) {
+            .admission-tabs-container {
+              flex-direction: column;
+              gap: 12px;
+            }
+            .admission-tab-btn {
+              width: 100% !important;
+              flex: none !important;
+              padding: 16px 20px !important;
+              font-size: 15px !important;
+              min-height: 50px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+          @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .admission-tab-btn {
+              padding: 14px 16px !important;
+              font-size: 14px !important;
+            }
+          }
+        `}</style>
         <div className="row mb-4">
           <div className="col-12">
-            <div className="btn-group w-100" role="group">
+            <div className="admission-tabs-container" role="group">
               <button
                 type="button"
-                className="btn"
+                className="btn admission-tab-btn"
                 onClick={() => setActiveTab("admission")}
                 style={{
                   backgroundColor:
@@ -64,15 +103,17 @@ export default function ApplyRequirement() {
                   color: activeTab === "admission" ? "white" : brandColor,
                   borderColor: brandColor,
                   borderWidth: "2px",
+                  borderStyle: "solid",
                   fontWeight: "600",
                   padding: "12px 24px",
+                  whiteSpace: "normal",
                 }}
               >
                 Admission Procedure
               </button>
               <button
                 type="button"
-                className="btn"
+                className="btn admission-tab-btn"
                 onClick={() => setActiveTab("school")}
                 style={{
                   backgroundColor:
@@ -80,15 +121,17 @@ export default function ApplyRequirement() {
                   color: activeTab === "school" ? "white" : brandColor,
                   borderColor: brandColor,
                   borderWidth: "2px",
+                  borderStyle: "solid",
                   fontWeight: "600",
                   padding: "12px 24px",
+                  whiteSpace: "normal",
                 }}
               >
                 School
               </button>
               <button
                 type="button"
-                className="btn"
+                className="btn admission-tab-btn"
                 onClick={() => setActiveTab("senior")}
                 style={{
                   backgroundColor:
@@ -96,8 +139,10 @@ export default function ApplyRequirement() {
                   color: activeTab === "senior" ? "white" : brandColor,
                   borderColor: brandColor,
                   borderWidth: "2px",
+                  borderStyle: "solid",
                   fontWeight: "600",
                   padding: "12px 24px",
+                  whiteSpace: "normal",
                 }}
               >
                 Senior High School
@@ -130,7 +175,10 @@ export default function ApplyRequirement() {
                         </span>
                         <div className="tp-apply-requirement-bullet">
                           {requirements.map((requirement, index) => (
-                            <p key={index} className="mb-2 fs-6 custom-paragraph">
+                            <p
+                              key={index}
+                              className="mb-2 fs-6 custom-paragraph"
+                            >
                               <span>
                                 <HandCheck />
                               </span>

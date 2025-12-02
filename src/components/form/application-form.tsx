@@ -79,7 +79,6 @@ export default function ApplicationForm() {
       });
       reset(); // Clear the form
     } catch (error) {
-      console.error("Error submitting application:", error);
       const errorMessage =
         error instanceof Error
           ? error.message
@@ -145,7 +144,7 @@ export default function ApplicationForm() {
               <i className="bi bi-file-earmark-text me-2 fs-5"></i>
               <div>
                 <h5 className="mb-0 fw-bold text-light text-uppercase">
-                 Register Your Interest in LFES
+                  Register Your Interest in LFES
                 </h5>
                 <small className="opacity-75">
                   Please fill in all the required information

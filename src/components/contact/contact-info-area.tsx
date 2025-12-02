@@ -10,8 +10,8 @@ export const contactInfoData = [
     icon: "bi bi-telephone-fill",
     title: "Call Us",
     description: "Available 24/7 for assistance.",
-    linkText: "+977 023-530172",
-    href: "tel:+977023530172",
+    linkText: " 023-530172 / 023-540172",
+    href: "tel:+977023530172, +977023540172",
   },
   {
     icon: "bi bi-geo-alt-fill",

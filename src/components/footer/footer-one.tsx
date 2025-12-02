@@ -68,6 +68,38 @@ export default function FooterOne({ style_2 = false }: IProps) {
         }
         .tp-footer-copyright span {
           margin: 0 10px;
+          display: inline-block;
+        }
+        @media only screen and (max-width: 767px) {
+          .tp-footer-copyright {
+            padding: 15px 10px !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+          }
+          .tp-footer-copyright span {
+            display: block !important;
+            margin: 5px 0 !important;
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+          }
+          .tp-footer-copyright span .heart {
+            display: inline !important;
+            white-space: normal !important;
+          }
+          .tp-footer-copyright a {
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+            display: inline !important;
+            white-space: normal !important;
+          }
         }
         .tp-footer-copyright a {
           color: #0079c0 !important;
@@ -156,7 +188,9 @@ export default function FooterOne({ style_2 = false }: IProps) {
                     >
                       Got Questions? Call us
                     </span>
-                    <a href="tel:+977023530172">+(977) 023-530172</a>
+                    <a href="tel:+977023530172, +977023540172">
+                      +(977) 023-530172 / 023-540172
+                    </a>
                   </div>
                   <div className="tp-footer-contact-mail">
                     <a
@@ -258,7 +292,7 @@ export default function FooterOne({ style_2 = false }: IProps) {
                   <span>
                     Powered with <span className="heart">❤️</span> by{" "}
                     <a
-                      href="https://1or8company.com"
+                      href="https://1or8.com.np"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

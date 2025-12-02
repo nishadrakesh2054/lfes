@@ -33,15 +33,7 @@ export async function GET(request: NextRequest) {
           .filter(Boolean)
       : undefined;
 
-    if (process.env.NODE_ENV === "development") {
-      console.log("Academic Gallery API - Categories requested:", categories);
-    }
-
     const images = await getAcademicGalleryImages(categories);
-
-    if (process.env.NODE_ENV === "development") {
-      console.log("Academic Gallery API - Raw images fetched:", images.length);
-    }
 
     const formatted = images
       .map((image: AcademicGalleryDoc) => {
@@ -64,13 +56,6 @@ export async function GET(request: NextRequest) {
       })
       .filter((item) => item.imageUrl); // Filter out items without valid image URLs
 
-    if (process.env.NODE_ENV === "development") {
-      console.log(
-        "Academic Gallery API - Formatted images with URLs:",
-        formatted.length
-      );
-    }
-
     // Return response with no-cache headers
     return NextResponse.json(
       { images: formatted },
@@ -82,7 +67,6 @@ export async function GET(request: NextRequest) {
       }
     );
   } catch (error) {
-    console.error("Error fetching academic gallery images:", error);
     return NextResponse.json(
       {
         error: "Failed to load academic gallery images",

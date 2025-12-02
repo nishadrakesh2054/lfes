@@ -75,15 +75,6 @@ export default function BlogListArea({ initialBlogs }: BlogListAreaProps) {
     setCurrentPage(1);
   }, [selectedCategory]);
 
-  // Debug logging
-  useEffect(() => {
-    if (process.env.NODE_ENV === "development") {
-      console.log("BlogListArea - initialBlogs:", initialBlogs?.length || 0);
-      console.log("BlogListArea - blogs state:", blogs.length);
-      console.log("BlogListArea - displayBlogs:", displayBlogs.length);
-    }
-  }, [initialBlogs, blogs, displayBlogs]);
-
   return (
     <section className="tp-blog-standard-area p-relative pt-120 pb-120">
       <div className="container">

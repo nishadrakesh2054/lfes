@@ -40,7 +40,6 @@ export default function EventListArea() {
         setEvents(eventsData);
         setNotices(noticesData);
       } catch (error) {
-        console.error("Error fetching events and notices:", error);
         setEvents([]);
         setNotices([]);
       } finally {

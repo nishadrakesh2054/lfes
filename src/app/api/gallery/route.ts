@@ -35,7 +35,6 @@ export async function GET() {
 
     return NextResponse.json({ images: formatted });
   } catch (error) {
-    console.error("Error fetching gallery images:", error);
     return NextResponse.json(
       {
         error: "Failed to load gallery images",

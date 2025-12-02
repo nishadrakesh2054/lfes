@@ -55,7 +55,6 @@ export default function NewsletterForm({
       });
       reset(); // Clear the form
     } catch (error) {
-      console.error("Error subscribing to newsletter:", error);
       const errorMessage =
         error instanceof Error
           ? error.message

@@ -16,7 +16,7 @@ export const metadata: Metadata = generateMetadata({
     "Graduates",
     "Alumni Community",
   ],
-  path: "/alumini",
+  path: "/",
 });
 
 export default function AlumniPage() {
@@ -34,7 +34,7 @@ export default function AlumniPage() {
                 className=""
                 data-wow-duration="1.5s"
                 data-wow-delay=".4s"
-                src="/assets/img/alumini.png"
+                src="/assets/img/aluminetwork.jpg"
                 alt="shape-underline"
                 width={600}
                 height={400}
@@ -70,7 +70,7 @@ export default function AlumniPage() {
                 of learning alive.
               </p>
               <a
-                href="/alumni/register"
+                href="/"
                 className="btn btn-md text-white shadow"
                 style={{
                   backgroundColor: "#0079C0",

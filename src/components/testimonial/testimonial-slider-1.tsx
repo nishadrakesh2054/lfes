@@ -36,7 +36,6 @@ export default function TestimonialSliderOne() {
         const data = await getTestimonials();
         setTestimonials(data);
       } catch (error) {
-        console.error("Error fetching testimonials:", error);
         // Fallback to empty array or default data
         setTestimonials([]);
       } finally {

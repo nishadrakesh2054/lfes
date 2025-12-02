@@ -16,7 +16,6 @@ const VideoPopup = ({
   videoId = "TYYf8zYjP5k",
   vimeoPlayer,
 }: IPropType) => {
-  console.log(videoId, vimeoPlayer);
   return (
     <ModalVideo
       channel={vimeoPlayer ? "vimeo" : "youtube"}
